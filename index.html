@@ -4,11 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Анатолій & Дар'я | 17.07.2027</title>
+<title>Анатолій & Дар’я | 17.07.2027</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
-
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500&display=swap');
 
 * {
     margin: 0;
@@ -21,65 +24,65 @@ html {
 }
 
 body {
-    background: #f7f4ef;
-    color: #34312d;
-    font-family: 'Montserrat', sans-serif;
+    background: #f7f5f0;
+    color: #292725;
+    font-family: "Montserrat", sans-serif;
     font-weight: 300;
     line-height: 1.7;
 }
 
 img {
     display: block;
-    max-width: 100%;
+    width: 100%;
 }
 
 a {
     color: inherit;
+    text-decoration: none;
 }
 
 /* =========================
    NAVIGATION
 ========================= */
 
-nav {
+.nav {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1000;
 
-    background: rgba(247,244,239,0.92);
+    background: rgba(247,245,240,0.94);
     backdrop-filter: blur(12px);
 
-    border-bottom: 1px solid rgba(60,50,40,0.08);
+    border-bottom: 1px solid rgba(50,45,40,0.12);
 }
 
 .nav-inner {
-    display: flex;
-    justify-content: center;
-    gap: 28px;
-
-    max-width: 1100px;
+    max-width: 1200px;
     margin: auto;
 
-    padding: 15px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 18px 25px;
+    gap: 35px;
 
     overflow-x: auto;
-}
-
-.nav-inner a {
-    text-decoration: none;
     white-space: nowrap;
-
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-
-    opacity: 0.75;
 }
 
-.nav-inner a:hover {
-    opacity: 1;
+.nav a {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #55514c;
+    transition: 0.3s;
+}
+
+.nav a:hover {
+    color: #9b8875;
 }
 
 /* =========================
@@ -89,17 +92,24 @@ nav {
 .hero {
     min-height: 100vh;
 
-    position: relative;
-
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: center;
 
+    position: relative;
     overflow: hidden;
 
-    color: white;
+    padding: 90px 20px 40px;
+}
 
-    background: #444;
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 25px;
+
+    border: 1px solid rgba(60,55,50,0.15);
+
+    pointer-events: none;
 }
 
 .hero-photo {
@@ -110,8 +120,9 @@ nav {
     height: 100%;
 
     object-fit: cover;
+    object-position: center;
 
-    filter: brightness(0.72);
+    filter: brightness(0.88);
 }
 
 .hero-overlay {
@@ -121,9 +132,8 @@ nav {
     background:
         linear-gradient(
             to bottom,
-            rgba(0,0,0,0.18),
-            rgba(0,0,0,0.12) 45%,
-            rgba(0,0,0,0.68)
+            rgba(30,25,20,0.10),
+            rgba(30,25,20,0.25)
         );
 }
 
@@ -131,70 +141,52 @@ nav {
     position: relative;
     z-index: 2;
 
-    width: 100%;
-    max-width: 1000px;
-
-    padding: 120px 25px 80px;
-
     text-align: center;
+    color: white;
+
+    width: 100%;
 }
 
 .hero-small {
-    font-size: 10px;
-    letter-spacing: 5px;
+    font-size: 11px;
+    letter-spacing: 6px;
     text-transform: uppercase;
 
-    margin-bottom: 22px;
+    margin-bottom: 20px;
 }
 
 .hero h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 300;
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(70px, 14vw, 150px);
 
-    font-size: clamp(70px, 18vw, 160px);
+    font-weight: 400;
+    line-height: 0.9;
 
-    line-height: 0.78;
-}
-
-.hero-amp {
-    font-style: italic;
-    font-size: 0.55em;
+    margin-bottom: 25px;
 }
 
 .hero-date {
-    margin-top: 30px;
-
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 28px;
-
+    font-size: 15px;
     letter-spacing: 7px;
-}
-
-.hero-location {
-    margin-top: 8px;
-
-    font-size: 10px;
-    letter-spacing: 3px;
     text-transform: uppercase;
 }
 
-.scroll {
-    margin-top: 40px;
+.hero-place {
+    margin-top: 12px;
 
-    font-size: 9px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-
-    opacity: 0.8;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 24px;
 }
 
 /* =========================
-   SECTIONS
+   GENERAL
 ========================= */
 
 section {
-    padding: 100px 22px;
+    padding: 110px 25px;
+}
 
+.container {
     max-width: 1100px;
     margin: auto;
 }
@@ -202,34 +194,26 @@ section {
 .section-label {
     text-align: center;
 
-    font-size: 9px;
-    letter-spacing: 4px;
+    font-size: 10px;
+    letter-spacing: 5px;
     text-transform: uppercase;
 
-    opacity: 0.55;
+    color: #a09282;
 
-    margin-bottom: 14px;
+    margin-bottom: 15px;
 }
 
 .section-title {
     text-align: center;
 
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 62px;
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(50px, 8vw, 85px);
     font-weight: 400;
 
     line-height: 1;
 
-    margin-bottom: 35px;
-}
-
-.divider {
-    width: 45px;
-    height: 1px;
-
-    background: #82786e;
-
-    margin: 35px auto;
+    margin-bottom: 55px;
 }
 
 /* =========================
@@ -237,16 +221,41 @@ section {
 ========================= */
 
 .story {
-    max-width: 720px;
-    margin: auto;
-
-    text-align: center;
-
-    font-size: 15px;
+    background: #f7f5f0;
 }
 
-.story p {
-    margin-bottom: 22px;
+.story-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 60px;
+
+    align-items: center;
+}
+
+.story-photo {
+    height: 620px;
+    object-fit: cover;
+}
+
+.story-text {
+    padding: 20px;
+}
+
+.story-text h3 {
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 43px;
+    font-weight: 400;
+
+    margin-bottom: 25px;
+}
+
+.story-text p {
+    font-size: 14px;
+    color: #68625b;
+
+    margin-bottom: 20px;
 }
 
 /* =========================
@@ -254,34 +263,37 @@ section {
 ========================= */
 
 .invitation {
-    max-width: none;
-
-    background: #e9e4dc;
+    background: #e9e5dc;
 
     text-align: center;
 }
 
-.invitation-inner {
+.invitation-box {
     max-width: 750px;
     margin: auto;
 }
 
-.invitation-title {
-    font-family: 'Cormorant Garamond', serif;
+.invitation-text {
+    font-family: "Cormorant Garamond", serif;
 
-    font-size: 70px;
-    font-weight: 400;
+    font-size: clamp(27px, 4vw, 39px);
+    line-height: 1.4;
 
-    line-height: 0.95;
-
-    margin-bottom: 35px;
+    margin-bottom: 30px;
 }
 
-.invitation-text {
-    font-family: 'Cormorant Garamond', serif;
+.names {
+    font-family: "Cormorant Garamond", serif;
 
-    font-size: 25px;
-    line-height: 1.45;
+    font-size: clamp(42px, 7vw, 70px);
+}
+
+.invitation-date {
+    margin-top: 30px;
+
+    font-size: 12px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
 }
 
 /* =========================
@@ -289,94 +301,91 @@ section {
 ========================= */
 
 .details {
+    background: #f7f5f0;
+}
+
+.details-grid {
     display: grid;
 
     grid-template-columns: repeat(3, 1fr);
 
-    max-width: 900px;
-
-    margin: auto;
-
-    border-top: 1px solid rgba(50,45,40,0.15);
-    border-bottom: 1px solid rgba(50,45,40,0.15);
+    gap: 25px;
 }
 
-.detail {
-    padding: 40px 20px;
-
+.detail-card {
     text-align: center;
 
-    border-right: 1px solid rgba(50,45,40,0.15);
+    padding: 45px 25px;
+
+    border: 1px solid rgba(70,60,50,0.15);
 }
 
-.detail:last-child {
-    border-right: none;
+.detail-icon {
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 45px;
+
+    margin-bottom: 20px;
 }
 
-.detail-number {
-    font-family: 'Cormorant Garamond', serif;
+.detail-card h3 {
+    font-family: "Cormorant Garamond", serif;
 
-    font-size: 36px;
+    font-size: 32px;
+    font-weight: 400;
 
-    margin-bottom: 8px;
+    margin-bottom: 12px;
 }
 
-.detail-title {
-    font-size: 10px;
-
-    letter-spacing: 2px;
-
-    text-transform: uppercase;
-
-    margin-bottom: 10px;
-}
-
-.detail-text {
-    font-size: 12px;
+.detail-card p {
+    font-size: 13px;
+    color: #777068;
 }
 
 /* =========================
    COUNTDOWN
 ========================= */
 
-.countdown {
-    max-width: none;
-
-    background: #34312d;
-
-    color: #f7f4ef;
+.countdown-section {
+    background: #dcd6ca;
 
     text-align: center;
 }
 
-.timer {
-    display: flex;
+.countdown {
+    display: grid;
 
-    justify-content: center;
+    grid-template-columns: repeat(4, 1fr);
 
-    gap: 45px;
+    max-width: 800px;
 
-    flex-wrap: wrap;
+    margin: auto;
 }
 
-.timer-number {
-    font-family: 'Cormorant Garamond', serif;
+.countdown-item {
+    padding: 15px;
+}
 
-    font-size: 60px;
+.countdown-number {
+    display: block;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(50px, 8vw, 85px);
 
     line-height: 1;
 }
 
-.timer-label {
-    margin-top: 7px;
+.countdown-label {
+    display: block;
 
-    font-size: 8px;
+    margin-top: 12px;
 
-    letter-spacing: 2px;
+    font-size: 10px;
+
+    letter-spacing: 3px;
 
     text-transform: uppercase;
-
-    opacity: 0.65;
 }
 
 /* =========================
@@ -384,23 +393,29 @@ section {
 ========================= */
 
 .gallery {
+    background: #f7f5f0;
+}
+
+.gallery-grid {
     display: grid;
 
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
 
-    gap: 12px;
-
-    max-width: 1000px;
-
-    margin: auto;
+    gap: 8px;
 }
 
 .gallery-item {
     overflow: hidden;
 
-    background: #ddd7ce;
+    aspect-ratio: 3 / 4;
 
-    aspect-ratio: 1 / 1;
+    background: #ded9d0;
+}
+
+.gallery-item:nth-child(2),
+.gallery-item:nth-child(5),
+.gallery-item:nth-child(8) {
+    aspect-ratio: 4 / 5;
 }
 
 .gallery-item img {
@@ -416,65 +431,33 @@ section {
     transform: scale(1.04);
 }
 
-/* Large photo */
-
-.gallery-item.large {
-    grid-column: span 2;
-
-    aspect-ratio: 16 / 9;
-}
-
 /* =========================
    DRESS CODE
 ========================= */
 
-.dresscode {
-    text-align: center;
+.dress {
+    background: #e9e5dc;
 
-    max-width: 700px;
+    text-align: center;
 }
 
-.dresscode-text {
-    max-width: 600px;
-
+.dress-text {
+    max-width: 650px;
     margin: auto;
 
-    font-size: 14px;
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 30px;
+
+    line-height: 1.5;
 }
 
-.colors {
-    display: flex;
+.dress-sub {
+    margin-top: 25px;
 
-    justify-content: center;
+    font-size: 13px;
 
-    gap: 12px;
-
-    margin-top: 30px;
-}
-
-.color {
-    width: 45px;
-    height: 45px;
-
-    border-radius: 50%;
-
-    border: 1px solid rgba(0,0,0,0.1);
-}
-
-.color:nth-child(1) {
-    background: #e6ded2;
-}
-
-.color:nth-child(2) {
-    background: #c9b9a5;
-}
-
-.color:nth-child(3) {
-    background: #95877a;
-}
-
-.color:nth-child(4) {
-    background: #f1ece4;
+    color: #716a62;
 }
 
 /* =========================
@@ -482,44 +465,43 @@ section {
 ========================= */
 
 .location {
-    max-width: none;
-
-    background: #e9e4dc;
+    background: #f7f5f0;
 
     text-align: center;
 }
 
 .location-name {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: "Cormorant Garamond", serif;
 
-    font-size: 65px;
+    font-size: 55px;
 
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
-.button {
+.location-address {
+    color: #777068;
+
+    margin-bottom: 30px;
+}
+
+.location-button {
     display: inline-block;
 
-    margin-top: 25px;
+    border: 1px solid #625a51;
 
-    padding: 14px 30px;
+    padding: 14px 28px;
 
-    border: 1px solid #4d4842;
+    font-size: 11px;
 
-    text-decoration: none;
-
-    font-size: 9px;
-
-    letter-spacing: 2px;
+    letter-spacing: 3px;
 
     text-transform: uppercase;
 
     transition: 0.3s;
 }
 
-.button:hover {
-    background: #34312d;
-
+.location-button:hover {
+    background: #625a51;
     color: white;
 }
 
@@ -528,15 +510,46 @@ section {
 ========================= */
 
 .rsvp {
+    background: #292725;
+
+    color: white;
+
     text-align: center;
 }
 
+.rsvp .section-label {
+    color: #c0b5a5;
+}
+
 .rsvp-text {
-    max-width: 600px;
+    max-width: 650px;
 
-    margin: auto;
+    margin: auto auto 35px;
 
-    font-size: 14px;
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 30px;
+}
+
+.rsvp-button {
+    display: inline-block;
+
+    border: 1px solid rgba(255,255,255,0.6);
+
+    padding: 16px 35px;
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    transition: 0.3s;
+}
+
+.rsvp-button:hover {
+    background: white;
+    color: #292725;
 }
 
 /* =========================
@@ -544,29 +557,31 @@ section {
 ========================= */
 
 footer {
-    padding: 70px 20px;
+    padding: 50px 25px;
+
+    background: #292725;
+
+    border-top: 1px solid rgba(255,255,255,0.15);
+
+    color: #c9c3ba;
 
     text-align: center;
+}
 
-    font-family: 'Cormorant Garamond', serif;
+.footer-names {
+    font-family: "Cormorant Garamond", serif;
 
-    font-size: 34px;
+    font-size: 45px;
+
+    margin-bottom: 10px;
 }
 
 .footer-date {
-    display: block;
+    font-size: 10px;
 
-    margin-top: 10px;
-
-    font-family: 'Montserrat', sans-serif;
-
-    font-size: 8px;
-
-    letter-spacing: 3px;
+    letter-spacing: 4px;
 
     text-transform: uppercase;
-
-    opacity: 0.55;
 }
 
 /* =========================
@@ -577,590 +592,735 @@ footer {
 
     .nav-inner {
         justify-content: flex-start;
-        gap: 20px;
+
+        gap: 25px;
+
+        padding: 15px 20px;
     }
 
-    .hero-content {
-        padding-bottom: 65px;
+    .nav a {
+        font-size: 9px;
+
+        letter-spacing: 2px;
+    }
+
+    .hero {
+        min-height: 90vh;
+
+        padding-top: 70px;
+    }
+
+    .hero::before {
+        inset: 15px;
     }
 
     .hero h1 {
-        font-size: 78px;
+        font-size: 68px;
     }
 
     .hero-date {
-        font-size: 23px;
+        font-size: 11px;
+
         letter-spacing: 4px;
     }
 
+    section {
+        padding: 80px 18px;
+    }
+
     .section-title {
-        font-size: 48px;
+        margin-bottom: 40px;
     }
 
-    .invitation-title {
-        font-size: 52px;
+    .story-grid {
+        grid-template-columns: 1fr;
+
+        gap: 35px;
     }
 
-    .invitation-text {
-        font-size: 22px;
+    .story-photo {
+        height: 500px;
     }
 
-    .details {
+    .story-text {
+        padding: 0 10px;
+    }
+
+    .details-grid {
         grid-template-columns: 1fr;
     }
 
-    .detail {
-        border-right: none;
-
-        border-bottom: 1px solid rgba(50,45,40,0.15);
+    .countdown {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    .detail:last-child {
-        border-bottom: none;
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 5px;
     }
 
-    .timer {
-        gap: 25px;
+    .gallery-item,
+    .gallery-item:nth-child(2),
+    .gallery-item:nth-child(5),
+    .gallery-item:nth-child(8) {
+        aspect-ratio: 3 / 4;
     }
 
-    .timer-number {
-        font-size: 45px;
-    }
-
-    .gallery {
-        gap: 7px;
-    }
-
-    .gallery-item.large {
-        aspect-ratio: 4 / 5;
+    .dress-text {
+        font-size: 26px;
     }
 
     .location-name {
-        font-size: 50px;
+        font-size: 45px;
     }
+
+    .rsvp-text {
+        font-size: 27px;
+    }
+
+}
+
+/* =========================
+   FADE ANIMATION
+========================= */
+
+.fade {
+    animation: fadeIn 1.2s ease both;
+}
+
+@keyframes fadeIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
 }
 
 </style>
 </head>
 
+
 <body>
 
-<!-- NAVIGATION -->
+<!-- =========================
+     NAVIGATION
+========================= -->
 
-<nav>
+<nav class="nav">
 
-<div class="nav-inner">
+    <div class="nav-inner">
 
-<a href="#home">Головна</a>
-<a href="#story">Наша історія</a>
-<a href="#wedding">Запрошення</a>
-<a href="#gallery">Фото</a>
-<a href="#dresscode">Дрес-код</a>
-<a href="#rsvp">RSVP</a>
+        <a href="#home">Головна</a>
 
-</div>
+        <a href="#story">Наша історія</a>
+
+        <a href="#invitation">Запрошення</a>
+
+        <a href="#gallery">Фото</a>
+
+        <a href="#dress">Дрес-код</a>
+
+        <a href="#location">Локація</a>
+
+        <a href="#rsvp">RSVP</a>
+
+    </div>
 
 </nav>
 
 
-<!-- HERO -->
+<!-- =========================
+     HERO
+========================= -->
 
-<header class="hero" id="home">
+<section class="hero" id="home">
 
-<img
-class="hero-photo"
-src="IMG_5466.png"
-alt="Анатолій та Дар’я">
+    <img
+        class="hero-photo"
+        src="IMG_5473.jpeg"
+        alt="Анатолій та Дар’я"
+    >
 
-<div class="hero-overlay"></div>
+    <div class="hero-overlay"></div>
 
-<div class="hero-content">
+    <div class="hero-content fade">
 
-<div class="hero-small">
-Ми одружуємось
-</div>
+        <div class="hero-small">
+            Ми одружуємось
+        </div>
 
-<h1>
-Анатолій
-<br>
-<span class="hero-amp">&</span>
-<br>
-Дар’я
-</h1>
+        <h1>
+            Анатолій<br>&amp;<br>Дар’я
+        </h1>
 
-<div class="hero-date">
-17 · 07 · 2027
-</div>
+        <div class="hero-date">
+            17 · 07 · 2027
+        </div>
 
-<div class="hero-location">
-Ресторан «Фабіус»
-</div>
+        <div class="hero-place">
+            Ресторан «Фабіус»
+        </div>
 
-<div class="scroll">
-Гортайте вниз ↓
-</div>
-
-</div>
-
-</header>
-
-
-<!-- STORY -->
-
-<section id="story">
-
-<div class="section-label">
-Наша історія
-</div>
-
-<h2 class="section-title">
-Двоє людей.<br>
-Одна історія.
-</h2>
-
-<div class="story">
-
-<p>
-У кожної любовної історії є свій особливий початок.
-Наша почалася з зустрічі двох людей,
-які одного дня зрозуміли,
-що хочуть бути разом.
-</p>
-
-<div class="divider"></div>
-
-<p>
-Разом ми створювали спогади,
-сміялися, мріяли, подорожували
-і проходили крізь різні моменти життя.
-</p>
-
-<p>
-А тепер настав час написати
-нову сторінку нашої історії —
-нашу сім’ю.
-</p>
-
-</div>
+    </div>
 
 </section>
 
 
-<!-- INVITATION -->
+<!-- =========================
+     STORY
+========================= -->
 
-<section class="invitation" id="wedding">
+<section class="story" id="story">
 
-<div class="invitation-inner">
+    <div class="container">
 
-<div class="section-label">
-Запрошення
-</div>
+        <div class="section-label">
+            Наша історія
+        </div>
 
-<h2 class="invitation-title">
-Ми будемо щасливі<br>
-бачити вас
-<br>
-на нашому святі
-</h2>
+        <h2 class="section-title">
+            Разом
+        </h2>
 
-<p class="invitation-text">
-17 липня 2027 року
-<br><br>
-ми скажемо одне одному
-найважливіше «Так».
-<br><br>
-І хочемо розділити
-цей особливий день
-з найдорожчими людьми.
-</p>
+        <div class="story-grid">
 
-</div>
+            <img
+                class="story-photo"
+                src="IMG_5505.jpeg"
+                alt="Анатолій та Дар’я"
+            >
 
-</section>
+            <div class="story-text">
 
+                <h3>
+                    Дві історії.<br>
+                    Одне кохання.
+                </h3>
 
-<!-- DETAILS -->
+                <p>
+                    У кожного з нас була своя історія,
+                    свій шлях і свої мрії.
+                </p>
 
-<section>
+                <p>
+                    А потім наші дороги зустрілися
+                    і з'явилося наше «ми».
+                </p>
 
-<div class="section-label">
-Збережіть дату
-</div>
+                <p>
+                    Попереду — ціле життя разом,
+                    безліч нових моментів,
+                    подорожей, мрій та спогадів.
+                </p>
 
-<h2 class="section-title">
-Наш день
-</h2>
+            </div>
 
-<div class="details">
+        </div>
 
-<div class="detail">
-
-<div class="detail-number">
-17
-</div>
-
-<div class="detail-title">
-Дата
-</div>
-
-<div class="detail-text">
-Липня 2027
-</div>
-
-</div>
-
-
-<div class="detail">
-
-<div class="detail-number">
-♡
-</div>
-
-<div class="detail-title">
-Ми
-</div>
-
-<div class="detail-text">
-Анатолій & Дар’я
-</div>
-
-</div>
-
-
-<div class="detail">
-
-<div class="detail-number">
-⌖
-</div>
-
-<div class="detail-title">
-Місце
-</div>
-
-<div class="detail-text">
-Ресторан «Фабіус»
-</div>
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
 
-<!-- COUNTDOWN -->
+<!-- =========================
+     INVITATION
+========================= -->
 
-<section class="countdown">
+<section class="invitation" id="invitation">
 
-<div class="section-label">
-Наше весілля
-</div>
+    <div class="container">
 
-<h2 class="section-title">
-До нашого дня
-</h2>
+        <div class="section-label">
+            Запрошення
+        </div>
 
-<div class="timer">
+        <h2 class="section-title">
+            Будемо раді<br>розділити цей день з вами
+        </h2>
 
-<div>
-<div class="timer-number" id="days">0</div>
-<div class="timer-label">днів</div>
-</div>
+        <div class="invitation-box">
 
-<div>
-<div class="timer-number" id="hours">0</div>
-<div class="timer-label">годин</div>
-</div>
+            <div class="invitation-text">
 
-<div>
-<div class="timer-number" id="minutes">0</div>
-<div class="timer-label">хвилин</div>
-</div>
+                Запрошуємо вас стати частиною
+                нашого особливого дня —
+                дня, коли ми скажемо одне одному
+                «так» назавжди.
 
-<div>
-<div class="timer-number" id="seconds">0</div>
-<div class="timer-label">секунд</div>
-</div>
+            </div>
 
-</div>
+            <div class="names">
+                Анатолій &amp; Дар’я
+            </div>
 
-</section>
+            <div class="invitation-date">
+                17 липня 2027 року
+            </div>
 
+        </div>
 
-<!-- GALLERY -->
-
-<section id="gallery">
-
-<div class="section-label">
-Наші моменти
-</div>
-
-<h2 class="section-title">
-Разом
-</h2>
-
-<div class="gallery">
-
-
-<div class="gallery-item large">
-
-<img
-src="IMG_5467.png"
-alt="Анатолій та Дар’я">
-
-</div>
-
-
-<div class="gallery-item">
-
-<img
-src="IMG_5473.jpeg"
-alt="Анатолій та Дар’я">
-
-</div>
-
-
-<div class="gallery-item">
-
-<img
-src="IMG_5505.jpeg"
-alt="Анатолій та Дар’я">
-
-</div>
-
-
-<div class="gallery-item">
-
-<img
-src="IMG_5506.jpeg"
-alt="Анатолій та Дар’я">
-
-</div>
-
-
-<div class="gallery-item">
-
-<img
-src="IMG_5508.jpeg"
-alt="Анатолій та Дар’я">
-
-</div>
-
-
-<div class="gallery-item">
-
-<img
-src="IMG_5509.jpeg"
-alt="Анатолій та Дар’я">
-
-</div>
-
-
-<div class="gallery-item">
-
-<img
-src="IMG_5519.jpeg"
-alt="Анатолій та Дар’я">
-
-</div>
-
-
-<div class="gallery-item">
-
-<img
-src="IMG_5520.jpeg"
-alt="Анатолій та Дар’я">
-
-</div>
-
-
-<div class="gallery-item">
-
-<img
-src="IMG_5535.jpeg"
-alt="Анатолій та Дар’я">
-
-</div>
-
-
-<div class="gallery-item">
-
-<img
-src="IMG_5536.jpeg"
-alt="Анатолій та Дар’я">
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
 
-<!-- DRESS CODE -->
+<!-- =========================
+     DETAILS
+========================= -->
 
-<section class="dresscode" id="dresscode">
+<section class="details">
 
-<div class="section-label">
-Дрес-код
-</div>
+    <div class="container">
 
-<h2 class="section-title">
-Святковий
-</h2>
+        <div class="section-label">
+            Наш день
+        </div>
 
-<div class="dresscode-text">
+        <h2 class="section-title">
+            Деталі
+        </h2>
 
-<p>
-Ми хочемо, щоб цей день був красивим
-і гармонійним, тому будемо раді
-святковим та елегантним образам.
-</p>
+        <div class="details-grid">
 
-<p>
-Обирайте те, у чому вам комфортно
-та в чому ви почуваєтеся особливо.
-</p>
+            <div class="detail-card">
 
-<div class="colors">
+                <div class="detail-icon">
+                    17
+                </div>
 
-<div class="color"></div>
-<div class="color"></div>
-<div class="color"></div>
-<div class="color"></div>
+                <h3>
+                    Дата
+                </h3>
 
-</div>
+                <p>
+                    Субота<br>
+                    17 липня 2027
+                </p>
 
-</div>
+            </div>
+
+
+            <div class="detail-card">
+
+                <div class="detail-icon">
+                    ♡
+                </div>
+
+                <h3>
+                    Святкування
+                </h3>
+
+                <p>
+                    День нашого<br>
+                    весілля
+                </p>
+
+            </div>
+
+
+            <div class="detail-card">
+
+                <div class="detail-icon">
+                    F
+                </div>
+
+                <h3>
+                    Локація
+                </h3>
+
+                <p>
+                    Ресторан<br>
+                    «Фабіус»
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 
 
-<!-- LOCATION -->
+<!-- =========================
+     COUNTDOWN
+========================= -->
 
-<section class="location">
+<section class="countdown-section">
 
-<div class="section-label">
-Місце святкування
-</div>
+    <div class="container">
 
-<h2 class="location-name">
-Ресторан<br>
-«Фабіус»
-</h2>
+        <div class="section-label">
+            До нашого дня
+        </div>
 
-<p>
-Тут ми зустрінемося,
-щоб разом відсвяткувати
-наш особливий день.
-</p>
+        <h2 class="section-title">
+            Залишилось
+        </h2>
 
-<a
-class="button"
-href="https://www.google.com/maps/search/?api=1&query=Фабіус"
-target="_blank">
+        <div class="countdown">
 
-Відкрити на карті
+            <div class="countdown-item">
 
-</a>
+                <span
+                    class="countdown-number"
+                    id="days"
+                >
+                    0
+                </span>
+
+                <span class="countdown-label">
+                    Днів
+                </span>
+
+            </div>
+
+
+            <div class="countdown-item">
+
+                <span
+                    class="countdown-number"
+                    id="hours"
+                >
+                    0
+                </span>
+
+                <span class="countdown-label">
+                    Годин
+                </span>
+
+            </div>
+
+
+            <div class="countdown-item">
+
+                <span
+                    class="countdown-number"
+                    id="minutes"
+                >
+                    0
+                </span>
+
+                <span class="countdown-label">
+                    Хвилин
+                </span>
+
+            </div>
+
+
+            <div class="countdown-item">
+
+                <span
+                    class="countdown-number"
+                    id="seconds"
+                >
+                    0
+                </span>
+
+                <span class="countdown-label">
+                    Секунд
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 
 
-<!-- RSVP -->
+<!-- =========================
+     GALLERY
+========================= -->
+
+<section class="gallery" id="gallery">
+
+    <div class="container">
+
+        <div class="section-label">
+            Наші моменти
+        </div>
+
+        <h2 class="section-title">
+            Фото
+        </h2>
+
+        <div class="gallery-grid">
+
+            <div class="gallery-item">
+                <img
+                    src="IMG_5506.jpeg"
+                    alt="Наш момент"
+                    loading="lazy"
+                >
+            </div>
+
+            <div class="gallery-item">
+                <img
+                    src="IMG_5508.jpeg"
+                    alt="Наш момент"
+                    loading="lazy"
+                >
+            </div>
+
+            <div class="gallery-item">
+                <img
+                    src="IMG_5509.jpeg"
+                    alt="Наш момент"
+                    loading="lazy"
+                >
+            </div>
+
+            <div class="gallery-item">
+                <img
+                    src="IMG_5519.jpeg"
+                    alt="Наш момент"
+                    loading="lazy"
+                >
+            </div>
+
+            <div class="gallery-item">
+                <img
+                    src="IMG_5520.jpeg"
+                    alt="Наш момент"
+                    loading="lazy"
+                >
+            </div>
+
+            <div class="gallery-item">
+                <img
+                    src="IMG_5535.jpeg"
+                    alt="Наш момент"
+                    loading="lazy"
+                >
+            </div>
+
+            <div class="gallery-item">
+                <img
+                    src="IMG_5536.jpeg"
+                    alt="Наш момент"
+                    loading="lazy"
+                >
+            </div>
+
+            <div class="gallery-item">
+                <img
+                    src="IMG_5473.jpeg"
+                    alt="Наш момент"
+                    loading="lazy"
+                >
+            </div>
+
+            <div class="gallery-item">
+                <img
+                    src="IMG_5505.jpeg"
+                    alt="Наш момент"
+                    loading="lazy"
+                >
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     DRESS CODE
+========================= -->
+
+<section class="dress" id="dress">
+
+    <div class="container">
+
+        <div class="section-label">
+            Для наших гостей
+        </div>
+
+        <h2 class="section-title">
+            Дрес-код
+        </h2>
+
+        <div class="dress-text">
+
+            Ми будемо раді бачити вас
+            у святкових та елегантних образах,
+            які підкреслять атмосферу
+            нашого особливого дня.
+
+        </div>
+
+        <div class="dress-sub">
+
+            Обирайте те, в чому ви почуваєтесь
+            красивими та комфортно.
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     LOCATION
+========================= -->
+
+<section class="location" id="location">
+
+    <div class="container">
+
+        <div class="section-label">
+            Де зустрінемось
+        </div>
+
+        <h2 class="section-title">
+            Локація
+        </h2>
+
+        <div class="location-name">
+            Фабіус
+        </div>
+
+        <div class="location-address">
+            Ресторан «Фабіус»
+        </div>
+
+        <a
+            class="location-button"
+            href="https://www.google.com/maps/search/?api=1&query=Фабіус"
+            target="_blank"
+        >
+            Відкрити на карті
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     RSVP
+========================= -->
 
 <section class="rsvp" id="rsvp">
 
-<div class="section-label">
-RSVP
-</div>
+    <div class="container">
 
-<h2 class="section-title">
-Чекаємо на вас
-</h2>
+        <div class="section-label">
+            RSVP
+        </div>
 
-<p class="rsvp-text">
+        <h2 class="section-title">
+            Чекаємо на вашу відповідь
+        </h2>
 
-Будь ласка, підтвердіть свою присутність
-на нашому святі.
+        <div class="rsvp-text">
 
-<br><br>
+            Будь ласка, підтвердіть
+            свою присутність на нашому святі.
 
-Для нас дуже важливо знати,
-з ким ми розділимо цей день.
+        </div>
 
-</p>
+        <a
+            class="rsvp-button"
+            href="mailto:your-email@example.com?subject=Підтвердження%20присутності%20на%20весіллі"
+        >
+            Підтвердити присутність
+        </a>
 
-<a
-class="button"
-href="mailto:your-email@example.com?subject=Підтвердження присутності">
-
-Підтвердити присутність
-
-</a>
+    </div>
 
 </section>
 
 
-<!-- FOOTER -->
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
-Анатолій & Дар’я
+    <div class="footer-names">
+        Анатолій &amp; Дар’я
+    </div>
 
-<span class="footer-date">
-17 · 07 · 2027
-</span>
+    <div class="footer-date">
+        17 · 07 · 2027
+    </div>
 
 </footer>
 
 
-<!-- COUNTDOWN SCRIPT -->
+<!-- =========================
+     COUNTDOWN SCRIPT
+========================= -->
 
 <script>
 
 const weddingDate =
-new Date("2027-07-17T15:00:00+03:00").getTime();
+    new Date("2027-07-17T15:00:00+03:00").getTime();
 
 
 function updateCountdown() {
 
-const now = new Date().getTime();
+    const now = new Date().getTime();
 
-const distance = weddingDate - now;
-
-
-if (distance <= 0) {
-
-document.getElementById("days").innerText = "0";
-document.getElementById("hours").innerText = "0";
-document.getElementById("minutes").innerText = "0";
-document.getElementById("seconds").innerText = "0";
-
-return;
-
-}
+    const distance = weddingDate - now;
 
 
-const days =
-Math.floor(distance / (1000 * 60 * 60 * 24));
+    if (distance <= 0) {
 
-const hours =
-Math.floor((distance / (1000 * 60 * 60)) % 24);
+        document.getElementById("days").innerText = "0";
+        document.getElementById("hours").innerText = "0";
+        document.getElementById("minutes").innerText = "0";
+        document.getElementById("seconds").innerText = "0";
 
-const minutes =
-Math.floor((distance / (1000 * 60)) % 60);
+        return;
 
-const seconds =
-Math.floor((distance / 1000) % 60);
+    }
 
 
-document.getElementById("days").innerText = days;
+    const days =
+        Math.floor(distance / (1000 * 60 * 60 * 24));
 
-document.getElementById("hours").innerText = hours;
+    const hours =
+        Math.floor(
+            (distance % (1000 * 60 * 60 * 24))
+            / (1000 * 60 * 60)
+        );
 
-document.getElementById("minutes").innerText = minutes;
+    const minutes =
+        Math.floor(
+            (distance % (1000 * 60 * 60))
+            / (1000 * 60)
+        );
 
-document.getElementById("seconds").innerText = seconds;
+    const seconds =
+        Math.floor(
+            (distance % (1000 * 60))
+            / 1000
+        );
+
+
+    document.getElementById("days").innerText = days;
+
+    document.getElementById("hours").innerText =
+        String(hours).padStart(2, "0");
+
+    document.getElementById("minutes").innerText =
+        String(minutes).padStart(2, "0");
+
+    document.getElementById("seconds").innerText =
+        String(seconds).padStart(2, "0");
 
 }
 
