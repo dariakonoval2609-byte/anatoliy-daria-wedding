@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Весілля Анатолія та Дар'ї — 17 липня 2027">
+
+<title>Анатолій & Дар'я | 17.07.2027</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #f8f6f2;
+    color: #35322e;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+}
+
+h1, h2, h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background: rgba(248,246,242,0.94);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(80,70,60,0.1);
+}
+
+.nav-inner {
+    max-width: 1100px;
+    margin: auto;
+    padding: 14px 20px;
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    overflow-x: auto;
+}
+
+.nav-inner a {
+    color: #4b4640;
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.nav-inner a:hover {
+    opacity: 0.55;
+}
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 90px 25px 60px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    border: 1px solid rgba(100,90,80,0.18);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.small-title {
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 11px;
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-size: clamp(65px, 18vw, 150px);
+    line-height: 0.85;
+    margin-bottom: 25px;
+}
+
+.amp {
+    font-style: italic;
+    font-size: 0.65em;
+}
+
+.date {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 27px;
+    letter-spacing: 5px;
+    margin-top: 25px;
+}
+
+.location {
+    margin-top: 12px;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.scroll {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+section {
+    padding: 90px 22px;
+    max-width: 1050px;
+    margin: auto;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 52px;
+    margin-bottom: 15px;
+}
+
+.section-subtitle {
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 45px;
+    opacity: 0.65;
+}
+
+.story {
+    max-width: 700px;
+    margin: auto;
+    text-align: center;
+    font-size: 15px;
+}
+
+.story p {
+    margin-bottom: 22px;
+}
+
+.divider {
+    width: 45px;
+    height: 1px;
+    background: #777067;
+    margin: 35px auto;
+}
+
+.invitation {
+    background: #ebe7df;
+    max-width: none;
+    text-align: center;
+}
+
+.invitation-box {
+    max-width: 750px;
+    margin: auto;
+}
+
+.invitation h2 {
+    font-size: 62px;
+    margin-bottom: 25px;
+}
+
+.invitation-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 25px;
+    line-height: 1.5;
+}
+
+.details {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    max-width: 900px;
+    margin: auto;
+}
+
+.detail {
+    text-align: center;
+    padding: 35px 20px;
+    border: 1px solid rgba(80,70,60,0.18);
+}
+
+.detail-icon {
+    font-size: 25px;
+    margin-bottom: 12px;
+}
+
+.detail h3 {
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+.detail p {
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.countdown {
+    background: #35322e;
+    color: #f8f6f2;
+    max-width: none;
+    text-align: center;
+}
+
+.countdown .section-subtitle {
+    opacity: 0.65;
+}
+
+.timer {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.time-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    line-height: 1;
+}
+
+.time-label {
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 7px;
+    opacity: 0.7;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    max-width: 850px;
+    margin: auto;
+}
+
+.photo {
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background: #ddd7cd;
+}
+
+.photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.photo:hover img {
+    transform: scale(1.04);
+}
+
+.dresscode {
+    text-align: center;
+    max-width: 650px;
+}
+
+.dresscode p {
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+.colors {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.color {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+.color:nth-child(1) { background: #ded8cc; }
+.color:nth-child(2) { background: #b9aa96; }
+.color:nth-child(3) { background: #80766c; }
+.color:nth-child(4) { background: #eeeae2; }
+
+.rsvp {
+    background: #ebe7df;
+    max-width: none;
+    text-align: center;
+}
+
+.rsvp-button {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 15px 35px;
+    border: 1px solid #4d4842;
+    color: #35322e;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 10px;
+    transition: all 0.3s ease;
+}
+
+.rsvp-button:hover {
+    background: #35322e;
+    color: white;
+}
+
+.map-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 13px 28px;
+    border: 1px solid #4d4842;
+    color: #35322e;
+    text-decoration: none;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+footer {
+    text-align: center;
+    padding: 55px 20px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+}
+
+footer span {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-top: 15px;
+    opacity: 0.55;
+}
+
+@media (max-width: 650px) {
+
+    .nav-inner {
+        justify-content: flex-start;
+        gap: 20px;
+    }
+
+    .hero::before {
+        width: 310px;
+        height: 310px;
+    }
+
+    .hero h1 {
+        font-size: 75px;
+    }
+
+    .date {
+        font-size: 22px;
+        letter-spacing: 3px;
+    }
+
+    section {
+        padding: 75px 20px;
+    }
+
+    .section-title {
+        font-size: 45px;
+    }
+
+    .invitation h2 {
+        font-size: 50px;
+    }
+
+    .invitation-text {
+        font-size: 22px;
+    }
+
+    .details {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+    }
+
+    .gallery {
+        grid-template-columns: 1fr 1fr;
+        gap: 7px;
+    }
+
+    .timer {
+        gap: 18px;
+    }
+
+    .time-number {
+        font-size: 40px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="#home">Головна</a>
+        <a href="#story">Наша історія</a>
+        <a href="#wedding">Весілля</a>
+        <a href="#gallery">Фото</a>
+        <a href="#dresscode">Дрес-код</a>
+        <a href="#rsvp">RSVP</a>
+    </div>
+</nav>
+
+<!-- ГОЛОВНА -->
+
+<header class="hero" id="home">
+    <div class="hero-content">
+
+        <div class="small-title">
+            Ми одружуємось
+        </div>
+
+        <h1>
+            Анатолій<br>
+            <span class="amp">&</span><br>
+            Дар’я
+        </h1>
+
+        <div class="date">
+            17 · 07 · 2027
+        </div>
+
+        <div class="location">
+            Ресторан «Фабіус»
+        </div>
+
+    </div>
+
+    <div class="scroll">
+        Гортайте вниз ↓
+    </div>
+</header>
+
+
+<!-- ІСТОРІЯ -->
+
+<section id="story">
+
+    <h2 class="section-title">
+        Наша історія
+    </h2>
+
+    <div class="section-subtitle">
+        Кохання, яке стало сім’єю
+    </div>
+
+    <div class="story">
+
+        <p>
+            У кожної історії є свій початок.
+            Наша почалася з двох людей, які одного дня
+            зустрілися і зрозуміли, що більше не хочуть
+            йти життям окремо.
+        </p>
+
+        <div class="divider"></div>
+
+        <p>
+            З того моменту були спільні мрії, подорожі,
+            сміх, обійми, маленькі пригоди та безліч
+            особливих моментів, які ми хочемо пам’ятати
+            назавжди.
+        </p>
+
+        <p>
+            А тепер ми готові написати наступну,
+            найпрекраснішу сторінку нашої історії —
+            нашу сім’ю.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ЗАПРОШЕННЯ -->
+
+<section class="invitation" id="wedding">
+
+    <div class="invitation-box">
+
+        <div class="section-subtitle">
+            Запрошення
+        </div>
+
+        <h2>
+            Ми будемо раді<br>
+            розділити цей день<br>
+            з вами
+        </h2>
+
+        <p class="invitation-text">
+            17 липня 2027 року ми скажемо одне одному
+            найважливіше «Так».
+            <br><br>
+            І хочемо, щоб поруч із нами були
+            найдорожчі люди.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ДЕТАЛІ -->
+
+<section>
+
+    <h2 class="section-title">
+        День весілля
+    </h2>
+
+    <div class="section-subtitle">
+        Збережіть цю дату
+    </div>
+
+    <div class="details">
+
+        <div class="detail">
+            <div class="detail-icon">♡</div>
+            <h3>Дата</h3>
+            <p>17 липня 2027</p>
+        </div>
+
+        <div class="detail">
+            <div class="detail-icon">⌚</div>
+            <h3>Час</h3>
+            <p>Буде повідомлено</p>
+        </div>
+
+        <div class="detail">
+            <div class="detail-icon">⌖</div>
+            <h3>Місце</h3>
+            <p>Ресторан «Фабіус»</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ТАЙМЕР -->
+
+<section class="countdown">
+
+    <h2 class="section-title">
+        До нашого дня
+    </h2>
+
+    <div class="section-subtitle">
+        Залишилось
+    </div>
+
+    <div class="timer">
+
+        <div>
+            <div class="time-number" id="days">0</div>
+            <div class="time-label">днів</div>
+        </div>
+
+        <div>
+            <div class="time-number" id="hours">0</div>
+            <div class="time-label">годин</div>
+        </div>
+
+        <div>
+            <div class="time-number" id="minutes">0</div>
+            <div class="time-label">хвилин</div>
+        </div>
+
+        <div>
+            <div class="time-number" id="seconds">0</div>
+            <div class="time-label">секунд</div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ФОТО -->
+
+<section id="gallery">
+
+    <h2 class="section-title">
+        Наші моменти
+    </h2>
+
+    <div class="section-subtitle">
+        Фото, які хочеться зберегти назавжди
+    </div>
+
+    <div class="gallery">
+
+        <div class="photo">
+            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80" alt="Весілля">
+        </div>
+
+        <div class="photo">
+            <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=900&q=80" alt="Пара">
+        </div>
+
+        <div class="photo">
+            <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=900&q=80" alt="Весільний момент">
+        </div>
+
+        <div class="photo">
+            <img src="https://images.unsplash.com/photo-1507504031003-b417219a0fde?auto=format&fit=crop&w=900&q=80" alt="Кохання">
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ДРЕСКОД -->
+
+<section id="dresscode" class="dresscode">
+
+    <h2 class="section-title">
+        Дрес-код
+    </h2>
+
+    <div class="section-subtitle">
+        Святковий та елегантний
+    </div>
+
+    <p>
+        Ми будемо раді бачити вас у святкових образах,
+        які відповідають атмосфері нашого дня.
+    </p>
+
+    <p>
+        Обирайте те, у чому ви почуваєтеся
+        красивими та комфортними.
+    </p>
+
+    <div class="colors">
+        <div class="color"></div>
+        <div class="color"></div>
+        <div class="color"></div>
+        <div class="color"></div>
+    </div>
+
+</section>
+
+
+<!-- ЛОКАЦІЯ -->
+
+<section class="invitation">
+
+    <div class="section-subtitle">
+        Локація
+    </div>
+
+    <h2 class="section-title">
+        Ресторан<br>«Фабіус»
+    </h2>
+
+    <p>
+        Ми зустрінемося саме тут,
+        щоб разом відсвяткувати
+        наш особливий день.
+    </p>
+
+    <br>
+
+    <a
+        class="map-button"
+        href="https://www.google.com/maps/search/?api=1&query=Фабіус"
+        target="_blank">
+        Відкрити на карті
+    </a>
+
+</section>
+
+
+<!-- RSVP -->
+
+<section class="rsvp" id="rsvp">
+
+    <div class="section-subtitle">
+        RSVP
+    </div>
+
+    <h2 class="section-title">
+        Чекаємо на вашу відповідь
+    </h2>
+
+    <p>
+        Будь ласка, підтвердіть свою присутність
+        на нашому святі.
+    </p>
+
+    <!-- Пізніше сюди можна вставити Google Form -->
+
+    <a
+        class="rsvp-button"
+        href="mailto:your-email@example.com?subject=Підтвердження присутності на весіллі">
+        Підтвердити присутність
+    </a>
+
+</section>
+
+
+<footer>
+
+    Анатолій & Дар’я
+
+    <span>
+        17 · 07 · 2027
+    </span>
+
+</footer>
+
+
+<script>
+
+const weddingDate = new Date("July 17, 2027 15:00:00").getTime();
+
+function updateCountdown() {
+
+    const now = new Date().getTime();
+    const distance = weddingDate - now;
+
+    if (distance <= 0) {
+        document.getElementById("days").innerText = "0";
+        document.getElementById("hours").innerText = "0";
+        document.getElementById("minutes").innerText = "0";
+        document.getElementById("seconds").innerText = "0";
+        return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((distance / (1000 * 60)) % 60);
+    const seconds = Math.floor((distance / 1000) % 60);
+
+    document.getElementById("days").innerText = days;
+    document.getElementById("hours").innerText = hours;
+    document.getElementById("minutes").innerText = minutes;
+    document.getElementById("seconds").innerText = seconds;
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+</script>
+
+</body>
+</html>
