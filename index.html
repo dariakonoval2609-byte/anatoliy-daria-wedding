@@ -1,22 +1,35 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Анатолій & Дар’я | 17.07.2027</title>
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<title>Дар’я & Анатолій | 17.07.2027</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect"
+      href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600&display=swap"
+      rel="stylesheet">
+
 
 <style>
 
+/* ==================================================
+   ОСНОВНІ НАЛАШТУВАННЯ
+================================================== */
+
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 html {
@@ -24,16 +37,16 @@ html {
 }
 
 body {
-    background: #f7f5f0;
-    color: #292725;
+    background: #f7f4ee;
+    color: #34312e;
     font-family: "Montserrat", sans-serif;
     font-weight: 300;
     line-height: 1.7;
 }
 
 img {
-    display: block;
     width: 100%;
+    display: block;
 }
 
 a {
@@ -41,318 +54,639 @@ a {
     text-decoration: none;
 }
 
-/* =========================
-   NAVIGATION
-========================= */
+section {
+    position: relative;
+}
 
-.nav {
+.container {
+    width: min(1100px, 92%);
+    margin: auto;
+}
+
+
+/* ==================================================
+   МЕНЮ
+================================================== */
+
+nav {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
+
     z-index: 1000;
 
-    background: rgba(247,245,240,0.94);
+    background: rgba(247,244,238,0.93);
+
     backdrop-filter: blur(12px);
 
-    border-bottom: 1px solid rgba(50,45,40,0.12);
+    border-bottom: 1px solid rgba(50,45,40,0.1);
 }
 
 .nav-inner {
+
     max-width: 1200px;
     margin: auto;
 
     display: flex;
     justify-content: center;
-    align-items: center;
 
-    padding: 18px 25px;
-    gap: 35px;
+    gap: 30px;
+
+    padding: 16px 20px;
 
     overflow-x: auto;
+
     white-space: nowrap;
 }
 
-.nav a {
-    font-size: 11px;
-    letter-spacing: 3px;
+.nav-inner a {
+
+    font-size: 9px;
+
+    letter-spacing: 2.5px;
+
     text-transform: uppercase;
-    color: #55514c;
+
+    color: #6c665f;
+
     transition: 0.3s;
 }
 
-.nav a:hover {
-    color: #9b8875;
+.nav-inner a:hover {
+    color: #a58e78;
 }
 
-/* =========================
+
+/* ==================================================
+   ГЕРБ / МОНОГРАМА
+================================================== */
+
+.monogram {
+
+    width: 145px;
+    height: 145px;
+
+    margin: 0 auto 30px;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.monogram::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 7px;
+
+    border: 1px solid rgba(255,255,255,0.8);
+
+    border-radius: 50%;
+}
+
+.monogram::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 17px;
+
+    border: 1px solid rgba(255,255,255,0.45);
+
+    border-radius: 50%;
+}
+
+.monogram-text {
+
+    position: relative;
+
+    z-index: 2;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 58px;
+
+    font-weight: 400;
+
+    letter-spacing: -15px;
+
+    transform: translateX(-7px);
+}
+
+.monogram-text span {
+    display: inline-block;
+}
+
+
+/* ==================================================
    HERO
-========================= */
+================================================== */
 
 .hero {
+
     min-height: 100vh;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
-    position: relative;
+    text-align: center;
+
+    color: white;
+
     overflow: hidden;
-
-    padding: 90px 20px 40px;
 }
 
-.hero::before {
-    content: "";
+.hero-image {
+
     position: absolute;
-    inset: 25px;
 
-    border: 1px solid rgba(60,55,50,0.15);
-
-    pointer-events: none;
-}
-
-.hero-photo {
-    position: absolute;
     inset: 0;
 
     width: 100%;
     height: 100%;
 
     object-fit: cover;
+
     object-position: center;
 
-    filter: brightness(0.88);
+    filter: brightness(0.72);
 }
 
-.hero-overlay {
+.hero::after {
+
+    content: "";
+
     position: absolute;
+
     inset: 0;
 
     background:
         linear-gradient(
             to bottom,
-            rgba(30,25,20,0.10),
-            rgba(30,25,20,0.25)
+            rgba(30,25,20,0.12),
+            rgba(30,25,20,0.45)
         );
 }
 
 .hero-content {
+
     position: relative;
+
     z-index: 2;
 
-    text-align: center;
-    color: white;
-
-    width: 100%;
+    padding: 100px 20px 50px;
 }
 
 .hero-small {
-    font-size: 11px;
+
+    font-size: 10px;
+
     letter-spacing: 6px;
+
     text-transform: uppercase;
 
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .hero h1 {
+
     font-family: "Cormorant Garamond", serif;
-    font-size: clamp(70px, 14vw, 150px);
+
+    font-size: clamp(65px, 14vw, 145px);
 
     font-weight: 400;
-    line-height: 0.9;
 
-    margin-bottom: 25px;
-}
-
-.hero-date {
-    font-size: 15px;
-    letter-spacing: 7px;
-    text-transform: uppercase;
-}
-
-.hero-place {
-    margin-top: 12px;
-
-    font-family: "Cormorant Garamond", serif;
-    font-size: 24px;
-}
-
-/* =========================
-   GENERAL
-========================= */
-
-section {
-    padding: 110px 25px;
-}
-
-.container {
-    max-width: 1100px;
-    margin: auto;
-}
-
-.section-label {
-    text-align: center;
-
-    font-size: 10px;
-    letter-spacing: 5px;
-    text-transform: uppercase;
-
-    color: #a09282;
-
-    margin-bottom: 15px;
-}
-
-.section-title {
-    text-align: center;
-
-    font-family: "Cormorant Garamond", serif;
-
-    font-size: clamp(50px, 8vw, 85px);
-    font-weight: 400;
-
-    line-height: 1;
-
-    margin-bottom: 55px;
-}
-
-/* =========================
-   STORY
-========================= */
-
-.story {
-    background: #f7f5f0;
-}
-
-.story-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-
-    gap: 60px;
-
-    align-items: center;
-}
-
-.story-photo {
-    height: 620px;
-    object-fit: cover;
-}
-
-.story-text {
-    padding: 20px;
-}
-
-.story-text h3 {
-    font-family: "Cormorant Garamond", serif;
-
-    font-size: 43px;
-    font-weight: 400;
-
-    margin-bottom: 25px;
-}
-
-.story-text p {
-    font-size: 14px;
-    color: #68625b;
-
-    margin-bottom: 20px;
-}
-
-/* =========================
-   INVITATION
-========================= */
-
-.invitation {
-    background: #e9e5dc;
-
-    text-align: center;
-}
-
-.invitation-box {
-    max-width: 750px;
-    margin: auto;
-}
-
-.invitation-text {
-    font-family: "Cormorant Garamond", serif;
-
-    font-size: clamp(27px, 4vw, 39px);
-    line-height: 1.4;
+    line-height: 0.85;
 
     margin-bottom: 30px;
 }
 
-.names {
-    font-family: "Cormorant Garamond", serif;
+.hero-date {
 
-    font-size: clamp(42px, 7vw, 70px);
-}
+    font-size: 13px;
 
-.invitation-date {
-    margin-top: 30px;
+    letter-spacing: 6px;
 
-    font-size: 12px;
-    letter-spacing: 5px;
     text-transform: uppercase;
 }
 
-/* =========================
-   DETAILS
-========================= */
+.hero-place {
 
-.details {
-    background: #f7f5f0;
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 25px;
+
+    margin-top: 12px;
 }
 
-.details-grid {
-    display: grid;
 
-    grid-template-columns: repeat(3, 1fr);
+/* ==================================================
+   ЗАГАЛЬНІ ЗАГОЛОВКИ
+================================================== */
 
-    gap: 25px;
+.section {
+
+    padding: 110px 0;
 }
 
-.detail-card {
+.label {
+
     text-align: center;
 
-    padding: 45px 25px;
+    font-size: 9px;
 
-    border: 1px solid rgba(70,60,50,0.15);
-}
+    letter-spacing: 5px;
 
-.detail-icon {
-    font-family: "Cormorant Garamond", serif;
+    text-transform: uppercase;
 
-    font-size: 45px;
-
-    margin-bottom: 20px;
-}
-
-.detail-card h3 {
-    font-family: "Cormorant Garamond", serif;
-
-    font-size: 32px;
-    font-weight: 400;
+    color: #a18f7c;
 
     margin-bottom: 12px;
 }
 
-.detail-card p {
-    font-size: 13px;
-    color: #777068;
+.title {
+
+    text-align: center;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(55px, 9vw, 90px);
+
+    font-weight: 400;
+
+    line-height: 0.95;
+
+    margin-bottom: 60px;
 }
 
-/* =========================
-   COUNTDOWN
-========================= */
 
-.countdown-section {
-    background: #dcd6ca;
+/* ==================================================
+   ВСТУП
+================================================== */
+
+.intro {
+
+    background: #f7f4ee;
 
     text-align: center;
 }
 
+.intro-text {
+
+    max-width: 720px;
+
+    margin: auto;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(28px, 4vw, 40px);
+
+    line-height: 1.35;
+
+    color: #4b4641;
+}
+
+.intro-date {
+
+    margin-top: 35px;
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+
+    color: #8b8176;
+}
+
+
+/* ==================================================
+   ІСТОРІЯ
+================================================== */
+
+.story {
+
+    background: #ebe6dc;
+}
+
+.story-grid {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    align-items: center;
+
+    gap: 65px;
+}
+
+.story-photo {
+
+    height: 650px;
+
+    object-fit: cover;
+}
+
+.story-content {
+
+    padding: 10px;
+}
+
+.story-content h3 {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 45px;
+
+    font-weight: 400;
+
+    line-height: 1.05;
+
+    margin-bottom: 30px;
+}
+
+.story-content p {
+
+    font-size: 14px;
+
+    color: #69625a;
+
+    margin-bottom: 20px;
+}
+
+.story-signature {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 32px;
+
+    margin-top: 30px;
+
+    color: #847565;
+}
+
+
+/* ==================================================
+   ВЕЛИКЕ ФОТО З ТЕКСТОМ
+================================================== */
+
+.photo-section {
+
+    min-height: 650px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: white;
+
+    text-align: center;
+
+    overflow: hidden;
+}
+
+.photo-section img {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    filter: brightness(0.62);
+}
+
+.photo-section::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background: rgba(35,30,25,0.18);
+}
+
+.photo-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    padding: 50px 25px;
+}
+
+.photo-number {
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+
+    text-transform: uppercase;
+
+    margin-bottom: 15px;
+}
+
+.photo-title {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(55px, 9vw, 90px);
+
+    line-height: 0.9;
+
+    margin-bottom: 20px;
+}
+
+.photo-subtitle {
+
+    font-size: 13px;
+
+    letter-spacing: 2px;
+}
+
+
+/* ==================================================
+   ДЕНЬ ВЕСІЛЛЯ
+================================================== */
+
+.timeline-section {
+
+    background: #f7f4ee;
+}
+
+.timeline {
+
+    max-width: 900px;
+
+    margin: auto;
+}
+
+.timeline-item {
+
+    display: grid;
+
+    grid-template-columns: 150px 1fr;
+
+    min-height: 170px;
+
+    border-top: 1px solid rgba(70,60,50,0.15);
+}
+
+.timeline-item:last-child {
+
+    border-bottom: 1px solid rgba(70,60,50,0.15);
+}
+
+.timeline-time {
+
+    padding: 35px 20px;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 38px;
+
+    color: #9a846f;
+}
+
+.timeline-info {
+
+    padding: 35px 20px;
+}
+
+.timeline-info h3 {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 32px;
+
+    font-weight: 400;
+
+    margin-bottom: 7px;
+}
+
+.timeline-info p {
+
+    font-size: 13px;
+
+    color: #777068;
+}
+
+
+/* ==================================================
+   КАРТКИ З ФОТО
+================================================== */
+
+.memory-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 12px;
+}
+
+.memory {
+
+    position: relative;
+
+    height: 430px;
+
+    overflow: hidden;
+}
+
+.memory img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform 0.8s ease;
+}
+
+.memory:hover img {
+
+    transform: scale(1.04);
+}
+
+.memory::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background: linear-gradient(
+        to top,
+        rgba(25,22,19,0.7),
+        transparent 60%
+    );
+}
+
+.memory-text {
+
+    position: absolute;
+
+    z-index: 2;
+
+    left: 30px;
+    right: 30px;
+    bottom: 25px;
+
+    color: white;
+}
+
+.memory-text small {
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+}
+
+.memory-text h3 {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 38px;
+
+    font-weight: 400;
+}
+
+
+/* ==================================================
+   COUNTDOWN
+================================================== */
+
+.countdown-section {
+
+    background: #d9d1c4;
+
+    text-align: center;
+
+    padding: 100px 0;
+}
+
 .countdown {
+
     display: grid;
 
     grid-template-columns: repeat(4, 1fr);
@@ -362,136 +696,189 @@ section {
     margin: auto;
 }
 
-.countdown-item {
-    padding: 15px;
-}
-
-.countdown-number {
-    display: block;
+.count-number {
 
     font-family: "Cormorant Garamond", serif;
 
-    font-size: clamp(50px, 8vw, 85px);
+    font-size: clamp(55px, 8vw, 85px);
 
     line-height: 1;
 }
 
-.countdown-label {
+.count-label {
+
     display: block;
 
-    margin-top: 12px;
+    margin-top: 10px;
 
-    font-size: 10px;
+    font-size: 9px;
 
     letter-spacing: 3px;
 
     text-transform: uppercase;
+
+    color: #665e55;
 }
 
-/* =========================
-   GALLERY
-========================= */
 
-.gallery {
-    background: #f7f5f0;
-}
-
-.gallery-grid {
-    display: grid;
-
-    grid-template-columns: repeat(3, 1fr);
-
-    gap: 8px;
-}
-
-.gallery-item {
-    overflow: hidden;
-
-    aspect-ratio: 3 / 4;
-
-    background: #ded9d0;
-}
-
-.gallery-item:nth-child(2),
-.gallery-item:nth-child(5),
-.gallery-item:nth-child(8) {
-    aspect-ratio: 4 / 5;
-}
-
-.gallery-item img {
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-
-    transition: transform 0.7s ease;
-}
-
-.gallery-item:hover img {
-    transform: scale(1.04);
-}
-
-/* =========================
-   DRESS CODE
-========================= */
+/* ==================================================
+   ДРЕС-КОД
+================================================== */
 
 .dress {
-    background: #e9e5dc;
+
+    background: #f7f4ee;
 
     text-align: center;
 }
 
-.dress-text {
-    max-width: 650px;
+.dress-description {
+
+    max-width: 700px;
+
     margin: auto;
 
     font-family: "Cormorant Garamond", serif;
 
     font-size: 30px;
 
-    line-height: 1.5;
+    line-height: 1.4;
+
+    color: #514b45;
 }
 
-.dress-sub {
-    margin-top: 25px;
+.colors {
 
-    font-size: 13px;
+    display: flex;
 
-    color: #716a62;
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 18px;
+
+    margin: 45px auto 25px;
 }
 
-/* =========================
-   LOCATION
-========================= */
+.color {
+
+    width: 95px;
+    height: 95px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    box-shadow:
+        0 8px 25px rgba(50,40,30,0.08);
+
+    border: 5px solid #f7f4ee;
+
+    outline: 1px solid rgba(60,50,40,0.08);
+}
+
+.color span {
+
+    font-size: 8px;
+
+    line-height: 1.2;
+
+    text-align: center;
+
+    letter-spacing: 0.5px;
+
+    text-transform: uppercase;
+}
+
+.color.cappuccino {
+    background: #d8c5af;
+}
+
+.color.beige {
+    background: #e9ddca;
+}
+
+.color.blue {
+    background: #c7dbe3;
+}
+
+.color.grey {
+    background: #d7d8d5;
+}
+
+.color.pink {
+    background: #e6ceca;
+}
+
+.color.sage {
+    background: #cbd5c4;
+}
+
+.dress-note {
+
+    font-size: 12px;
+
+    color: #81776d;
+
+    margin-top: 20px;
+}
+
+
+/* ==================================================
+   ЛОКАЦІЯ
+================================================== */
 
 .location {
-    background: #f7f5f0;
+
+    background: #ebe6dc;
 
     text-align: center;
 }
 
 .location-name {
+
     font-family: "Cormorant Garamond", serif;
 
-    font-size: 55px;
+    font-size: clamp(55px, 9vw, 90px);
+
+    font-weight: 400;
+
+    line-height: 1;
+
+    margin-bottom: 15px;
+}
+
+.location-address {
+
+    font-size: 14px;
+
+    color: #6f675e;
 
     margin-bottom: 10px;
 }
 
-.location-address {
-    color: #777068;
+.location-time {
 
-    margin-bottom: 30px;
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 30px;
+
+    margin: 25px 0 35px;
 }
 
 .location-button {
+
     display: inline-block;
 
-    border: 1px solid #625a51;
+    padding: 15px 32px;
 
-    padding: 14px 28px;
+    border: 1px solid #70675e;
 
-    font-size: 11px;
+    font-size: 9px;
 
     letter-spacing: 3px;
 
@@ -501,835 +888,1311 @@ section {
 }
 
 .location-button:hover {
-    background: #625a51;
+
+    background: #70675e;
+
     color: white;
 }
 
-/* =========================
+
+/* ==================================================
+   ГАЛЕРЕЯ
+================================================== */
+
+.gallery {
+
+    background: #f7f4ee;
+}
+
+.gallery-grid {
+
+    columns: 3 250px;
+
+    column-gap: 8px;
+}
+
+.gallery-item {
+
+    break-inside: avoid;
+
+    margin-bottom: 8px;
+
+    overflow: hidden;
+}
+
+.gallery-item img {
+
+    transition: transform 0.7s ease;
+}
+
+.gallery-item:hover img {
+
+    transform: scale(1.03);
+}
+
+
+/* ==================================================
    RSVP
-========================= */
+================================================== */
 
 .rsvp {
-    background: #292725;
+
+    background: #302d2a;
 
     color: white;
 
     text-align: center;
 }
 
-.rsvp .section-label {
-    color: #c0b5a5;
+.rsvp .label {
+
+    color: #cbb9a4;
 }
 
 .rsvp-text {
+
     max-width: 650px;
 
-    margin: auto auto 35px;
+    margin: auto;
 
     font-family: "Cormorant Garamond", serif;
 
     font-size: 30px;
+
+    line-height: 1.4;
 }
 
 .rsvp-button {
+
     display: inline-block;
 
-    border: 1px solid rgba(255,255,255,0.6);
+    margin-top: 35px;
 
     padding: 16px 35px;
 
-    font-size: 11px;
+    border: 1px solid rgba(255,255,255,0.65);
+
+    font-size: 9px;
 
     letter-spacing: 3px;
 
     text-transform: uppercase;
-
-    transition: 0.3s;
 }
 
-.rsvp-button:hover {
-    background: white;
-    color: #292725;
-}
 
-/* =========================
+/* ==================================================
    FOOTER
-========================= */
+================================================== */
 
 footer {
-    padding: 50px 25px;
 
-    background: #292725;
+    background: #302d2a;
 
-    border-top: 1px solid rgba(255,255,255,0.15);
-
-    color: #c9c3ba;
+    color: white;
 
     text-align: center;
+
+    padding: 60px 20px;
+
+    border-top: 1px solid rgba(255,255,255,0.15);
+}
+
+.footer-monogram {
+
+    margin-bottom: 25px;
 }
 
 .footer-names {
+
     font-family: "Cormorant Garamond", serif;
 
-    font-size: 45px;
+    font-size: 48px;
 
     margin-bottom: 10px;
 }
 
 .footer-date {
-    font-size: 10px;
+
+    font-size: 9px;
 
     letter-spacing: 4px;
 
     text-transform: uppercase;
+
+    color: #c7beb3;
 }
 
-/* =========================
-   MOBILE
-========================= */
+
+/* ==================================================
+   МОБІЛЬНА ВЕРСІЯ
+================================================== */
 
 @media (max-width: 700px) {
 
     .nav-inner {
+
         justify-content: flex-start;
 
-        gap: 25px;
-
-        padding: 15px 20px;
-    }
-
-    .nav a {
-        font-size: 9px;
-
-        letter-spacing: 2px;
-    }
-
-    .hero {
-        min-height: 90vh;
-
-        padding-top: 70px;
-    }
-
-    .hero::before {
-        inset: 15px;
+        gap: 24px;
     }
 
     .hero h1 {
+
         font-size: 68px;
     }
 
-    .hero-date {
-        font-size: 11px;
+    .monogram {
 
-        letter-spacing: 4px;
+        width: 125px;
+        height: 125px;
     }
 
-    section {
-        padding: 80px 18px;
+    .monogram-text {
+
+        font-size: 50px;
     }
 
-    .section-title {
-        margin-bottom: 40px;
+    .section {
+
+        padding: 80px 0;
     }
 
     .story-grid {
+
         grid-template-columns: 1fr;
 
         gap: 35px;
     }
 
     .story-photo {
+
         height: 500px;
     }
 
-    .story-text {
-        padding: 0 10px;
+    .timeline-item {
+
+        grid-template-columns: 90px 1fr;
     }
 
-    .details-grid {
+    .timeline-time {
+
+        padding: 30px 8px;
+
+        font-size: 27px;
+    }
+
+    .timeline-info {
+
+        padding: 30px 10px;
+    }
+
+    .timeline-info h3 {
+
+        font-size: 27px;
+    }
+
+    .memory-grid {
+
         grid-template-columns: 1fr;
     }
 
+    .memory {
+
+        height: 500px;
+    }
+
     .countdown {
-        grid-template-columns: repeat(2, 1fr);
+
+        grid-template-columns: repeat(2,1fr);
+
+        gap: 35px 10px;
+    }
+
+    .colors {
+
+        gap: 10px;
+    }
+
+    .color {
+
+        width: 78px;
+        height: 78px;
+    }
+
+    .dress-description {
+
+        font-size: 27px;
     }
 
     .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
 
-        gap: 5px;
+        columns: 2 140px;
     }
 
-    .gallery-item,
-    .gallery-item:nth-child(2),
-    .gallery-item:nth-child(5),
-    .gallery-item:nth-child(8) {
-        aspect-ratio: 3 / 4;
-    }
+    .footer-names {
 
-    .dress-text {
-        font-size: 26px;
-    }
-
-    .location-name {
-        font-size: 45px;
-    }
-
-    .rsvp-text {
-        font-size: 27px;
+        font-size: 40px;
     }
 
 }
 
-/* =========================
-   FADE ANIMATION
-========================= */
+
+/* ==================================================
+   АНІМАЦІЯ
+================================================== */
 
 .fade {
+
     animation: fadeIn 1.2s ease both;
 }
 
 @keyframes fadeIn {
 
     from {
+
         opacity: 0;
+
         transform: translateY(20px);
     }
 
     to {
+
         opacity: 1;
+
         transform: translateY(0);
     }
-
 }
 
 </style>
+
 </head>
 
 
 <body>
 
-<!-- =========================
-     NAVIGATION
-========================= -->
 
-<nav class="nav">
+<!-- ==================================================
+     МЕНЮ
+================================================== -->
 
-    <div class="nav-inner">
+<nav>
 
-        <a href="#home">Головна</a>
+<div class="nav-inner">
 
-        <a href="#story">Наша історія</a>
+<a href="#home">Головна</a>
 
-        <a href="#invitation">Запрошення</a>
+<a href="#story">Наша історія</a>
 
-        <a href="#gallery">Фото</a>
+<a href="#day">Наш день</a>
 
-        <a href="#dress">Дрес-код</a>
+<a href="#dress">Дрес-код</a>
 
-        <a href="#location">Локація</a>
+<a href="#location">Локація</a>
 
-        <a href="#rsvp">RSVP</a>
+<a href="#gallery">Фото</a>
 
-    </div>
+<a href="#rsvp">RSVP</a>
+
+</div>
 
 </nav>
 
 
-<!-- =========================
-     HERO
-========================= -->
+<!-- ==================================================
+     ГОЛОВНИЙ ЕКРАН
+================================================== -->
 
 <section class="hero" id="home">
 
-    <img
-        class="hero-photo"
-        src="IMG_5473.jpeg"
-        alt="Анатолій та Дар’я"
-    >
+<img
+class="hero-image"
+src="IMG_5473.jpeg"
+alt="Дар’я та Анатолій"
+>
 
-    <div class="hero-overlay"></div>
+<div class="hero-content fade">
 
-    <div class="hero-content fade">
+<div class="monogram">
 
-        <div class="hero-small">
-            Ми одружуємось
-        </div>
+<div class="monogram-text">
+<span>Д</span><span>А</span>
+</div>
 
-        <h1>
-            Анатолій<br>&amp;<br>Дар’я
-        </h1>
+</div>
 
-        <div class="hero-date">
-            17 · 07 · 2027
-        </div>
+<div class="hero-small">
+Наша історія стає назавжди
+</div>
 
-        <div class="hero-place">
-            Ресторан «Фабіус»
-        </div>
+<h1>
+Дар’я<br>
+&amp;<br>
+Анатолій
+</h1>
 
-    </div>
+<div class="hero-date">
+17 · 07 · 2027
+</div>
 
-</section>
+<div class="hero-place">
+Ресторан «Фабіус»
+</div>
 
-
-<!-- =========================
-     STORY
-========================= -->
-
-<section class="story" id="story">
-
-    <div class="container">
-
-        <div class="section-label">
-            Наша історія
-        </div>
-
-        <h2 class="section-title">
-            Разом
-        </h2>
-
-        <div class="story-grid">
-
-            <img
-                class="story-photo"
-                src="IMG_5505.jpeg"
-                alt="Анатолій та Дар’я"
-            >
-
-            <div class="story-text">
-
-                <h3>
-                    Дві історії.<br>
-                    Одне кохання.
-                </h3>
-
-                <p>
-                    У кожного з нас була своя історія,
-                    свій шлях і свої мрії.
-                </p>
-
-                <p>
-                    А потім наші дороги зустрілися
-                    і з'явилося наше «ми».
-                </p>
-
-                <p>
-                    Попереду — ціле життя разом,
-                    безліч нових моментів,
-                    подорожей, мрій та спогадів.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
+</div>
 
 </section>
 
 
-<!-- =========================
-     INVITATION
-========================= -->
+<!-- ==================================================
+     ЗАПРОШЕННЯ
+================================================== -->
 
-<section class="invitation" id="invitation">
+<section class="section intro">
 
-    <div class="container">
+<div class="container">
 
-        <div class="section-label">
-            Запрошення
-        </div>
+<div class="label">
+Запрошення
+</div>
 
-        <h2 class="section-title">
-            Будемо раді<br>розділити цей день з вами
-        </h2>
+<h2 class="title">
+День, який<br>
+ми запам’ятаємо назавжди
+</h2>
 
-        <div class="invitation-box">
+<div class="intro-text">
 
-            <div class="invitation-text">
+Є моменти, які хочеться
+зупинити в часі.
 
-                Запрошуємо вас стати частиною
-                нашого особливого дня —
-                дня, коли ми скажемо одне одному
-                «так» назавжди.
+Є люди, з якими хочеться
+пройти все життя.
 
-            </div>
+І є день, коли дві долі
+стають однією історією.
 
-            <div class="names">
-                Анатолій &amp; Дар’я
-            </div>
+Ми будемо щасливі
+розділити цей день з вами.
 
-            <div class="invitation-date">
-                17 липня 2027 року
-            </div>
+</div>
 
-        </div>
+<div class="intro-date">
+17 липня 2027 року
+</div>
 
-    </div>
-
-</section>
-
-
-<!-- =========================
-     DETAILS
-========================= -->
-
-<section class="details">
-
-    <div class="container">
-
-        <div class="section-label">
-            Наш день
-        </div>
-
-        <h2 class="section-title">
-            Деталі
-        </h2>
-
-        <div class="details-grid">
-
-            <div class="detail-card">
-
-                <div class="detail-icon">
-                    17
-                </div>
-
-                <h3>
-                    Дата
-                </h3>
-
-                <p>
-                    Субота<br>
-                    17 липня 2027
-                </p>
-
-            </div>
-
-
-            <div class="detail-card">
-
-                <div class="detail-icon">
-                    ♡
-                </div>
-
-                <h3>
-                    Святкування
-                </h3>
-
-                <p>
-                    День нашого<br>
-                    весілля
-                </p>
-
-            </div>
-
-
-            <div class="detail-card">
-
-                <div class="detail-icon">
-                    F
-                </div>
-
-                <h3>
-                    Локація
-                </h3>
-
-                <p>
-                    Ресторан<br>
-                    «Фабіус»
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
+</div>
 
 </section>
 
 
-<!-- =========================
+<!-- ==================================================
+     ІСТОРІЯ КОХАННЯ
+================================================== -->
+
+<section class="section story" id="story">
+
+<div class="container">
+
+<div class="label">
+Наша історія
+</div>
+
+<h2 class="title">
+З любові<br>
+починається все
+</h2>
+
+<div class="story-grid">
+
+<img
+class="story-photo"
+src="IMG_5505.jpeg"
+alt="Дар’я та Анатолій"
+>
+
+<div class="story-content">
+
+<h3>
+Колись ми були<br>
+просто двома людьми.
+</h3>
+
+<p>
+У кожного з нас був свій шлях,
+свої мрії, свої маленькі історії
+та своє уявлення про майбутнє.
+</p>
+
+<p>
+А потім життя подарувало нам
+зустріч, після якої все поступово
+стало на свої місця.
+</p>
+
+<p>
+Ми вчилися бути поруч,
+підтримувати одне одного,
+радіти простим речам,
+мріяти разом і створювати
+своє маленьке «ми».
+</p>
+
+<p>
+З кожним днем ми все більше
+розуміли: саме з цією людиною
+хочеться зустрічати ранки,
+подорожувати, сміятися,
+долати труднощі та старіти.
+</p>
+
+<p>
+І тепер ми хочемо зробити
+ще один важливий крок —
+назавжди стати сім’єю.
+</p>
+
+<div class="story-signature">
+З любов’ю,<br>
+Дар’я &amp; Анатолій
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ==================================================
+     ФОТО + НАПИС
+================================================== -->
+
+<section class="photo-section">
+
+<img
+src="IMG_5506.jpeg"
+alt="Наші моменти"
+>
+
+<div class="photo-content">
+
+<div class="photo-number">
+Наші моменти
+</div>
+
+<div class="photo-title">
+Разом
+</div>
+
+<div class="photo-subtitle">
+і це тільки початок нашої історії
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ==================================================
+     ДЕНЬ ВЕСІЛЛЯ
+================================================== -->
+
+<section class="section timeline-section" id="day">
+
+<div class="container">
+
+<div class="label">
+17 · 07 · 2027
+</div>
+
+<h2 class="title">
+Наш день
+</h2>
+
+<div class="timeline">
+
+
+<div class="timeline-item">
+
+<div class="timeline-time">
+13:00
+</div>
+
+<div class="timeline-info">
+
+<h3>
+Зустріч гостей
+</h3>
+
+<p>
+Збираємося разом у ресторані,
+вітаємо одне одного та
+налаштовуємося на святковий день.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="timeline-item">
+
+<div class="timeline-time">
+13:30
+</div>
+
+<div class="timeline-info">
+
+<h3>
+Весільна церемонія
+</h3>
+
+<p>
+Момент, заради якого ми
+зібралися. Наше «так»,
+обручки та початок сімейної історії.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="timeline-item">
+
+<div class="timeline-time">
+14:00
+</div>
+
+<div class="timeline-info">
+
+<h3>
+Фото та теплі моменти
+</h3>
+
+<p>
+Обійми, привітання, келихи,
+усмішки та фотографії,
+які залишаться з нами назавжди.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="timeline-item">
+
+<div class="timeline-time">
+15:00
+</div>
+
+<div class="timeline-info">
+
+<h3>
+Весільний банкет
+</h3>
+
+<p>
+Святковий стіл, тости,
+танці, музика та багато
+щирих побажань молодятам.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="timeline-item">
+
+<div class="timeline-time">
+18:00
+</div>
+
+<div class="timeline-info">
+
+<h3>
+Весільний торт
+</h3>
+
+<p>
+Разом загадаємо бажання,
+розріжемо наш перший
+сімейний весільний торт.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="timeline-item">
+
+<div class="timeline-time">
+19:00+
+</div>
+
+<div class="timeline-info">
+
+<h3>
+Вечір продовжується
+</h3>
+
+<p>
+Танці, музика, сміх,
+спілкування та моменти,
+які хочеться прожити ще раз.
+</p>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ==================================================
+     ФОТО КАРТКИ
+================================================== -->
+
+<section class="section">
+
+<div class="container">
+
+<div class="label">
+Цей день
+</div>
+
+<h2 class="title">
+Буде багато<br>
+любові
+</h2>
+
+<div class="memory-grid">
+
+
+<div class="memory">
+
+<img
+src="IMG_5508.jpeg"
+alt="Весільний день"
+>
+
+<div class="memory-text">
+
+<small>
+13:00
+</small>
+
+<h3>
+Зустрічаємо гостей
+</h3>
+
+</div>
+
+</div>
+
+
+<div class="memory">
+
+<img
+src="IMG_5509.jpeg"
+alt="Весільний день"
+>
+
+<div class="memory-text">
+
+<small>
+14:00
+</small>
+
+<h3>
+Наші перші спільні фото
+</h3>
+
+</div>
+
+</div>
+
+
+<div class="memory">
+
+<img
+src="IMG_5519.jpeg"
+alt="Весільний день"
+>
+
+<div class="memory-text">
+
+<small>
+15:00
+</small>
+
+<h3>
+Святковий банкет
+</h3>
+
+</div>
+
+</div>
+
+
+<div class="memory">
+
+<img
+src="IMG_5520.jpeg"
+alt="Весільний день"
+>
+
+<div class="memory-text">
+
+<small>
+18:00
+</small>
+
+<h3>
+Торт і солодкий момент
+</h3>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ==================================================
      COUNTDOWN
-========================= -->
+================================================== -->
 
 <section class="countdown-section">
 
-    <div class="container">
+<div class="container">
 
-        <div class="section-label">
-            До нашого дня
-        </div>
+<div class="label">
+До нашого весілля
+</div>
 
-        <h2 class="section-title">
-            Залишилось
-        </h2>
+<h2 class="title">
+Залишилось
+</h2>
 
-        <div class="countdown">
+<div class="countdown">
 
-            <div class="countdown-item">
+<div>
 
-                <span
-                    class="countdown-number"
-                    id="days"
-                >
-                    0
-                </span>
+<div class="count-number" id="days">
+0
+</div>
 
-                <span class="countdown-label">
-                    Днів
-                </span>
+<span class="count-label">
+днів
+</span>
 
-            </div>
+</div>
 
 
-            <div class="countdown-item">
+<div>
 
-                <span
-                    class="countdown-number"
-                    id="hours"
-                >
-                    0
-                </span>
+<div class="count-number" id="hours">
+0
+</div>
 
-                <span class="countdown-label">
-                    Годин
-                </span>
+<span class="count-label">
+годин
+</span>
 
-            </div>
+</div>
 
 
-            <div class="countdown-item">
+<div>
 
-                <span
-                    class="countdown-number"
-                    id="minutes"
-                >
-                    0
-                </span>
+<div class="count-number" id="minutes">
+0
+</div>
 
-                <span class="countdown-label">
-                    Хвилин
-                </span>
+<span class="count-label">
+хвилин
+</span>
 
-            </div>
+</div>
 
 
-            <div class="countdown-item">
+<div>
 
-                <span
-                    class="countdown-number"
-                    id="seconds"
-                >
-                    0
-                </span>
+<div class="count-number" id="seconds">
+0
+</div>
 
-                <span class="countdown-label">
-                    Секунд
-                </span>
+<span class="count-label">
+секунд
+</span>
 
-            </div>
+</div>
 
-        </div>
+</div>
 
-    </div>
+</div>
 
 </section>
 
 
-<!-- =========================
-     GALLERY
-========================= -->
+<!-- ==================================================
+     ДРЕС-КОД
+================================================== -->
 
-<section class="gallery" id="gallery">
+<section class="section dress" id="dress">
 
-    <div class="container">
+<div class="container">
 
-        <div class="section-label">
-            Наші моменти
-        </div>
+<div class="label">
+Для наших гостей
+</div>
 
-        <h2 class="section-title">
-            Фото
-        </h2>
+<h2 class="title">
+Дрес-код
+</h2>
 
-        <div class="gallery-grid">
+<div class="dress-description">
 
-            <div class="gallery-item">
-                <img
-                    src="IMG_5506.jpeg"
-                    alt="Наш момент"
-                    loading="lazy"
-                >
-            </div>
+Ми мріємо про ніжну,
+світлу та гармонійну атмосферу
+нашого свята.
 
-            <div class="gallery-item">
-                <img
-                    src="IMG_5508.jpeg"
-                    alt="Наш момент"
-                    loading="lazy"
-                >
-            </div>
+Будемо раді, якщо ваш образ
+доповнить цю палітру.
 
-            <div class="gallery-item">
-                <img
-                    src="IMG_5509.jpeg"
-                    alt="Наш момент"
-                    loading="lazy"
-                >
-            </div>
+</div>
 
-            <div class="gallery-item">
-                <img
-                    src="IMG_5519.jpeg"
-                    alt="Наш момент"
-                    loading="lazy"
-                >
-            </div>
 
-            <div class="gallery-item">
-                <img
-                    src="IMG_5520.jpeg"
-                    alt="Наш момент"
-                    loading="lazy"
-                >
-            </div>
+<div class="colors">
 
-            <div class="gallery-item">
-                <img
-                    src="IMG_5535.jpeg"
-                    alt="Наш момент"
-                    loading="lazy"
-                >
-            </div>
 
-            <div class="gallery-item">
-                <img
-                    src="IMG_5536.jpeg"
-                    alt="Наш момент"
-                    loading="lazy"
-                >
-            </div>
+<div class="color cappuccino">
+<span>
+Капучино
+</span>
+</div>
 
-            <div class="gallery-item">
-                <img
-                    src="IMG_5473.jpeg"
-                    alt="Наш момент"
-                    loading="lazy"
-                >
-            </div>
 
-            <div class="gallery-item">
-                <img
-                    src="IMG_5505.jpeg"
-                    alt="Наш момент"
-                    loading="lazy"
-                >
-            </div>
+<div class="color beige">
+<span>
+Бежевий
+</span>
+</div>
 
-        </div>
 
-    </div>
+<div class="color blue">
+<span>
+Блакитний
+</span>
+</div>
+
+
+<div class="color grey">
+<span>
+Світло-сірий
+</span>
+</div>
+
+
+<div class="color pink">
+<span>
+Пудровий
+</span>
+</div>
+
+
+<div class="color sage">
+<span>
+Шавлієвий
+</span>
+</div>
+
+
+</div>
+
+
+<div class="dress-note">
+
+Відтінки можуть бути різними —
+головне, щоб вам було красиво
+та комфортно 🤍
+
+</div>
+
+</div>
 
 </section>
 
 
-<!-- =========================
-     DRESS CODE
-========================= -->
+<!-- ==================================================
+     ЩЕ ОДНЕ ФОТО
+================================================== -->
 
-<section class="dress" id="dress">
+<section class="photo-section">
 
-    <div class="container">
+<img
+src="IMG_5535.jpeg"
+alt="Дар’я та Анатолій"
+>
 
-        <div class="section-label">
-            Для наших гостей
-        </div>
+<div class="photo-content">
 
-        <h2 class="section-title">
-            Дрес-код
-        </h2>
+<div class="photo-number">
+Найважливіше
+</div>
 
-        <div class="dress-text">
+<div class="photo-title">
+Бути поруч
+</div>
 
-            Ми будемо раді бачити вас
-            у святкових та елегантних образах,
-            які підкреслять атмосферу
-            нашого особливого дня.
+<div class="photo-subtitle">
+у цей день і в усі наступні
+</div>
 
-        </div>
-
-        <div class="dress-sub">
-
-            Обирайте те, в чому ви почуваєтесь
-            красивими та комфортно.
-
-        </div>
-
-    </div>
+</div>
 
 </section>
 
 
-<!-- =========================
-     LOCATION
-========================= -->
+<!-- ==================================================
+     ЛОКАЦІЯ
+================================================== -->
 
-<section class="location" id="location">
+<section class="section location" id="location">
 
-    <div class="container">
+<div class="container">
 
-        <div class="section-label">
-            Де зустрінемось
-        </div>
+<div class="label">
+Де зустрінемось
+</div>
 
-        <h2 class="section-title">
-            Локація
-        </h2>
+<h2 class="title">
+Локація
+</h2>
 
-        <div class="location-name">
-            Фабіус
-        </div>
 
-        <div class="location-address">
-            Ресторан «Фабіус»
-        </div>
+<div class="location-name">
+Фабіус
+</div>
 
-        <a
-            class="location-button"
-            href="https://www.google.com/maps/search/?api=1&query=Фабіус"
-            target="_blank"
-        >
-            Відкрити на карті
-        </a>
 
-    </div>
+<div class="location-address">
+Київ, Столичне шосе, 70
+</div>
+
+
+<div class="location-time">
+Зустрічаємо гостей о 13:00
+</div>
+
+
+<a
+class="location-button"
+href="https://www.google.com/maps/search/?api=1&query=Fabius%2C%20Столичне%20шосе%2070%2C%20Київ"
+target="_blank"
+>
+Відкрити маршрут
+</a>
+
+</div>
 
 </section>
 
 
-<!-- =========================
+<!-- ==================================================
+     ГАЛЕРЕЯ
+================================================== -->
+
+<section class="section gallery" id="gallery">
+
+<div class="container">
+
+<div class="label">
+Наші фотографії
+</div>
+
+<h2 class="title">
+Спогади
+</h2>
+
+<div class="gallery-grid">
+
+
+<div class="gallery-item">
+<img
+src="IMG_5467.jpeg"
+alt="Дар’я та Анатолій"
+loading="lazy"
+>
+</div>
+
+
+<div class="gallery-item">
+<img
+src="IMG_5473.jpeg"
+alt="Дар’я та Анатолій"
+loading="lazy"
+>
+</div>
+
+
+<div class="gallery-item">
+<img
+src="IMG_5505.jpeg"
+alt="Дар’я та Анатолій"
+loading="lazy"
+>
+</div>
+
+
+<div class="gallery-item">
+<img
+src="IMG_5506.jpeg"
+alt="Дар’я та Анатолій"
+loading="lazy"
+>
+</div>
+
+
+<div class="gallery-item">
+<img
+src="IMG_5508.jpeg"
+alt="Дар’я та Анатолій"
+loading="lazy"
+>
+</div>
+
+
+<div class="gallery-item">
+<img
+src="IMG_5509.jpeg"
+alt="Дар’я та Анатолій"
+loading="lazy"
+>
+</div>
+
+
+<div class="gallery-item">
+<img
+src="IMG_5519.jpeg"
+alt="Дар’я та Анатолій"
+loading="lazy"
+>
+</div>
+
+
+<div class="gallery-item">
+<img
+src="IMG_5520.jpeg"
+alt="Дар’я та Анатолій"
+loading="lazy"
+>
+</div>
+
+
+<div class="gallery-item">
+<img
+src="IMG_5535.jpeg"
+alt="Дар’я та Анатолій"
+loading="lazy"
+>
+</div>
+
+
+<div class="gallery-item">
+<img
+src="IMG_5536.jpeg"
+alt="Дар’я та Анатолій"
+loading="lazy"
+>
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ==================================================
      RSVP
-========================= -->
+================================================== -->
 
-<section class="rsvp" id="rsvp">
+<section class="section rsvp" id="rsvp">
 
-    <div class="container">
+<div class="container">
 
-        <div class="section-label">
-            RSVP
-        </div>
+<div class="label">
+RSVP
+</div>
 
-        <h2 class="section-title">
-            Чекаємо на вашу відповідь
-        </h2>
+<h2 class="title">
+Чекаємо на вас
+</h2>
 
-        <div class="rsvp-text">
+<div class="rsvp-text">
 
-            Будь ласка, підтвердіть
-            свою присутність на нашому святі.
+Нам буде дуже важливо
+розділити цей особливий день
+саме з вами.
 
-        </div>
+Будь ласка, підтвердьте
+свою присутність.
 
-        <a
-            class="rsvp-button"
-            href="mailto:your-email@example.com?subject=Підтвердження%20присутності%20на%20весіллі"
-        >
-            Підтвердити присутність
-        </a>
+</div>
 
-    </div>
+
+<a
+class="rsvp-button"
+href="mailto:your-email@example.com?subject=Підтвердження%20присутності%20на%20весіллі"
+>
+Підтвердити присутність
+</a>
+
+</div>
 
 </section>
 
 
-<!-- =========================
+<!-- ==================================================
      FOOTER
-========================= -->
+================================================== -->
 
 <footer>
 
-    <div class="footer-names">
-        Анатолій &amp; Дар’я
-    </div>
+<div class="footer-monogram">
 
-    <div class="footer-date">
-        17 · 07 · 2027
-    </div>
+<div class="monogram">
+
+<div class="monogram-text">
+<span>Д</span><span>А</span>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="footer-names">
+Дар’я &amp; Анатолій
+</div>
+
+
+<div class="footer-date">
+17 · 07 · 2027
+</div>
 
 </footer>
 
 
-<!-- =========================
-     COUNTDOWN SCRIPT
-========================= -->
+<!-- ==================================================
+     ТАЙМЕР
+================================================== -->
 
 <script>
 
 const weddingDate =
-    new Date("2027-07-17T15:00:00+03:00").getTime();
+new Date("2027-07-17T13:00:00+03:00").getTime();
 
 
 function updateCountdown() {
 
-    const now = new Date().getTime();
+const now =
+new Date().getTime();
 
-    const distance = weddingDate - now;
-
-
-    if (distance <= 0) {
-
-        document.getElementById("days").innerText = "0";
-        document.getElementById("hours").innerText = "0";
-        document.getElementById("minutes").innerText = "0";
-        document.getElementById("seconds").innerText = "0";
-
-        return;
-
-    }
+const distance =
+weddingDate - now;
 
 
-    const days =
-        Math.floor(distance / (1000 * 60 * 60 * 24));
+if (distance <= 0) {
 
-    const hours =
-        Math.floor(
-            (distance % (1000 * 60 * 60 * 24))
-            / (1000 * 60 * 60)
-        );
+document.getElementById("days").innerText = "0";
 
-    const minutes =
-        Math.floor(
-            (distance % (1000 * 60 * 60))
-            / (1000 * 60)
-        );
+document.getElementById("hours").innerText = "0";
 
-    const seconds =
-        Math.floor(
-            (distance % (1000 * 60))
-            / 1000
-        );
+document.getElementById("minutes").innerText = "0";
+
+document.getElementById("seconds").innerText = "0";
+
+return;
+
+}
 
 
-    document.getElementById("days").innerText = days;
+const days =
+Math.floor(
+distance /
+(1000 * 60 * 60 * 24)
+);
 
-    document.getElementById("hours").innerText =
-        String(hours).padStart(2, "0");
 
-    document.getElementById("minutes").innerText =
-        String(minutes).padStart(2, "0");
+const hours =
+Math.floor(
+(distance %
+(1000 * 60 * 60 * 24))
+/
+(1000 * 60 * 60)
+);
 
-    document.getElementById("seconds").innerText =
-        String(seconds).padStart(2, "0");
+
+const minutes =
+Math.floor(
+(distance %
+(1000 * 60 * 60))
+/
+(1000 * 60)
+);
+
+
+const seconds =
+Math.floor(
+(distance %
+(1000 * 60))
+/
+1000
+);
+
+
+document.getElementById("days").innerText =
+days;
+
+document.getElementById("hours").innerText =
+String(hours).padStart(2,"0");
+
+document.getElementById("minutes").innerText =
+String(minutes).padStart(2,"0");
+
+document.getElementById("seconds").innerText =
+String(seconds).padStart(2,"0");
 
 }
 
 
 updateCountdown();
 
-setInterval(updateCountdown, 1000);
+setInterval(
+updateCountdown,
+1000
+);
 
 </script>
+
 
 </body>
 </html>
