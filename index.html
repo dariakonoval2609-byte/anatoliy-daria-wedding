@@ -11,14 +11,14 @@
 <style>
 :root {
     --blue: #17365d;
-    --blue-dark: #102744;
+    --blue-dark: #0c2039;
     --blue-light: #496b91;
     --beige: #f5efe4;
     --beige-dark: #e8dcc9;
-    --champagne: #c5a778;
+    --gold: #c5a778;
+    --white: #fffdf9;
     --text: #30343b;
     --muted: #79736a;
-    --white: #fffdf9;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; scroll-padding-top: 75px; }
@@ -34,9 +34,9 @@ img { width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
 section { position: relative; }
 .container { width: min(1100px, 92%); margin: auto; }
-/* =========================================
-   ПЕРШИЙ ЕКРАН — КОНВЕРТ
-========================================= */
+/* ========================================
+   КОНВЕРТ
+======================================== */
 .envelope-screen {
     position: fixed;
     inset: 0;
@@ -46,16 +46,15 @@ section { position: relative; }
     justify-content: center;
     padding: 24px;
     overflow: hidden;
-    background:
-        radial-gradient(ellipse at center, #fffdf9 0%, #f2e8d8 65%, #e5d5bd 100%);
+    background: radial-gradient(ellipse at center, #fffdf9, #f2e8d8 68%, #e5d5bd);
     transition: opacity 1s ease, visibility 1s ease;
 }
 .envelope-screen::before,
 .envelope-screen::after {
     content: "❦";
     position: absolute;
-    color: var(--champagne);
-    opacity: .28;
+    color: var(--gold);
+    opacity: .3;
     font-size: 100px;
     pointer-events: none;
 }
@@ -88,7 +87,6 @@ section { position: relative; }
     margin-bottom: 25px;
 }
 .envelope-stage {
-    position: relative;
     width: 100%;
     max-width: 390px;
     margin: 0 auto 35px;
@@ -100,25 +98,29 @@ section { position: relative; }
     aspect-ratio: 1.35 / 1;
     background: #fdf9f1;
     border: 1px solid #d9c6a8;
-    box-shadow: 0 22px 65px rgba(43, 48, 57, .15);
+    box-shadow: 0 22px 65px rgba(43,48,57,.15);
     border-radius: 3px;
     overflow: visible;
 }
 .envelope-paper {
     position: absolute;
     inset: 10px;
-    border: 1px solid rgba(197, 167, 120, .65);
+    border: 1px solid rgba(197,167,120,.65);
     pointer-events: none;
 }
 .envelope-paper::before,
 .envelope-paper::after {
     content: "❦";
     position: absolute;
-    color: var(--champagne);
+    color: var(--gold);
     font-size: 25px;
 }
 .envelope-paper::before { top: 4px; left: 6px; }
-.envelope-paper::after { bottom: 4px; right: 6px; transform: rotate(180deg); }
+.envelope-paper::after {
+    bottom: 4px;
+    right: 6px;
+    transform: rotate(180deg);
+}
 .envelope-initials {
     position: absolute;
     inset: 0;
@@ -128,13 +130,20 @@ section { position: relative; }
     gap: 7px;
     color: var(--blue);
     font-family: "Cormorant Garamond", serif;
-    font-size: clamp(62px, 15vw, 88px);
-    font-weight: 400;
+    font-size: clamp(62px,15vw,88px);
     letter-spacing: -5px;
 }
-.envelope-initials span:last-child {
-    color: var(--champagne);
+.envelope-initials span:nth-child(2) {
+    color: var(--gold);
     font-style: italic;
+}
+.envelope-bottom {
+    position: absolute;
+    z-index: 2;
+    inset: 0;
+    background: linear-gradient(35deg,#eee1cd,#fffaf2);
+    clip-path: polygon(0 100%,0 0,50% 57%,100% 0,100% 100%);
+    pointer-events: none;
 }
 .envelope-flap {
     position: absolute;
@@ -143,26 +152,17 @@ section { position: relative; }
     left: 0;
     width: 100%;
     height: 54%;
-    background: linear-gradient(145deg, #fffdf8, #eee1cd);
-    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    background: linear-gradient(145deg,#fffdf8,#eee1cd);
+    clip-path: polygon(0 0,100% 0,50% 100%);
     transform-origin: top center;
     transition: transform 1s ease;
-    filter: drop-shadow(0 2px 2px rgba(0,0,0,.06));
-}
-.envelope-bottom {
-    position: absolute;
-    z-index: 2;
-    inset: 0;
-    background: linear-gradient(35deg, #eee1cd, #fffaf2);
-    clip-path: polygon(0 100%, 0 0, 50% 57%, 100% 0, 100% 100%);
-    pointer-events: none;
 }
 .envelope-bow {
     position: absolute;
     z-index: 5;
     left: 50%;
     top: 49%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%,-50%);
     width: 94px;
     height: 82px;
     transition: opacity .5s ease, transform .6s ease;
@@ -172,9 +172,9 @@ section { position: relative; }
     top: 12px;
     width: 43px;
     height: 31px;
-    background: linear-gradient(145deg, #42658e, #17365d 65%, #102744);
-    border: 1px solid #c5a778;
-    box-shadow: 0 3px 8px rgba(16, 39, 68, .18);
+    background: linear-gradient(145deg,#42658e,#17365d 65%,#102744);
+    border: 1px solid var(--gold);
+    box-shadow: 0 3px 8px rgba(16,39,68,.18);
 }
 .bow-loop.left {
     left: 2px;
@@ -194,7 +194,7 @@ section { position: relative; }
     width: 25px;
     height: 25px;
     border-radius: 50%;
-    background: radial-gradient(circle at 30% 25%, #6b89a9, #17365d 70%);
+    background: radial-gradient(circle at 30% 25%,#6b89a9,#17365d 70%);
     border: 1px solid #d8bd8e;
 }
 .bow-tail {
@@ -202,21 +202,21 @@ section { position: relative; }
     top: 35px;
     width: 20px;
     height: 42px;
-    background: linear-gradient(90deg, #294b73, #17365d);
-    border: 1px solid #c5a778;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 80%, 0 100%);
+    background: linear-gradient(90deg,#294b73,#17365d);
+    border: 1px solid var(--gold);
+    clip-path: polygon(0 0,100% 0,100% 100%,50% 80%,0 100%);
 }
 .bow-tail.left { left: 28px; transform: rotate(12deg); }
 .bow-tail.right { right: 28px; transform: rotate(-12deg); }
 .envelope-hint {
-    font-family: "Cormorant Garamond", serif;
-    font-size: 28px;
+    font-family: "Cormorant Garamond",serif;
+    font-size: 29px;
     color: var(--blue);
     line-height: 1.25;
     margin-bottom: 10px;
 }
 .envelope-description {
-    font-size: 11px;
+    font-size: 10px;
     letter-spacing: 1.5px;
     color: #817564;
     margin-bottom: 25px;
@@ -226,50 +226,73 @@ section { position: relative; }
     align-items: center;
     justify-content: center;
     gap: 12px;
-    padding: 15px 28px;
+    padding: 15px 24px;
     border: 1px solid var(--blue);
     background: var(--blue);
     color: white;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Montserrat",sans-serif;
     font-size: 9px;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
     text-transform: uppercase;
     cursor: pointer;
     transition: .3s;
 }
 .open-button:hover {
     background: var(--blue-dark);
-    box-shadow: 0 8px 22px rgba(23, 54, 93, .2);
     transform: translateY(-2px);
 }
-.open-button span { font-size: 17px; }
+.open-button:disabled { opacity: .7; }
 .envelope-stage.opening .envelope-flap {
     transform: rotateX(180deg);
 }
 .envelope-stage.opening .envelope-bow {
     opacity: 0;
-    transform: translate(-50%, -50%) scale(.6);
+    transform: translate(-50%,-50%) scale(.6);
 }
 .envelope-stage.opening .envelope {
-    animation: envelopeLift 1.2s ease .4s both;
+    animation: envelopeLift 1.2s ease .3s both;
 }
 @keyframes envelopeLift {
     0% { transform: translateY(0); }
     45% { transform: translateY(-18px) scale(1.03); }
     100% { transform: translateY(-8px) scale(.97); }
 }
-/* =========================================
+/* ========================================
+   МУЗИКА
+======================================== */
+.music-control {
+    position: fixed;
+    z-index: 2000;
+    right: 20px;
+    bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 12px 17px;
+    border: 1px solid rgba(197,167,120,.8);
+    border-radius: 50px;
+    background: rgba(23,54,93,.96);
+    color: white;
+    font-family: "Montserrat",sans-serif;
+    font-size: 11px;
+    cursor: pointer;
+    box-shadow: 0 5px 22px rgba(0,0,0,.15);
+    transition: .3s;
+}
+.music-control:hover { background: var(--blue-dark); }
+.music-icon { font-size: 17px; }
+/* ========================================
    МЕНЮ
-========================================= */
+======================================== */
 nav {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1000;
-    background: rgba(249, 245, 237, .94);
+    background: rgba(249,245,237,.94);
     backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(23, 54, 93, .12);
+    border-bottom: 1px solid rgba(23,54,93,.12);
 }
 .nav-inner {
     max-width: 1200px;
@@ -288,10 +311,10 @@ nav {
     color: var(--blue);
     transition: .3s;
 }
-.nav-inner a:hover { color: var(--champagne); }
-/* =========================================
+.nav-inner a:hover { color: var(--gold); }
+/* ========================================
    МОНОГРАМА
-========================================= */
+======================================== */
 .monogram {
     width: 145px;
     height: 145px;
@@ -306,14 +329,14 @@ nav {
     content: "";
     position: absolute;
     inset: 7px;
-    border: 1px solid rgba(255, 255, 255, .85);
+    border: 1px solid rgba(255,255,255,.85);
     border-radius: 50%;
 }
 .monogram::after {
     content: "❦";
     position: absolute;
     inset: 17px;
-    border: 1px solid rgba(255, 255, 255, .45);
+    border: 1px solid rgba(255,255,255,.45);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -324,15 +347,14 @@ nav {
 .monogram-text {
     position: relative;
     z-index: 2;
-    font-family: "Cormorant Garamond", serif;
+    font-family: "Cormorant Garamond",serif;
     font-size: 58px;
     font-weight: 400;
-    letter-spacing: -13px;
-    transform: translateX(-6px);
+    letter-spacing: -8px;
 }
-/* =========================================
+/* ========================================
    ГОЛОВНИЙ ЕКРАН
-========================================= */
+======================================== */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -356,7 +378,7 @@ nav {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(to bottom, rgba(16,39,68,.12), rgba(16,39,68,.72));
+    background: linear-gradient(to bottom,rgba(16,39,68,.12),rgba(16,39,68,.72));
 }
 .hero-content {
     position: relative;
@@ -370,8 +392,8 @@ nav {
     margin-bottom: 25px;
 }
 .hero h1 {
-    font-family: "Cormorant Garamond", serif;
-    font-size: clamp(65px, 14vw, 145px);
+    font-family: "Cormorant Garamond",serif;
+    font-size: clamp(65px,14vw,145px);
     font-weight: 300;
     line-height: .83;
     margin-bottom: 30px;
@@ -382,26 +404,26 @@ nav {
     text-transform: uppercase;
 }
 .hero-place {
-    font-family: "Cormorant Garamond", serif;
+    font-family: "Cormorant Garamond",serif;
     font-size: 27px;
     margin-top: 12px;
 }
-/* =========================================
-   ЗАГОЛОВКИ ТА СЕКЦІЇ
-========================================= */
+/* ========================================
+   СЕКЦІЇ ТА ЗАГОЛОВКИ
+======================================== */
 .section { padding: 110px 0; }
 .label {
     text-align: center;
     font-size: 9px;
     letter-spacing: 5px;
     text-transform: uppercase;
-    color: var(--champagne);
+    color: var(--gold);
     margin-bottom: 12px;
 }
 .title {
     text-align: center;
-    font-family: "Cormorant Garamond", serif;
-    font-size: clamp(50px, 9vw, 88px);
+    font-family: "Cormorant Garamond",serif;
+    font-size: clamp(50px,9vw,88px);
     font-weight: 400;
     line-height: .95;
     margin-bottom: 60px;
@@ -414,8 +436,8 @@ nav {
 .intro-text {
     max-width: 720px;
     margin: auto;
-    font-family: "Cormorant Garamond", serif;
-    font-size: clamp(27px, 4vw, 39px);
+    font-family: "Cormorant Garamond",serif;
+    font-size: clamp(27px,4vw,39px);
     line-height: 1.4;
     color: var(--blue);
     white-space: pre-line;
@@ -427,9 +449,9 @@ nav {
     text-transform: uppercase;
     color: var(--muted);
 }
-/* =========================================
+/* ========================================
    ІСТОРІЯ
-========================================= */
+======================================== */
 .story { background: #eae0d0; }
 .story-grid {
     display: grid;
@@ -443,7 +465,7 @@ nav {
 }
 .story-content { padding: 10px; }
 .story-content h3 {
-    font-family: "Cormorant Garamond", serif;
+    font-family: "Cormorant Garamond",serif;
     font-size: 45px;
     font-weight: 400;
     line-height: 1.05;
@@ -456,15 +478,15 @@ nav {
     margin-bottom: 20px;
 }
 .story-signature {
-    font-family: "Great Vibes", cursive;
+    font-family: "Great Vibes",cursive;
     font-size: 36px;
     line-height: 1.3;
     margin-top: 30px;
     color: var(--blue);
 }
-/* =========================================
-   ФОТО З ТЕКСТОМ
-========================================= */
+/* ========================================
+   ВЕЛИКІ ФОТО
+======================================== */
 .photo-section {
     min-height: 650px;
     display: flex;
@@ -487,7 +509,7 @@ nav {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(16, 39, 68, .25);
+    background: rgba(16,39,68,.25);
 }
 .photo-content {
     position: relative;
@@ -501,15 +523,15 @@ nav {
     margin-bottom: 15px;
 }
 .photo-title {
-    font-family: "Cormorant Garamond", serif;
-    font-size: clamp(60px, 10vw, 100px);
+    font-family: "Cormorant Garamond",serif;
+    font-size: clamp(60px,10vw,100px);
     line-height: .9;
     margin-bottom: 20px;
 }
 .photo-subtitle { font-size: 12px; letter-spacing: 2px; }
-/* =========================================
+/* ========================================
    ПРОГРАМА ДНЯ
-========================================= */
+======================================== */
 .timeline-section { background: var(--white); }
 .timeline { max-width: 900px; margin: auto; }
 .timeline-item {
@@ -521,25 +543,25 @@ nav {
 .timeline-item:last-child { border-bottom: 1px solid rgba(23,54,93,.15); }
 .timeline-time {
     padding: 35px 20px;
-    font-family: "Cormorant Garamond", serif;
+    font-family: "Cormorant Garamond",serif;
     font-size: 38px;
     color: var(--blue);
 }
 .timeline-info { padding: 35px 20px; }
 .timeline-info h3 {
-    font-family: "Cormorant Garamond", serif;
+    font-family: "Cormorant Garamond",serif;
     font-size: 32px;
     font-weight: 400;
     color: var(--blue);
     margin-bottom: 7px;
 }
 .timeline-info p { font-size: 13px; color: var(--muted); }
-/* =========================================
+/* ========================================
    ФОТОКАРТКИ
-========================================= */
+======================================== */
 .memory-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2,1fr);
     gap: 15px;
 }
 .memory { position: relative; height: 430px; overflow: hidden; }
@@ -554,7 +576,7 @@ nav {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(16,39,68,.78), transparent 65%);
+    background: linear-gradient(to top,rgba(16,39,68,.78),transparent 65%);
 }
 .memory-text {
     position: absolute;
@@ -570,13 +592,13 @@ nav {
     text-transform: uppercase;
 }
 .memory-text h3 {
-    font-family: "Cormorant Garamond", serif;
+    font-family: "Cormorant Garamond",serif;
     font-size: 38px;
     font-weight: 400;
 }
-/* =========================================
+/* ========================================
    ТАЙМЕР
-========================================= */
+======================================== */
 .countdown-section {
     background: var(--blue);
     color: white;
@@ -587,13 +609,13 @@ nav {
 .countdown-section .label { color: #d9c29c; }
 .countdown {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4,1fr);
     max-width: 800px;
     margin: auto;
 }
 .count-number {
-    font-family: "Cormorant Garamond", serif;
-    font-size: clamp(55px, 8vw, 85px);
+    font-family: "Cormorant Garamond",serif;
+    font-size: clamp(55px,8vw,85px);
     line-height: 1;
 }
 .count-label {
@@ -604,14 +626,14 @@ nav {
     text-transform: uppercase;
     color: #e4d9c6;
 }
-/* =========================================
+/* ========================================
    ДРЕС-КОД
-========================================= */
+======================================== */
 .dress { background: var(--white); text-align: center; }
 .dress-description {
     max-width: 700px;
     margin: auto;
-    font-family: "Cormorant Garamond", serif;
+    font-family: "Cormorant Garamond",serif;
     font-size: 30px;
     line-height: 1.4;
     color: var(--blue);
@@ -649,16 +671,16 @@ nav {
 .color.pink { background: #ddc4bd; }
 .color.sage { background: #b7c0ad; }
 .dress-note { font-size: 12px; color: var(--muted); margin-top: 20px; }
-/* =========================================
+/* ========================================
    ЛОКАЦІЯ
-========================================= */
+======================================== */
 .location {
     background: #eae0d0;
     text-align: center;
 }
 .location-name {
-    font-family: "Cormorant Garamond", serif;
-    font-size: clamp(60px, 9vw, 95px);
+    font-family: "Cormorant Garamond",serif;
+    font-size: clamp(60px,9vw,95px);
     font-weight: 400;
     line-height: 1;
     margin-bottom: 15px;
@@ -666,7 +688,7 @@ nav {
 }
 .location-address { font-size: 14px; color: #6f675e; margin-bottom: 10px; }
 .location-time {
-    font-family: "Cormorant Garamond", serif;
+    font-family: "Cormorant Garamond",serif;
     font-size: 30px;
     margin: 25px 0 35px;
     color: var(--blue);
@@ -682,9 +704,9 @@ nav {
     transition: .3s;
 }
 .location-button:hover { background: var(--blue); color: white; }
-/* =========================================
+/* ========================================
    ГАЛЕРЕЯ
-========================================= */
+======================================== */
 .gallery { background: var(--white); }
 .gallery-grid {
     columns: 3 250px;
@@ -697,9 +719,9 @@ nav {
 }
 .gallery-item img { transition: transform .7s ease; }
 .gallery-item:hover img { transform: scale(1.03); }
-/* =========================================
+/* ========================================
    RSVP
-========================================= */
+======================================== */
 .rsvp {
     background: var(--blue-dark);
     color: white;
@@ -710,7 +732,7 @@ nav {
 .rsvp-text {
     max-width: 650px;
     margin: auto;
-    font-family: "Cormorant Garamond", serif;
+    font-family: "Cormorant Garamond",serif;
     font-size: 30px;
     line-height: 1.4;
 }
@@ -726,9 +748,9 @@ nav {
     transition: .3s;
 }
 .rsvp-button:hover { background: #d9c29c; color: var(--blue-dark); }
-/* =========================================
+/* ========================================
    ФУТЕР
-========================================= */
+======================================== */
 footer {
     background: #0c2039;
     color: white;
@@ -738,7 +760,7 @@ footer {
 }
 .footer-monogram { margin-bottom: 25px; }
 .footer-names {
-    font-family: "Cormorant Garamond", serif;
+    font-family: "Cormorant Garamond",serif;
     font-size: 48px;
     margin-bottom: 10px;
 }
@@ -748,22 +770,19 @@ footer {
     text-transform: uppercase;
     color: #d9c9ad;
 }
-/* =========================================
-   АНІМАЦІЇ
-========================================= */
 .fade { animation: fadeIn 1.2s ease both; }
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
 }
-/* =========================================
+/* ========================================
    МОБІЛЬНА ВЕРСІЯ
-========================================= */
-@media (max-width: 700px) {
+======================================== */
+@media (max-width:700px) {
     .envelope-content { max-width: 360px; }
     .envelope-stage { max-width: 330px; }
     .envelope-hint { font-size: 25px; }
-    .envelope-description { font-size: 10px; letter-spacing: 1px; }
+    .envelope-description { font-size: 9px; letter-spacing: 1px; }
     .nav-inner { justify-content: flex-start; gap: 24px; }
     .hero h1 { font-size: 68px; }
     .monogram { width: 125px; height: 125px; }
@@ -785,9 +804,14 @@ footer {
     .dress-description { font-size: 27px; }
     .gallery-grid { columns: 2 140px; }
     .footer-names { font-size: 40px; }
+    .music-control {
+        right: 12px;
+        bottom: 12px;
+        padding: 10px 14px;
+    }
 }
-@media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
+@media (prefers-reduced-motion:reduce) {
+    *,*::before,*::after {
         scroll-behavior: auto !important;
         animation-duration: .01ms !important;
         transition-duration: .01ms !important;
@@ -796,9 +820,7 @@ footer {
 </style>
 </head>
 <body class="locked">
-<!-- =========================================
-     КОНВЕРТ-ЗАПРОШЕННЯ
-========================================= -->
+<!-- КОНВЕРТ -->
 <div class="envelope-screen" id="envelopeScreen">
     <div class="envelope-content">
         <div class="envelope-eyebrow">Особливе запрошення</div>
@@ -819,9 +841,7 @@ footer {
                 </div>
             </div>
         </div>
-        <h1 class="envelope-hint">
-            Дорогі наші гості
-        </h1>
+        <h1 class="envelope-hint">Дорогі наші гості</h1>
         <p class="envelope-description">
             З РАДІСТЮ ЗАПРОШУЄМО ВАС НА НАШЕ ВЕСІЛЛЯ
         </p>
@@ -833,9 +853,16 @@ footer {
         </p>
     </div>
 </div>
-<!-- =========================================
-     МЕНЮ
-========================================= -->
+<!-- АУДІОФАЙЛ: НАЗВА ЯК У ТВОЄМУ GITHUB -->
+<audio id="weddingMusic" preload="auto" loop>
+    <source src="vivaldi-spring.mp3.mp3" type="audio/mpeg">
+</audio>
+<!-- КНОПКА МУЗИКИ -->
+<button class="music-control" id="musicToggle" type="button" aria-label="Вимкнути музику" hidden>
+    <span class="music-icon" id="musicIcon">♫</span>
+    <span id="musicLabel">Музика: увімкнена</span>
+</button>
+<!-- МЕНЮ -->
 <nav>
     <div class="nav-inner">
         <a href="#home">Головна</a>
@@ -847,22 +874,20 @@ footer {
         <a href="#rsvp">RSVP</a>
     </div>
 </nav>
-<!-- =========================================
-     ГОЛОВНИЙ ЕКРАН
-========================================= -->
+<!-- ГОЛОВНИЙ ЕКРАН -->
 <section class="hero" id="home">
     <img class="hero-image" src="IMG_5473.jpeg" alt="Дар’я та Анатолій">
     <div class="hero-content fade">
-        <div class="monogram"><div class="monogram-text">Д<span style="color:#d9c29c">&</span>А</div></div>
+        <div class="monogram">
+            <div class="monogram-text">Д<span style="color:#d9c29c">&amp;</span>А</div>
+        </div>
         <div class="hero-small">Наша історія стає назавжди</div>
         <h1>Дар’я<br>&amp;<br>Анатолій</h1>
         <div class="hero-date">17 · 07 · 2027</div>
         <div class="hero-place">Ресторан «Фабіус»</div>
     </div>
 </section>
-<!-- =========================================
-     ЗАПРОШЕННЯ
-========================================= -->
+<!-- ЗАПРОШЕННЯ -->
 <section class="section intro">
     <div class="container">
         <div class="label">Запрошення</div>
@@ -878,9 +903,7 @@ footer {
         <div class="intro-date">17 липня 2027 року</div>
     </div>
 </section>
-<!-- =========================================
-     ІСТОРІЯ КОХАННЯ
-========================================= -->
+<!-- ІСТОРІЯ -->
 <section class="section story" id="story">
     <div class="container">
         <div class="label">Наша історія</div>
@@ -899,20 +922,16 @@ footer {
         </div>
     </div>
 </section>
-<!-- =========================================
-     ФОТО + НАПИС
-========================================= -->
+<!-- ФОТО -->
 <section class="photo-section">
-    <img src="IMG_5506.jpeg" alt="Наші моменти">
+    <img src="IMG_5506.jpeg" alt="Наші моменти" loading="lazy">
     <div class="photo-content">
         <div class="photo-number">Наші моменти</div>
         <div class="photo-title">Разом</div>
         <div class="photo-subtitle">і це тільки початок нашої історії</div>
     </div>
 </section>
-<!-- =========================================
-     ДЕНЬ ВЕСІЛЛЯ
-========================================= -->
+<!-- ПРОГРАМА ДНЯ -->
 <section class="section timeline-section" id="day">
     <div class="container">
         <div class="label">17 · 07 · 2027</div>
@@ -963,9 +982,7 @@ footer {
         </div>
     </div>
 </section>
-<!-- =========================================
-     ФОТОКАРТКИ
-========================================= -->
+<!-- ФОТОКАРТКИ -->
 <section class="section">
     <div class="container">
         <div class="label">Цей день</div>
@@ -990,9 +1007,7 @@ footer {
         </div>
     </div>
 </section>
-<!-- =========================================
-     COUNTDOWN
-========================================= -->
+<!-- ТАЙМЕР -->
 <section class="countdown-section">
     <div class="container">
         <div class="label">До нашого весілля</div>
@@ -1005,9 +1020,7 @@ footer {
         </div>
     </div>
 </section>
-<!-- =========================================
-     ДРЕС-КОД
-========================================= -->
+<!-- ДРЕС-КОД -->
 <section class="section dress" id="dress">
     <div class="container">
         <div class="label">Для наших гостей</div>
@@ -1033,9 +1046,7 @@ footer {
         </div>
     </div>
 </section>
-<!-- =========================================
-     ФОТО
-========================================= -->
+<!-- ЩЕ ОДНЕ ФОТО -->
 <section class="photo-section">
     <img src="IMG_5535.jpeg" alt="Дар’я та Анатолій" loading="lazy">
     <div class="photo-content">
@@ -1044,9 +1055,7 @@ footer {
         <div class="photo-subtitle">у цей день і в усі наступні</div>
     </div>
 </section>
-<!-- =========================================
-     ЛОКАЦІЯ
-========================================= -->
+<!-- ЛОКАЦІЯ -->
 <section class="section location" id="location">
     <div class="container">
         <div class="label">Де зустрінемось</div>
@@ -1061,9 +1070,7 @@ footer {
         </a>
     </div>
 </section>
-<!-- =========================================
-     ГАЛЕРЕЯ
-========================================= -->
+<!-- ГАЛЕРЕЯ -->
 <section class="section gallery" id="gallery">
     <div class="container">
         <div class="label">Наші фотографії</div>
@@ -1082,9 +1089,7 @@ footer {
         </div>
     </div>
 </section>
-<!-- =========================================
-     RSVP
-========================================= -->
+<!-- RSVP -->
 <section class="section rsvp" id="rsvp">
     <div class="container">
         <div class="label">RSVP</div>
@@ -1102,39 +1107,85 @@ footer {
         </a>
     </div>
 </section>
-<!-- =========================================
-     ФУТЕР
-========================================= -->
+<!-- ФУТЕР -->
 <footer>
     <div class="footer-monogram">
-        <div class="monogram"><div class="monogram-text">Д<span style="color:#d9c29c">&</span>А</div></div>
+        <div class="monogram">
+            <div class="monogram-text">Д<span style="color:#d9c29c">&amp;</span>А</div>
+        </div>
     </div>
     <div class="footer-names">Дар’я &amp; Анатолій</div>
     <div class="footer-date">17 · 07 · 2027</div>
 </footer>
-<!-- =========================================
-     АНІМАЦІЯ КОНВЕРТА ТА ТАЙМЕР
-========================================= -->
+<!-- JAVASCRIPT -->
 <script>
 const envelopeScreen = document.getElementById("envelopeScreen");
 const envelopeStage = document.getElementById("envelopeStage");
 const openButton = document.getElementById("openInvitation");
-openButton.addEventListener("click", function () {
+const weddingMusic = document.getElementById("weddingMusic");
+const musicToggle = document.getElementById("musicToggle");
+const musicIcon = document.getElementById("musicIcon");
+const musicLabel = document.getElementById("musicLabel");
+let musicStarted = false;
+function updateMusicButton(isPlaying) {
+    musicIcon.textContent = isPlaying ? "♫" : "♪";
+    musicLabel.textContent = isPlaying ? "Музика: увімкнена" : "Увімкнути музику";
+    musicToggle.setAttribute(
+        "aria-label",
+        isPlaying ? "Вимкнути музику" : "Увімкнути музику"
+    );
+}
+async function startMusic() {
+    try {
+        if (!musicStarted) {
+            weddingMusic.currentTime = 30;
+            musicStarted = true;
+        }
+        await weddingMusic.play();
+        updateMusicButton(true);
+        return true;
+    } catch (error) {
+        console.log("Не вдалося запустити музику:", error);
+        updateMusicButton(false);
+        return false;
+    }
+}
+openButton.addEventListener("click", async function () {
     if (envelopeStage.classList.contains("opening")) return;
     envelopeStage.classList.add("opening");
     openButton.disabled = true;
+    musicToggle.hidden = false;
+    // Спроба запустити музику після дії користувача.
+    // Якщо аудіо ще завантажується, повторно спробуємо нижче.
+    const musicPromise = startMusic();
     setTimeout(function () {
         envelopeScreen.classList.add("is-open");
         document.body.classList.remove("locked");
     }, 1100);
+    await musicPromise;
 });
+// Якщо користувач натисне кнопку музики повторно,
+// можна вимкнути або ввімкнути відтворення.
+musicToggle.addEventListener("click", async function () {
+    if (!weddingMusic.paused) {
+        weddingMusic.pause();
+        updateMusicButton(false);
+    } else {
+        await startMusic();
+    }
+});
+weddingMusic.addEventListener("play", function () {
+    updateMusicButton(true);
+});
+weddingMusic.addEventListener("pause", function () {
+    updateMusicButton(false);
+});
+// Таймер до весілля
 const weddingDate = new Date("2027-07-17T13:00:00+03:00").getTime();
 function updateCountdown() {
-    const now = Date.now();
-    const distance = weddingDate - now;
-    const ids = ["days", "hours", "minutes", "seconds"];
+    const distance = weddingDate - Date.now();
     if (distance <= 0) {
-        ids.forEach(function(id) {
+        ["days", "hours", "minutes", "seconds"].forEach(function(id) {
             document.getElementById(id).textContent = "0";
         });
         return;
