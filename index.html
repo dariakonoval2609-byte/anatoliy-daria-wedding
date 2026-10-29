@@ -224,23 +224,47 @@ body.unlocked .music-button{display:flex}
   *,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
   .butterfly-layer{display:none}
 }
+/* Фотореалістичний конверт із фактурного паперу */
+.envelope-screen{background:#eeede7}
+.envelope-screen:before{
+  content:"";position:absolute;inset:-22px;z-index:0;
+  background:url("assets/envelope-reference.jpg") center/cover no-repeat;
+  filter:blur(24px);opacity:.18;transform:scale(1.04)
+}
+.envelope{
+  z-index:1;width:min(100%,570px);height:min(88svh,740px);min-height:0;
+  overflow:visible;border:0;background:transparent;box-shadow:none
+}
+.envelope:before,.envelope:after{display:none}
+.envelope-photo{
+  position:absolute;inset:0;z-index:3;width:100%;height:100%;
+  object-fit:contain;object-position:center;
+  filter:drop-shadow(0 18px 30px rgba(59,53,91,.16));
+  transition:opacity 1s ease,transform 1.35s cubic-bezier(.2,.76,.15,1)
+}
+.envelope-paper{z-index:1;left:7%;right:7%;top:7%;height:84%}
+.seal{
+  z-index:8;left:55%;top:53.5%;width:19%;height:17%;
+  border:0;border-radius:50%;background:transparent;box-shadow:none;
+  color:transparent;transform:translate(-50%,-50%)
+}
+.seal:before,.seal:after{display:none}
+.seal span{visibility:hidden}
+.envelope-screen.is-opening .envelope-photo{opacity:0;transform:translateY(-12%) scale(.96)}
+.envelope-screen.is-opening .envelope-paper{transform:translateY(-5%)}
+.envelope-screen.is-opening .seal,.envelope-screen.is-opening .cover-caption{opacity:0}
+@media(max-width:600px){
+  .envelope{width:100%;height:100svh;max-height:none}
+  .envelope-photo{object-fit:contain}
+  .cover-caption{bottom:5%}
+}
 </style>
 </head>
 <body class="locked">
 <div class="envelope-screen" id="envelopeScreen">
   <div class="envelope" aria-label="Весільний конверт">
-    <div class="env-back"></div>
     <div class="envelope-paper"><span>Запрошення</span></div>
-    <div class="env-bottom"></div><div class="env-left"></div><div class="env-right"></div>
-    <svg class="env-emboss" viewBox="0 0 480 250" aria-hidden="true">
-      <g fill="none" stroke="#50499c" stroke-width="1.1" stroke-linecap="round">
-        <path d="M5 6Q102 40 145 158M475 6Q378 40 335 158M36 4Q120 44 158 146M444 4Q360 44 322 146"/>
-        <path d="M145 158Q101 154 78 127M145 158Q175 130 181 100M158 146Q124 138 111 114M335 158Q379 154 402 127M335 158Q305 130 299 100M322 146Q356 138 369 114"/>
-        <path d="M187 178Q179 98 217 16M293 178Q301 98 263 16M217 112Q186 95 181 63M217 112Q240 90 240 58M263 112Q294 95 299 63M263 112Q240 90 240 58"/>
-        <path d="M54 29Q92 78 137 137M424 29Q386 78 341 137M205 35Q214 64 218 93M275 35Q266 64 262 93"/>
-      </g>
-      <g fill="#50499c" opacity=".12"><ellipse cx="217" cy="34" rx="10" ry="25" transform="rotate(14 217 34)"/><ellipse cx="263" cy="34" rx="10" ry="25" transform="rotate(-14 263 34)"/></g>
-    </svg>
+    <img class="envelope-photo" src="assets/envelope-reference.jpg" alt="" fetchpriority="high">
     <button class="seal" id="openInvitation" type="button" aria-label="Відкрити запрошення"><span>Д&nbsp;А</span><span class="open-button-label">Відкрити запрошення</span></button>
     <div class="cover-caption"><div class="cover-names">Дар’я &amp; Анатолій</div><div class="cover-prompt">Торкніться печатки, щоб відкрити</div></div>
   </div>
