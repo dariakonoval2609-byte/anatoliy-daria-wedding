@@ -404,7 +404,7 @@ openButton.addEventListener("click",function(){
   document.body.classList.add("unlocked");
   playMusic();
   setTimeout(function(){document.body.classList.remove("locked");startButterflies();},1000);
-  setTimeout(function(){screen.hidden=true;},1900);
+  setTimeout(function(){openButton.blur();screen.hidden=true;window.scrollTo(0,0);},1900);
 });
 musicToggle.addEventListener("click",function(){if(music.paused)playMusic();else music.pause();});
 music.addEventListener("play",updateMusic);
