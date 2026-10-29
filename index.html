@@ -181,6 +181,29 @@ section{position:relative}
   box-shadow:0 5px 20px rgba(31,49,68,.2)
 }
 .music-control[hidden]{display:none}
+.butterfly-layer{
+  position:fixed;inset:0;z-index:900;overflow:hidden;
+  pointer-events:none;visibility:hidden
+}
+body.invitation-open .butterfly-layer{visibility:visible}
+.butterfly-flight{
+  position:absolute;bottom:-12vh;width:25px;height:20px;
+  color:rgba(74,98,128,.68);opacity:0;
+  animation:butterfly-drift var(--flight,24s) linear var(--delay,0s) infinite
+}
+.butterfly-flight svg{width:100%;height:100%;overflow:visible}
+.butterfly-flight path{fill:currentColor;stroke:rgba(248,243,233,.8);stroke-width:.8}
+.butterfly-flight .wings{transform-box:fill-box;transform-origin:center;animation:butterfly-flap .65s ease-in-out infinite alternate}
+@keyframes butterfly-drift{
+  0%{opacity:0;transform:translate3d(0,12vh,0) rotate(-12deg)}
+  9%{opacity:.66}
+  30%{transform:translate3d(var(--drift1,28px),-28vh,0) rotate(8deg)}
+  58%{transform:translate3d(var(--drift2,-18px),-60vh,0) rotate(-7deg)}
+  88%{opacity:.55}
+  100%{opacity:0;transform:translate3d(var(--drift3,34px),-112vh,0) rotate(13deg)}
+}
+@keyframes butterfly-flap{to{transform:scaleX(.58)}}
+@media(prefers-reduced-motion:reduce){.butterfly-layer{display:none}}
 .music-control .music-symbol{font-size:19px;color:var(--gold-light)}
 /* =====================================
    МЕНЮ
@@ -538,12 +561,13 @@ footer{
 </div>
 <!-- МУЗИКА: ФАЙЛ МАЄ БУТИ В КОРЕНІ РЕПОЗИТОРІЮ -->
 <audio id="weddingMusic" preload="auto" playsinline>
-  <source src="./vivaldi-spring.mp3.mp3" type="audio/mpeg">
+  <source src="./Вівальді-весна.mp3.mp3" type="audio/mpeg">
 </audio>
 <button class="music-control" id="musicToggle" type="button" hidden>
   <span class="music-symbol" id="musicIcon">♫</span>
   <span id="musicLabel">Музика</span>
 </button>
+<div class="butterfly-layer" id="butterflies" aria-hidden="true"></div>
 <!-- МЕНЮ -->
 <nav>
   <div class="nav-inner">
@@ -840,6 +864,8 @@ openButton.addEventListener("click",function(){
   setTimeout(function(){
     cover.classList.add("gone");
     document.body.classList.remove("locked");
+    document.body.classList.add("invitation-open");
+    startButterflies();
   },1250);
   // Якщо автоматичний запуск заблоковано, кнопку можна натиснути окремо.
   setTimeout(function(){
@@ -882,6 +908,24 @@ audio.addEventListener("ended",function(){
     seekToThirty();
   }
 });
+// Ненав'язливі метелики з'являються після відкриття конверта.
+function startButterflies(){
+  const layer = document.getElementById("butterflies");
+  if(!layer || layer.childElementCount) return;
+  const positions = [14, 43, 76];
+  positions.forEach(function(left, index){
+    const butterfly = document.createElement("span");
+    butterfly.className = "butterfly-flight";
+    butterfly.style.left = left + "%";
+    butterfly.style.setProperty("--flight", (23 + index * 4) + "s");
+    butterfly.style.setProperty("--delay", (-index * 7) + "s");
+    butterfly.style.setProperty("--drift1", (25 - index * 18) + "px");
+    butterfly.style.setProperty("--drift2", (-20 + index * 15) + "px");
+    butterfly.style.setProperty("--drift3", (35 - index * 20) + "px");
+    butterfly.innerHTML = '<svg viewBox="0 0 40 28"><g class="wings"><path d="M19 13C8-3 0 2 3 10c2 5 8 6 14 5-9 2-14 8-9 11 4 2 9-3 12-9 3 6 8 11 12 9 5-3 0-9-9-11 6 1 12 0 14-5 3-8-5-13-16 3z"/></g><path d="M20 12v9" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>';
+    layer.appendChild(butterfly);
+  });
+}
 // Таймер до весілля
 const weddingDate = new Date("2027-07-17T13:00:00+03:00").getTime();
 function updateCountdown(){
