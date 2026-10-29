@@ -527,6 +527,19 @@ body.invitation-open .butterfly-layer{visibility:visible}
 @keyframes butterfly-flap{to{transform:scaleX(.68)}}
 @media(max-width:700px){.cover-content{max-width:380px}.cover-flourish{font-size:56px}.env-paper::before{background-size:180px}.section{padding:66px 0}.title{margin-bottom:27px}.timeline-item:nth-child(n+4){display:none}}
 @media(prefers-reduced-motion:reduce){.butterfly-layer{display:none}}
+.music-control{
+  position:fixed;right:18px;bottom:18px;z-index:1100;
+  display:flex;align-items:center;gap:9px;
+  padding:11px 16px;border:1px solid rgba(232,217,185,.8);
+  border-radius:30px;background:rgba(51,73,103,.94);color:#fffaf0;
+  box-shadow:0 5px 18px rgba(43,59,79,.18);
+  font:11px Montserrat,sans-serif;letter-spacing:.5px;cursor:pointer
+}
+.music-control span:first-child{font-size:18px;color:#f3e6ca}
+.music-control[hidden]{display:none}
+.music-credit{margin-top:16px;font-size:9px;letter-spacing:.4px;color:#d9cfba}
+.music-credit a{text-decoration:underline;text-underline-offset:3px}
+@media(max-width:700px){.music-control{right:12px;bottom:12px;font-size:10px;padding:10px 13px}}
 </style>
 </head>
 <body class="locked">
@@ -566,6 +579,12 @@ body.invitation-open .butterfly-layer{visibility:visible}
   </div>
 </div>
 <div class="butterfly-layer" id="butterflies" aria-hidden="true"></div>
+<audio id="weddingMusic" preload="none" loop>
+  <source src="https://commons.wikimedia.org/wiki/Special:Redirect/file/01_-_Vivaldi_Spring_mvt_1_Allegro_-_John_Harrison_violin.ogg" type="audio/ogg">
+</audio>
+<button class="music-control" id="musicToggle" type="button" aria-label="Увімкнути музику" hidden>
+  <span aria-hidden="true">♫</span><span id="musicLabel">Музика</span>
+</button>
 <!-- МЕНЮ -->
 <nav>
   <div class="nav-inner">
@@ -680,9 +699,61 @@ body.invitation-open .butterfly-layer{visibility:visible}
   <div class="footer-ornament">❦</div>
   <div class="footer-names">Дар’я &amp; Анатолій</div>
   <div class="footer-date">17 · 07 · 2027</div>
+  <div class="music-credit"><a href="https://commons.wikimedia.org/wiki/File:01_-_Vivaldi_Spring_mvt_1_Allegro_-_John_Harrison_violin.ogg" target="_blank" rel="noopener noreferrer">Музика: Вівальді, «Весна», I. Allegro · John Harrison · CC BY-SA 4.0</a></div>
 </footer>
 <script>
 const cover = document.getElementById("cover");
+const envelope = document.getElementById("envelope");
+const openButton = document.getElementById("openInvitation");
+const music = document.getElementById("weddingMusic");
+const musicToggle = document.getElementById("musicToggle");
+const musicLabel = document.getElementById("musicLabel");
+function updateMusicButton(){
+  const playing = !music.paused;
+  musicLabel.textContent = playing ? "Музика грає" : "Увімкнути музику";
+  musicToggle.setAttribute("aria-label",playing ? "Поставити музику на паузу" : "Увімкнути музику");
+}
+function playMusic(){
+  const playback = music.play();
+  if(playback && typeof playback.then === "function"){
+    playback.then(updateMusicButton).catch(updateMusicButton);
+  }
+}
+music.addEventListener("play",updateMusicButton);
+music.addEventListener("pause",updateMusicButton);
+music.addEventListener("error",function(){musicLabel.textContent="Слухати «Весну»";});
+musicToggle.addEventListener("click",function(){
+  if(music.paused) playMusic();
+  else music.pause();
+});
+openButton.addEventListener("click",function(){
+  envelope.classList.add("opening");
+  openButton.disabled = true;
+  musicToggle.hidden = false;
+  playMusic();
+  setTimeout(function(){
+    cover.classList.add("gone");
+    document.body.classList.remove("locked");
+    document.body.classList.add("invitation-open");
+    startButterflies();
+  },950);
+});
+function startButterflies(){
+  const layer = document.getElementById("butterflies");
+  if(!layer || layer.childElementCount) return;
+  [16,48,80].forEach(function(left,index){
+    const butterfly = document.createElement("span");
+    butterfly.className = "butterfly-flight";
+    butterfly.style.left = left + "%";
+    butterfly.style.setProperty("--flight",(27 + index * 3) + "s");
+    butterfly.style.setProperty("--delay",(-index * 6) + "s");
+    butterfly.style.setProperty("--drift1",(24 - index * 16) + "px");
+    butterfly.style.setProperty("--drift2",(-17 + index * 12) + "px");
+    butterfly.style.setProperty("--drift3",(30 - index * 18) + "px");
+    butterfly.innerHTML = '<svg viewBox="0 0 60 48" role="presentation"><g class="wings"><path class="wing-fill" d="M29 23C23 18 15 3 8 4 1 5 3 15 12 21 6 19 2 22 4 28 6 34 18 34 29 27ZM31 23C37 18 45 3 52 4 59 5 57 15 48 21 54 19 58 22 56 28 54 34 42 34 31 27ZM29 26C22 28 12 30 10 37 8 44 20 43 29 30ZM31 26C38 28 48 30 50 37 52 44 40 43 31 30Z"/><path class="wing-vein" d="M29 24C22 18 14 8 7 6M28 25C20 23 12 22 5 24M31 24C38 18 46 8 53 6M32 25C40 23 48 22 55 24M28 27C20 31 15 36 12 40M32 27C40 31 45 36 48 40"/></g><path class="body" d="M30 19C28 25 28 31 30 36 32 31 32 25 30 19Z"/><path class="antennae" d="M29 20 23 13M31 20 37 13"/></svg>';
+    layer.appendChild(butterfly);
+  });
+}
 const envelope = document.getElementById("envelope");
 const openButton = document.getElementById("openInvitation");
 openButton.addEventListener("click",function(){
