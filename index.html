@@ -176,25 +176,28 @@ button{font:inherit}
     <div class="paper-edge"></div>
     <svg class="pampas" viewBox="0 0 260 700" preserveAspectRatio="xMinYMax meet" aria-hidden="true">
       <defs>
-        <linearGradient id="grass" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#b9b4a8" stop-opacity=".16"/><stop offset=".7" stop-color="#fdfbf5" stop-opacity=".9"/><stop offset="1" stop-color="#d8d3c8" stop-opacity=".32"/></linearGradient>
-        <filter id="soft"><feGaussianBlur stdDeviation=".35"/></filter>
+        <linearGradient id="grass" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#c5c0b5" stop-opacity=".1"/><stop offset=".6" stop-color="#fffdf7" stop-opacity=".88"/><stop offset="1" stop-color="#d4cfc4" stop-opacity=".3"/></linearGradient>
+        <g id="plume" fill="none" stroke="#c8c2b6" stroke-linecap="round">
+          <path d="M50 155C47 109 54 57 52 4" stroke-width="1.1"/>
+          <path d="M51 18Q35 8 27 2M51 25Q30 15 20 7M50 33Q29 22 14 14M50 41Q25 31 10 22M50 49Q26 40 8 32M50 57Q23 49 6 41M50 66Q22 58 4 51M49 75Q23 68 4 62M49 84Q22 78 3 73M49 94Q24 89 5 84M48 104Q24 100 7 96M48 114Q27 111 10 108M47 124Q28 122 14 120M47 134Q31 133 19 132"/>
+          <path d="M52 18Q68 8 76 2M52 25Q73 15 83 7M52 33Q73 22 88 14M52 41Q77 31 92 22M52 49Q76 40 94 32M52 57Q79 49 96 41M52 66Q80 58 98 51M53 75Q79 68 98 62M53 84Q80 78 99 73M53 94Q78 89 97 84M54 104Q78 100 95 96M54 114Q75 111 92 108M55 124Q74 122 88 120M55 134Q71 133 83 132"/>
+        </g>
       </defs>
-      <g fill="none" stroke="#c9c4b8" stroke-width="1.2" opacity=".78">
-        <path d="M17 700Q42 478 93 105M54 700Q70 472 159 201M95 700Q111 520 214 314M12 700Q-2 488 38 253M140 700Q156 533 242 412"/>
-        <path d="M93 105Q56 120 48 169M93 105Q119 131 120 177M159 201Q118 211 108 262M159 201Q193 226 192 273M214 314Q178 322 164 365M214 314Q246 334 245 376M38 253Q5 265 3 304M38 253Q67 271 68 311M242 412Q211 421 202 459M242 412Q259 430 258 463"/>
+      <g fill="none" stroke="#c8c2b6" stroke-width="1" stroke-linecap="round" opacity=".75">
+        <path d="M8 700C31 500 65 337 103 193M50 700C69 527 118 402 165 302M92 700C120 550 173 474 214 420M0 700C-4 535 16 413 40 281M136 700C150 566 203 507 235 475"/>
+        <path d="M102 193Q70 177 65 150M104 193Q133 179 141 153M165 302Q132 291 125 266M165 302Q194 282 201 254M214 420Q185 403 179 381M214 420Q241 403 248 382M40 281Q13 264 10 244M40 281Q65 265 70 244M235 475Q211 457 208 439M235 475Q255 461 259 442"/>
       </g>
-      <g fill="url(#grass)" stroke="#d1ccbf" stroke-width=".55" filter="url(#soft)">
-        <path d="M92 104C54 97 34 66 52 35c15-25 40-20 46-1 13-22 39-14 36 8 20-3 25 21 11 37-13 16-31 26-53 25z"/>
-        <path d="M158 200c-42-8-57-36-40-62 13-20 35-16 42 1 14-20 36-12 34 8 18-1 24 17 12 33-11 15-29 24-48 25z"/>
-        <path d="M213 313c-37-5-49-29-35-51 11-17 30-13 36 1 12-16 31-9 29 8 16 0 20 15 10 28-9 12-25 20-40 14z"/>
-        <path d="M38 252c-33-5-44-26-32-46 10-15 27-12 32 1 11-15 28-8 26 7 14 0 18 13 9 25-8 11-22 18-35 13z"/>
-        <path d="M241 411c-31-4-42-24-31-43 9-14 25-11 30 1 10-13 25-7 24 7 13 0 16 12 8 22-8 10-20 16-31 13z"/>
+      <g opacity=".86">
+        <use href="#plume" transform="translate(58 20) rotate(-8 50 75) scale(.9 1.05)"/>
+        <use href="#plume" transform="translate(120 128) rotate(10 50 75) scale(.8 .9)"/>
+        <use href="#plume" transform="translate(171 260) rotate(15 50 75) scale(.66 .74)"/>
+        <use href="#plume" transform="translate(-9 208) rotate(-16 50 75) scale(.64 .76)"/>
+        <use href="#plume" transform="translate(193 368) rotate(13 50 75) scale(.58 .66)"/>
       </g>
-      <g stroke="#bfb9ac" stroke-width=".65" opacity=".72">
-        <path d="M57 54Q77 72 94 102M67 43Q83 65 94 101M81 37Q89 67 94 101M115 57Q105 77 95 102M129 75Q108 86 95 102"/>
-        <path d="M126 155Q145 173 159 199M137 148Q151 169 159 199M154 145Q157 174 159 199M181 158Q170 180 159 199M194 178Q177 188 159 199"/>
-        <path d="M184 338Q199 354 213 313M195 330Q206 347 213 313M217 330Q215 350 213 313M238 343Q224 355 213 313"/>
-        <path d="M9 275Q24 289 38 252M17 268Q30 284 38 252M42 270Q39 288 38 252M58 286Q46 293 38 252"/>
+      <g fill="url(#grass)" opacity=".22">
+        <ellipse cx="109" cy="94" rx="11" ry="66" transform="rotate(-12 109 94)"/>
+        <ellipse cx="169" cy="198" rx="10" ry="54" transform="rotate(12 169 198)"/>
+        <ellipse cx="211" cy="327" rx="8" ry="42" transform="rotate(14 211 327)"/>
       </g>
     </svg>
     <div class="invite-copy">
