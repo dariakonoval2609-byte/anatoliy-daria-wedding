@@ -170,42 +170,6 @@ section{position:relative}
   font-size:11px;color:#8b624c;margin-top:12px;min-height:18px
 }
 /* =====================================
-   МУЗИКА
-===================================== */
-.music-control{
-  position:fixed;right:18px;bottom:20px;z-index:1001;
-  display:flex;align-items:center;gap:8px;
-  padding:11px 16px;border:1px solid var(--gold);
-  border-radius:30px;background:rgba(32,58,89,.94);
-  color:white;font-size:11px;letter-spacing:1px;cursor:pointer;
-  box-shadow:0 5px 20px rgba(31,49,68,.2)
-}
-.music-control[hidden]{display:none}
-.butterfly-layer{
-  position:fixed;inset:0;z-index:900;overflow:hidden;
-  pointer-events:none;visibility:hidden
-}
-body.invitation-open .butterfly-layer{visibility:visible}
-.butterfly-flight{
-  position:absolute;bottom:-12vh;width:25px;height:20px;
-  color:rgba(74,98,128,.68);opacity:0;
-  animation:butterfly-drift var(--flight,24s) linear var(--delay,0s) infinite
-}
-.butterfly-flight svg{width:100%;height:100%;overflow:visible}
-.butterfly-flight path{fill:currentColor;stroke:rgba(248,243,233,.8);stroke-width:.8}
-.butterfly-flight .wings{transform-box:fill-box;transform-origin:center;animation:butterfly-flap .65s ease-in-out infinite alternate}
-@keyframes butterfly-drift{
-  0%{opacity:0;transform:translate3d(0,12vh,0) rotate(-12deg)}
-  9%{opacity:.66}
-  30%{transform:translate3d(var(--drift1,28px),-28vh,0) rotate(8deg)}
-  58%{transform:translate3d(var(--drift2,-18px),-60vh,0) rotate(-7deg)}
-  88%{opacity:.55}
-  100%{opacity:0;transform:translate3d(var(--drift3,34px),-112vh,0) rotate(13deg)}
-}
-@keyframes butterfly-flap{to{transform:scaleX(.58)}}
-@media(prefers-reduced-motion:reduce){.butterfly-layer{display:none}}
-.music-control .music-symbol{font-size:19px;color:var(--gold-light)}
-/* =====================================
    МЕНЮ
 ===================================== */
 nav{
@@ -521,6 +485,48 @@ footer{
     transition-duration:.01ms!important
   }
 }
+/* Стримлена палітра, паперовий конверт і природні метелики */
+:root{--blue:#7187a2;--blue-dark:#405779;--blue-deep:#334967;--blue-light:#d5deE7;--ivory:#faf8f2;--cream:#eee9dd;--gold:#b39a6a;--gold-light:#e8d9b9;--ink:#384658}
+body{background:var(--ivory);line-height:1.7}
+.cover{background:radial-gradient(ellipse at 50% 36%,#fffdf8 0%,#f7f4ec 62%,#e9e4d8 100%)}
+.cover-content{width:min(440px,100%);padding:32px 0}
+.cover-label{font-size:9px;letter-spacing:4px;color:#6e7f93;margin-bottom:26px}
+.cover-flourish{font-size:68px;opacity:.18;color:var(--gold)}
+.flourish-top{top:0;left:7%}.flourish-bottom{bottom:46px;right:7%}
+.envelope-scene{max-width:410px;margin-bottom:28px}
+.envelope{filter:drop-shadow(0 18px 23px rgba(43,59,79,.18))}
+.env-paper{background:linear-gradient(145deg,#8398b1,#6d839f 62%,#607791);border:1px solid rgba(235,225,205,.9)}
+.env-paper::before{opacity:.28;background-size:210px 210px}
+.env-paper::after{inset:11px;border-color:rgba(245,239,224,.72)}
+.env-left{background:linear-gradient(120deg,rgba(224,231,237,.66),rgba(67,87,113,.12))}
+.env-right{background:linear-gradient(240deg,rgba(224,231,237,.66),rgba(67,87,113,.12))}
+.env-bottom{background:linear-gradient(30deg,#637b98,#91a5bb)}
+.env-flap{background:linear-gradient(155deg,#a9bacb,#879bb2 60%,#748aa5)}
+.env-flap::after{left:8%;right:8%;border-color:rgba(250,246,234,.7)}
+.seal{width:96px;height:96px;border-radius:50%;background:radial-gradient(circle at 32% 25%,#fff2d3,#e5cc94 42%,#c4a365 76%,#ebd6a7 100%);box-shadow:0 5px 12px rgba(30,45,60,.22),inset 0 0 0 3px rgba(255,248,223,.38)}
+.seal-inner{width:76px;height:76px}
+.cover-names{font-size:32px;letter-spacing:.3px}
+.cover-subtitle{font-size:9px;letter-spacing:1.6px;color:#817a6e}
+.open-btn{margin-top:24px;min-height:54px;background:var(--blue-deep);border-color:#d6c6a3;font-size:9px;letter-spacing:2.4px}
+.cover-date{margin-top:17px;font-size:22px}
+.nav-inner{gap:30px}
+.section{padding:82px 0}
+.title{font-size:clamp(46px,7vw,72px);margin-bottom:34px}
+.intro-text{font-size:clamp(25px,3.7vw,34px)}
+.timeline-item:nth-child(n+5){display:none}
+.butterfly-layer{position:fixed;inset:0;z-index:900;overflow:hidden;pointer-events:none;visibility:hidden}
+body.invitation-open .butterfly-layer{visibility:visible}
+.butterfly-flight{position:absolute;bottom:-12vh;width:38px;height:31px;color:#fffaf0;opacity:0;filter:drop-shadow(0 1px 2px rgba(43,59,79,.22));animation:butterfly-drift var(--flight,28s) linear var(--delay,0s) infinite}
+.butterfly-flight svg{width:100%;height:100%;overflow:visible}
+.butterfly-flight .wing-fill{fill:rgba(255,250,240,.92);stroke:rgba(255,255,255,.75);stroke-width:.65}
+.butterfly-flight .wing-vein{fill:none;stroke:rgba(183,169,143,.5);stroke-width:.55;stroke-linecap:round}
+.butterfly-flight .body{fill:#e9e0ce;stroke:rgba(255,255,255,.75);stroke-width:.7}
+.butterfly-flight .antennae{fill:none;stroke:#eee5d5;stroke-width:.8;stroke-linecap:round}
+.butterfly-flight .wings{transform-box:fill-box;transform-origin:center;animation:butterfly-flap .8s ease-in-out infinite alternate}
+@keyframes butterfly-drift{0%{opacity:0;transform:translate3d(0,12vh,0) rotate(-9deg)}9%{opacity:.7}30%{transform:translate3d(var(--drift1,24px),-28vh,0) rotate(7deg)}58%{transform:translate3d(var(--drift2,-18px),-60vh,0) rotate(-6deg)}88%{opacity:.58}100%{opacity:0;transform:translate3d(var(--drift3,30px),-112vh,0) rotate(9deg)}}
+@keyframes butterfly-flap{to{transform:scaleX(.68)}}
+@media(max-width:700px){.cover-content{max-width:380px}.cover-flourish{font-size:56px}.env-paper::before{background-size:180px}.section{padding:66px 0}.title{margin-bottom:27px}.timeline-item:nth-child(n+4){display:none}}
+@media(prefers-reduced-motion:reduce){.butterfly-layer{display:none}}
 </style>
 </head>
 <body class="locked">
@@ -559,24 +565,13 @@ footer{
     <div class="audio-message" id="audioMessage" aria-live="polite"></div>
   </div>
 </div>
-<!-- МУЗИКА: ФАЙЛ МАЄ БУТИ В КОРЕНІ РЕПОЗИТОРІЮ -->
-<audio id="weddingMusic" preload="auto" playsinline>
-  <source src="./Вівальді-весна.mp3.mp3" type="audio/mpeg">
-</audio>
-<button class="music-control" id="musicToggle" type="button" hidden>
-  <span class="music-symbol" id="musicIcon">♫</span>
-  <span id="musicLabel">Музика</span>
-</button>
-<div class="butterfly-layer" id="butterflies" aria-hidden="true"></div>
 <!-- МЕНЮ -->
 <nav>
   <div class="nav-inner">
     <a href="#home">Головна</a>
-    <a href="#story">Наша історія</a>
     <a href="#day">Наш день</a>
     <a href="#dress">Дрес-код</a>
     <a href="#location">Локація</a>
-    <a href="#gallery">Фото</a>
     <a href="#rsvp">RSVP</a>
   </div>
 </nav>
@@ -608,34 +603,6 @@ footer{
 Ми будемо щасливі
 розділити цей день з вами.</div>
     <div class="intro-date">17 липня 2027 року</div>
-  </div>
-</section>
-<!-- ІСТОРІЯ -->
-<section class="section story" id="story">
-  <div class="container">
-    <div class="label">Наша історія</div>
-    <h2 class="title">З любові<br>починається все</h2>
-    <div class="story-grid">
-      <img class="story-photo" src="IMG_5505.jpeg" alt="Дар’я та Анатолій" loading="lazy">
-      <div class="story-content">
-        <h3>Колись ми були<br>просто двома людьми.</h3>
-        <p>У кожного з нас був свій шлях, свої мрії, свої маленькі історії та своє уявлення про майбутнє.</p>
-        <p>А потім життя подарувало нам зустріч, після якої все поступово стало на свої місця.</p>
-        <p>Ми вчилися бути поруч, підтримувати одне одного, радіти простим речам, мріяти разом і створювати своє маленьке «ми».</p>
-        <p>З кожним днем ми все більше розуміли: саме з цією людиною хочеться зустрічати ранки, подорожувати, сміятися, долати труднощі та старіти.</p>
-        <p>І тепер ми хочемо зробити ще один важливий крок — назавжди стати сім’єю.</p>
-        <div class="story-signature">З любов’ю,<br>Дар’я &amp; Анатолій</div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- ФОТО -->
-<section class="photo-section">
-  <img src="IMG_5506.jpeg" alt="Наші моменти" loading="lazy">
-  <div class="photo-content">
-    <div class="photo-number">Наші моменти</div>
-    <div class="photo-title">Разом</div>
-    <div class="photo-subtitle">і це тільки початок нашої історії</div>
   </div>
 </section>
 <!-- ПРОГРАМА ДНЯ -->
@@ -671,32 +638,6 @@ footer{
     </div>
   </div>
 </section>
-<!-- КАРТКИ -->
-<section class="section">
-  <div class="container">
-    <div class="label">Цей день</div>
-    <h2 class="title">Буде багато<br>любові</h2>
-    <div class="memory-grid">
-      <div class="memory"><img src="IMG_5508.jpeg" alt="Весільний день" loading="lazy"><div class="memory-text"><small>13:00</small><h3>Зустрічаємо гостей</h3></div></div>
-      <div class="memory"><img src="IMG_5509.jpeg" alt="Весільний день" loading="lazy"><div class="memory-text"><small>14:00</small><h3>Наші перші спільні фото</h3></div></div>
-      <div class="memory"><img src="IMG_5519.jpeg" alt="Весільний день" loading="lazy"><div class="memory-text"><small>15:00</small><h3>Святковий банкет</h3></div></div>
-      <div class="memory"><img src="IMG_5520.jpeg" alt="Весільний день" loading="lazy"><div class="memory-text"><small>18:00</small><h3>Торт і солодкий момент</h3></div></div>
-    </div>
-  </div>
-</section>
-<!-- ТАЙМЕР -->
-<section class="countdown-section">
-  <div class="container">
-    <div class="label">До нашого весілля</div>
-    <h2 class="title">Залишилось</h2>
-    <div class="countdown">
-      <div><div class="count-number" id="days">0</div><span class="count-label">днів</span></div>
-      <div><div class="count-number" id="hours">0</div><span class="count-label">годин</span></div>
-      <div><div class="count-number" id="minutes">0</div><span class="count-label">хвилин</span></div>
-      <div><div class="count-number" id="seconds">0</div><span class="count-label">секунд</span></div>
-    </div>
-  </div>
-</section>
 <!-- ДРЕС-КОД -->
 <section class="section dress" id="dress">
   <div class="container">
@@ -714,15 +655,6 @@ footer{
     <div class="dress-note">Відтінки можуть бути різними —<br>головне, щоб вам було красиво та комфортно 🤍</div>
   </div>
 </section>
-<!-- ФОТО -->
-<section class="photo-section">
-  <img src="IMG_5535.jpeg" alt="Дар’я та Анатолій" loading="lazy">
-  <div class="photo-content">
-    <div class="photo-number">Найважливіше</div>
-    <div class="photo-title">Бути поруч</div>
-    <div class="photo-subtitle">у цей день і в усі наступні</div>
-  </div>
-</section>
 <!-- ЛОКАЦІЯ -->
 <section class="section location" id="location">
   <div class="container">
@@ -732,25 +664,6 @@ footer{
     <div class="location-address">Київ, Столичне шосе, 70</div>
     <div class="location-time">Зустрічаємо гостей о 13:00</div>
     <a class="location-button" href="https://www.google.com/maps/search/?api=1&query=Fabius%2C%20Столичне%20шосе%2070%2C%20Київ" target="_blank" rel="noopener noreferrer">Відкрити маршрут</a>
-  </div>
-</section>
-<!-- ГАЛЕРЕЯ -->
-<section class="section gallery" id="gallery">
-  <div class="container">
-    <div class="label">Наші фотографії</div>
-    <h2 class="title">Спогади</h2>
-    <div class="gallery-grid">
-      <div class="gallery-item"><img src="IMG_5467.jpeg" alt="Дар’я та Анатолій" loading="lazy"></div>
-      <div class="gallery-item"><img src="IMG_5473.jpeg" alt="Дар’я та Анатолій" loading="lazy"></div>
-      <div class="gallery-item"><img src="IMG_5505.jpeg" alt="Дар’я та Анатолій" loading="lazy"></div>
-      <div class="gallery-item"><img src="IMG_5506.jpeg" alt="Дар’я та Анатолій" loading="lazy"></div>
-      <div class="gallery-item"><img src="IMG_5508.jpeg" alt="Дар’я та Анатолій" loading="lazy"></div>
-      <div class="gallery-item"><img src="IMG_5509.jpeg" alt="Дар’я та Анатолій" loading="lazy"></div>
-      <div class="gallery-item"><img src="IMG_5519.jpeg" alt="Дар’я та Анатолій" loading="lazy"></div>
-      <div class="gallery-item"><img src="IMG_5520.jpeg" alt="Дар’я та Анатолій" loading="lazy"></div>
-      <div class="gallery-item"><img src="IMG_5535.jpeg" alt="Дар’я та Анатолій" loading="lazy"></div>
-      <div class="gallery-item"><img src="IMG_5536.jpeg" alt="Дар’я та Анатолій" loading="lazy"></div>
-    </div>
   </div>
 </section>
 <!-- RSVP -->
@@ -771,182 +684,31 @@ footer{
 const cover = document.getElementById("cover");
 const envelope = document.getElementById("envelope");
 const openButton = document.getElementById("openInvitation");
-const audio = document.getElementById("weddingMusic");
-const audioMessage = document.getElementById("audioMessage");
-const musicToggle = document.getElementById("musicToggle");
-const musicIcon = document.getElementById("musicIcon");
-const musicLabel = document.getElementById("musicLabel");
-let invitationOpened = false;
-let audioStarted = false;
-let seeking = false;
-let userPaused = false;
-audio.volume = 0.65;
-audio.preload = "auto";
-function showAudioStatus(message){
-  audioMessage.textContent = message;
-}
-function updateMusicControl(){
-  if(audio.paused){
-    musicIcon.textContent = "♪";
-    musicLabel.textContent = "Увімкнути музику";
-  }else{
-    musicIcon.textContent = "♫";
-    musicLabel.textContent = "Музика грає";
-  }
-}
-function seekToThirty(){
-  if(audio.readyState < 1) return false;
-  if(Number.isFinite(audio.duration) && audio.duration <= 30){
-    showAudioStatus("Аудіофайл коротший за 30 секунд.");
-    return false;
-  }
-  try{
-    audio.currentTime = 30;
-    seeking = true;
-    return true;
-  }catch(error){
-    showAudioStatus("Не вдалося перемотати музику.");
-    return false;
-  }
-}
-audio.addEventListener("error",function(){
-  showAudioStatus("Не вдалося завантажити музику. Перевір файл у GitHub.");
-  updateMusicControl();
-});
-audio.addEventListener("loadedmetadata",function(){
-  if(seeking) return;
-  if(invitationOpened && !audioStarted && !userPaused){
-    startMusicAfterMetadata();
-  }
-});
-audio.addEventListener("seeked",function(){
-  seeking = false;
-  if(invitationOpened && !userPaused && audio.paused){
-    audio.play().then(function(){
-      audioStarted = true;
-      showAudioStatus("");
-      updateMusicControl();
-    }).catch(function(){
-      showAudioStatus("Натисни кнопку «Увімкнути музику».");
-      updateMusicControl();
-    });
-  }
-});
-audio.addEventListener("playing",function(){
-  audioStarted = true;
-  showAudioStatus("");
-  updateMusicControl();
-});
-audio.addEventListener("pause",updateMusicControl);
-function startMusicAfterMetadata(){
-  if(userPaused || audioStarted) return;
-  if(audio.readyState < 1){
-    audio.addEventListener("loadedmetadata",startMusicAfterMetadata,{once:true});
-    return;
-  }
-  if(!seekToThirty()) return;
-  // Відтворення почнеться після події seeked.
-}
 openButton.addEventListener("click",function(){
-  if(invitationOpened) return;
-  invitationOpened = true;
-  openButton.disabled = true;
   envelope.classList.add("opening");
-  musicToggle.hidden = false;
-  // Запускаємо запит на відтворення саме в момент натискання.
-  // На iPhone відтворення без жесту користувача може блокуватися.
-  if(audio.readyState >= 1){
-    seekToThirty();
-  }else{
-    audio.load();
-    startMusicAfterMetadata();
-  }
+  openButton.disabled = true;
   setTimeout(function(){
     cover.classList.add("gone");
     document.body.classList.remove("locked");
     document.body.classList.add("invitation-open");
     startButterflies();
-  },1250);
-  // Якщо автоматичний запуск заблоковано, кнопку можна натиснути окремо.
-  setTimeout(function(){
-    if(audio.paused && !audio.error){
-      showAudioStatus("Якщо музика не почалася, натисни кнопку ♫ унизу.");
-    }
-    openButton.disabled = false;
-  },1800);
+  },950);
 });
-musicToggle.addEventListener("click",function(){
-  if(!audio.paused){
-    userPaused = true;
-    audio.pause();
-    updateMusicControl();
-    return;
-  }
-  userPaused = false;
-  if(audio.readyState < 1){
-    showAudioStatus("Завантажуємо музику…");
-    audio.load();
-    audio.addEventListener("loadedmetadata",function(){
-      if(!userPaused){
-        seekToThirty();
-      }
-    },{once:true});
-    return;
-  }
-  if(!audioStarted){
-    seekToThirty();
-    return;
-  }
-  audio.play().then(updateMusicControl).catch(function(){
-    showAudioStatus("Не вдалося запустити музику. Перевір файл.");
-  });
-});
-audio.addEventListener("ended",function(){
-  audioStarted = false;
-  userPaused = false;
-  if(invitationOpened){
-    seekToThirty();
-  }
-});
-// Ненав'язливі метелики з'являються після відкриття конверта.
 function startButterflies(){
   const layer = document.getElementById("butterflies");
   if(!layer || layer.childElementCount) return;
-  const positions = [14, 43, 76];
-  positions.forEach(function(left, index){
+  [16,48,80].forEach(function(left,index){
     const butterfly = document.createElement("span");
     butterfly.className = "butterfly-flight";
     butterfly.style.left = left + "%";
-    butterfly.style.setProperty("--flight", (23 + index * 4) + "s");
-    butterfly.style.setProperty("--delay", (-index * 7) + "s");
-    butterfly.style.setProperty("--drift1", (25 - index * 18) + "px");
-    butterfly.style.setProperty("--drift2", (-20 + index * 15) + "px");
-    butterfly.style.setProperty("--drift3", (35 - index * 20) + "px");
-    butterfly.innerHTML = '<svg viewBox="0 0 40 28"><g class="wings"><path d="M19 13C8-3 0 2 3 10c2 5 8 6 14 5-9 2-14 8-9 11 4 2 9-3 12-9 3 6 8 11 12 9 5-3 0-9-9-11 6 1 12 0 14-5 3-8-5-13-16 3z"/></g><path d="M20 12v9" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>';
+    butterfly.style.setProperty("--flight",(27 + index * 3) + "s");
+    butterfly.style.setProperty("--delay",(-index * 6) + "s");
+    butterfly.style.setProperty("--drift1",(24 - index * 16) + "px");
+    butterfly.style.setProperty("--drift2",(-17 + index * 12) + "px");
+    butterfly.style.setProperty("--drift3",(30 - index * 18) + "px");
+    butterfly.innerHTML = '<svg viewBox="0 0 60 48" role="presentation"><g class="wings"><path class="wing-fill" d="M29 23C23 18 15 3 8 4 1 5 3 15 12 21 6 19 2 22 4 28 6 34 18 34 29 27ZM31 23C37 18 45 3 52 4 59 5 57 15 48 21 54 19 58 22 56 28 54 34 42 34 31 27ZM29 26C22 28 12 30 10 37 8 44 20 43 29 30ZM31 26C38 28 48 30 50 37 52 44 40 43 31 30Z"/><path class="wing-vein" d="M29 24C22 18 14 8 7 6M28 25C20 23 12 22 5 24M31 24C38 18 46 8 53 6M32 25C40 23 48 22 55 24M28 27C20 31 15 36 12 40M32 27C40 31 45 36 48 40"/></g><path class="body" d="M30 19C28 25 28 31 30 36 32 31 32 25 30 19Z"/><path class="antennae" d="M29 20 23 13M31 20 37 13"/></svg>';
     layer.appendChild(butterfly);
   });
-}
-// Таймер до весілля
-const weddingDate = new Date("2027-07-17T13:00:00+03:00").getTime();
-function updateCountdown(){
-  const distance = weddingDate - Date.now();
-  if(distance <= 0){
-    ["days","hours","minutes","seconds"].forEach(function(id){
-      document.getElementById(id).textContent = "0";
-    });
-    return;
-  }
-  document.getElementById("days").textContent =
-    Math.floor(distance/(1000*60*60*24));
-  document.getElementById("hours").textContent =
-    String(Math.floor((distance%(1000*60*60*24))/(1000*60*60))).padStart(2,"0");
-  document.getElementById("minutes").textContent =
-    String(Math.floor((distance%(1000*60*60))/(1000*60))).padStart(2,"0");
-  document.getElementById("seconds").textContent =
-    String(Math.floor((distance%(1000*60))/1000)).padStart(2,"0");
-}
-updateCountdown();
-setInterval(updateCountdown,1000);
-</script>
+}</script>
 </body>
 </html>
