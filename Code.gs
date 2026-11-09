@@ -13,6 +13,7 @@ const RESPONSE_HEADERS = [
 function setupWeddingRsvp() {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   if (!ss) throw new Error("Спочатку відкрийте Apps Script з потрібної Google-таблиці.");
+  PropertiesService.getScriptProperties().setProperty("WEDDING_SPREADSHEET_ID", ss.getId());
   const guestSheet = ss.getSheets()[0];
   const headerMap = getHeaderMap_(guestSheet);
   ["Прізвище", "Ім'я", "По-батькові"].forEach(name => {
@@ -56,7 +57,7 @@ function doPost(e) {
     const nonce = String(payload.nonce || "").replace(/[^A-Za-z0-9_-]/g, "").slice(0, 100);
     if (!code) return htmlResponse_(false, "Відсутній код запрошення.", nonce);
 
-    const ss = SpreadsheetApp.getActiveSpreadsheet();
+    const ss = getWeddingSpreadsheet_();
     const guestSheet = ss.getSheets()[0];
     const map = getHeaderMap_(guestSheet);
     const required = ["Прізвище", "Ім'я", "По-батькові", INVITE_CODE_HEADER];
@@ -115,6 +116,12 @@ function getHeaderMap_(sheet) {
   const map = {};
   headers.forEach((value, index) => { map[String(value || "").trim()] = index; });
   return map;
+}
+
+function getWeddingSpreadsheet_() {
+  const id = PropertiesService.getScriptProperties().getProperty("WEDDING_SPREADSHEET_ID");
+  if (!id) throw new Error("Спершу запустіть setupWeddingRsvp() з Google-таблиці.");
+  return SpreadsheetApp.openById(id);
 }
 
 function normalize_(value) {
