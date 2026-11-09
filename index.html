@@ -1,507 +1,126 @@
 <!doctype html>
 <html lang="uk">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#eeede7">
-<title>Дар’я &amp; Анатолій — 17 липня 2027</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-:root{
-  --violet:#50499c;--violet-deep:#383276;--violet-soft:#837db9;
-  --ivory:#eeede7;--paper:#fbfaf6;--ink:#45445a;--muted:#858393;
-  --line:#d9d6e4;--gold:#b8a77d;--sage:#b9c1b1;--blush:#d9c2c4;
-  --shadow:0 18px 60px rgba(45,40,89,.12)
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:30px}
-body{margin:0;background:var(--ivory);color:var(--ink);font-family:Montserrat,sans-serif;font-weight:300;line-height:1.8}
-body.locked{overflow:hidden}
-img{display:block;max-width:100%}
-button,a{font:inherit}
-a{color:inherit;text-decoration:none}
-button{cursor:pointer}
-.page{width:min(100%,760px);margin:0 auto;overflow:hidden;background:var(--paper);box-shadow:var(--shadow)}
-/* Повноекранний конверт */
-.envelope-screen{
-  position:fixed;inset:0;z-index:1000;display:grid;place-items:center;
-  padding:20px;background:radial-gradient(ellipse at 50% 40%,#f8f7f2,#e7e5df 88%);
-  transition:opacity 1s ease,visibility 1s ease
-}
-.envelope-screen.is-opening{opacity:0;visibility:hidden;pointer-events:none}
-.envelope{
-  position:relative;width:min(100%,570px);height:min(88svh,820px);min-height:min(600px,100svh);
-  overflow:hidden;isolation:isolate;background:#eeede7;
-  border:1px solid rgba(80,73,156,.16);box-shadow:0 24px 80px rgba(54,48,104,.2)
-}
-.envelope:before,.envelope:after{content:"";position:absolute;inset:13px;pointer-events:none}
-.envelope:before{z-index:7;border:1px solid rgba(255,255,255,.7)}
-.envelope:after{z-index:0;opacity:.18;background-image:radial-gradient(#716d83 .5px,transparent .7px);background-size:6px 6px}
-.env-back{position:absolute;inset:0;z-index:1;background:linear-gradient(150deg,#f1f0eb,#e8e7e1)}
-.env-bottom{
-  position:absolute;inset:0;z-index:2;
-  clip-path:polygon(0 100%,0 49%,50% 77%,100% 49%,100% 100%);
-  background:linear-gradient(12deg,#e7e6e0,#f6f5f0 55%,#e6e5df);
-  transition:transform 1.3s cubic-bezier(.2,.76,.15,1)
-}
-.env-left{
-  position:absolute;inset:0;z-index:3;clip-path:polygon(0 0,50% 50%,0 100%);
-  background:linear-gradient(105deg,#e9e8e2,#f8f7f2 78%,#e7e6df);
-  transition:transform 1.3s cubic-bezier(.2,.76,.15,1)
-}
-.env-right{
-  position:absolute;inset:0;z-index:3;clip-path:polygon(100% 0,50% 50%,100% 100%);
-  background:linear-gradient(255deg,#e8e7e0,#f8f7f2 78%,#e5e4de);
-  transition:transform 1.3s cubic-bezier(.2,.76,.15,1)
-}
-.env-flap{
-  position:absolute;inset:0;z-index:5;transform-origin:50% 0;
-  clip-path:polygon(0 0,100% 0,50% 54%);
-  background:linear-gradient(155deg,#e7e6df,#f7f6f0 56%,#dddae8);
-  transition:transform 1.35s cubic-bezier(.2,.72,.16,1),opacity .7s ease;
-  filter:drop-shadow(0 4px 7px rgba(54,48,104,.1))
-}
-.env-flap:after{content:"";position:absolute;inset:18px 8% auto;height:1px;background:rgba(80,73,156,.14)}
-.env-emboss{
-  position:absolute;z-index:4;left:50%;top:1%;width:min(92%,520px);height:32%;
-  transform:translateX(-50%);opacity:.45;pointer-events:none;
-  transition:opacity .6s ease,transform 1s ease
-}
-.envelope-paper{
-  position:absolute;z-index:4;left:5%;right:5%;top:7%;height:82%;
-  display:grid;place-items:center;background:var(--paper);border:1px solid #dedbe7;
-  box-shadow:0 4px 18px rgba(55,49,100,.08);transform:translateY(105%);
-  transition:transform 1.5s cubic-bezier(.16,.75,.18,1)
-}
-.envelope-paper:before{content:"";position:absolute;inset:11px;border:1px solid rgba(80,73,156,.18)}
-.envelope-paper span{position:relative;font:clamp(20px,5vw,30px) "Cormorant Garamond",serif;color:var(--violet);letter-spacing:.2em}
-.seal{
-  position:absolute;z-index:8;left:50%;top:50%;width:104px;height:104px;
-  transform:translate(-50%,-50%);display:grid;place-items:center;border:0;border-radius:50%;
-  color:var(--violet-deep);background:radial-gradient(circle at 35% 27%,#fffefa,#e4e1ef 62%,#d5d1e5);
-  box-shadow:0 7px 18px rgba(52,47,101,.18),inset 0 0 0 1px rgba(80,73,156,.43),inset 0 0 0 6px rgba(255,255,255,.5);
-  transition:opacity .45s ease,transform .55s ease
-}
-.seal:before{content:"";position:absolute;inset:11px;border:1px solid rgba(80,73,156,.48);border-radius:50%}
-.seal:after{content:"";position:absolute;inset:-5px;border:1px solid rgba(80,73,156,.12);border-radius:50%}
-.seal span{position:relative;font:30px "Cormorant Garamond",serif;letter-spacing:.03em}
-.cover-caption{position:absolute;z-index:8;left:16px;right:16px;bottom:7%;text-align:center;color:#696781;transition:opacity .35s ease}
-.cover-names{font:400 clamp(24px,6vw,33px) "Cormorant Garamond",serif;letter-spacing:.08em}
-.cover-prompt{margin-top:10px;font-size:9px;letter-spacing:.22em;text-transform:uppercase}
-.envelope-screen.is-opening .env-flap{transform:rotateX(180deg);opacity:.2}
-.envelope-screen.is-opening .env-left{transform:translateX(-105%)}
-.envelope-screen.is-opening .env-right{transform:translateX(105%)}
-.envelope-screen.is-opening .env-bottom{transform:translateY(110%)}
-.envelope-screen.is-opening .env-emboss{opacity:0;transform:translate(-50%,-15%)}
-.envelope-screen.is-opening .envelope-paper{transform:translateY(-7%)}
-.envelope-screen.is-opening .seal,.envelope-screen.is-opening .cover-caption{opacity:0}
-.open-button-label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-/* Лист-запрошення */
-.letter{position:relative;background:var(--paper)}
-.section{position:relative;padding:82px clamp(22px,7vw,62px)}
-.section-kicker{margin:0 0 12px;text-align:center;color:var(--violet-soft);font-size:9px;letter-spacing:.3em;text-transform:uppercase}
-.section-title{margin:0;text-align:center;color:var(--violet-deep);font:400 clamp(40px,8vw,64px)/1.05 "Cormorant Garamond",serif}
-.ornament{display:flex;align-items:center;justify-content:center;gap:14px;margin:20px 0;color:var(--gold);font-size:18px}
-.ornament:before,.ornament:after{content:"";width:48px;height:1px;background:currentColor;opacity:.55}
-.hero{padding:52px clamp(20px,6vw,56px) 74px;text-align:center;background:linear-gradient(180deg,#f6f4ee,#fbfaf6)}
-.photo-frame{position:relative;width:min(100%,490px);margin:0 auto 34px;padding:10px;background:#fff;border:1px solid #d5d1e3;box-shadow:0 12px 36px rgba(56,50,118,.11)}
-.photo-frame:before{content:"";position:absolute;inset:5px;border:1px solid rgba(80,73,156,.25);pointer-events:none;z-index:1}
-.photo-frame img{width:100%;height:clamp(300px,72vw,520px);object-fit:cover;object-position:center 42%}
-.photo-caption{margin:0 0 10px;color:var(--violet);font-size:9px;letter-spacing:.32em;text-transform:uppercase}
-.hero h1{margin:0;color:var(--violet-deep);font:300 clamp(53px,12vw,92px)/.94 "Cormorant Garamond",serif;letter-spacing:.025em}
-.hero .amp{display:block;margin:5px;color:var(--violet-soft);font:italic 39px "Great Vibes",cursive}
-.hero-date{margin:23px 0 5px;color:var(--violet);font:400 22px "Cormorant Garamond",serif;letter-spacing:.2em}
-.hero-subtitle{max-width:390px;margin:16px auto 0;color:#6e6c7a;font:italic 20px/1.45 "Cormorant Garamond",serif}
-.story{background:#f1f0eb}
-.story-copy{max-width:560px;margin:27px auto 0;text-align:center;color:#696877;font:400 21px/1.7 "Cormorant Garamond",serif}
-.story-copy p{margin:0 0 15px}
-.signature{margin-top:21px;color:var(--violet-soft);font:34px "Great Vibes",cursive}
-.schedule{background:var(--paper)}
-.timeline{max-width:540px;margin:34px auto 0}
-.event{display:grid;grid-template-columns:90px 1fr;gap:18px;position:relative;padding:19px 0;border-bottom:1px solid #e5e2eb}
-.event:first-child{border-top:1px solid #e5e2eb}
-.event-time{color:var(--violet);font:500 24px "Cormorant Garamond",serif;letter-spacing:.04em}
-.event h3{margin:0;color:var(--violet-deep);font:500 25px/1.15 "Cormorant Garamond",serif}
-.event p{margin:5px 0 0;color:var(--muted);font-size:11px;line-height:1.6}
-.dress{background:linear-gradient(150deg,#f0eff4,#fbfaf6 70%)}
-.dress-text{max-width:470px;margin:22px auto;text-align:center;color:#6e6b7c;font:italic 21px/1.5 "Cormorant Garamond",serif}
-.swatches{display:flex;justify-content:center;flex-wrap:wrap;gap:13px;margin:27px auto 14px}
-.swatch{
-  width:70px;height:70px;border:4px solid #fff;border-radius:50%;
-  box-shadow:0 0 0 1px rgba(78,71,142,.22),0 4px 12px rgba(53,48,100,.08)
-}
-.swatch-labels{max-width:510px;display:flex;justify-content:center;flex-wrap:wrap;gap:8px 17px;margin:0 auto;color:#777585;font-size:9px;letter-spacing:.08em}
-.tryon{
-  max-width:520px;margin:42px auto 0;padding:23px;
-  background:rgba(255,255,255,.75);border:1px solid #dfdcea
-}
-.tryon h3{margin:0;text-align:center;color:var(--violet-deep);font:400 30px "Cormorant Garamond",serif}
-.tryon-intro{margin:5px 0 18px;text-align:center;color:var(--muted);font-size:10px}
-.camera-frame{
-  position:relative;width:min(100%,330px);aspect-ratio:4/5;margin:0 auto;
-  overflow:hidden;background:linear-gradient(145deg,#f0eef2,#e5e2ea);border:1px solid #d5d1e1
-}
-#cameraVideo{display:none;width:100%;height:100%;object-fit:cover;transform:scaleX(-1)}
-.camera-frame.active #cameraVideo{display:block}
-.camera-frame.active .camera-placeholder{display:none}
-.camera-placeholder{position:absolute;inset:0;display:grid;place-items:center}
-.camera-placeholder svg{width:74%;height:84%;opacity:.8}
-.camera-frame:after{content:"";position:absolute;inset:12px;border:1px solid rgba(255,255,255,.8);pointer-events:none}
-.garment-overlay{
-  position:absolute;z-index:2;left:22%;top:44%;width:56%;height:52%;
-  display:none;opacity:.62;mix-blend-mode:multiply;pointer-events:none
-}
-.camera-frame.active .garment-overlay{display:block}
-.garment-overlay path{fill:var(--try-color,#50499c);stroke:rgba(255,255,255,.8);stroke-width:2}
-.camera-controls{display:flex;justify-content:center;flex-wrap:wrap;gap:9px;margin:17px auto 0}
-.camera-button,.stop-camera{
-  padding:10px 16px;border:1px solid var(--violet);background:var(--violet);color:white;
-  font-size:9px;letter-spacing:.12em;text-transform:uppercase
-}
-.stop-camera{background:transparent;color:var(--violet)}
-.tryon-status{min-height:18px;margin:11px 0 0;text-align:center;color:#817b90;font-size:10px}
-.countdown{color:#fff;background:linear-gradient(140deg,#50499c,#373175);text-align:center}
-.countdown .section-kicker{color:#dddaf1}
-.countdown .section-title{color:#fff}
-.count-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:500px;margin:32px auto 0}
-.count-box{padding:13px 4px;border-top:1px solid rgba(255,255,255,.35);border-bottom:1px solid rgba(255,255,255,.35)}
-.count-value{display:block;font:400 clamp(36px,8vw,58px)/1 "Cormorant Garamond",serif}
-.count-label{display:block;margin-top:8px;color:#e2e0f0;font-size:8px;letter-spacing:.18em;text-transform:uppercase}
-.location{background:#f2f1ec;text-align:center}
-.location-name{margin:21px 0 4px;color:var(--violet-deep);font:400 clamp(42px,8vw,60px) "Cormorant Garamond",serif}
-.location-address{color:#777586;font-size:12px}
-.location-time{margin:12px 0 22px;color:#6b6879;font:italic 20px "Cormorant Garamond",serif}
-.primary-link{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 20px;border:1px solid var(--violet);color:var(--violet);font-size:9px;letter-spacing:.14em;text-transform:uppercase;transition:.25s}
-.primary-link:hover{background:var(--violet);color:white}
-.rsvp{background:#fbfaf6;text-align:center}
-.rsvp-copy{max-width:450px;margin:20px auto;color:#6c6a79;font:italic 22px/1.5 "Cormorant Garamond",serif}
-.rsvp-form{max-width:420px;margin:25px auto 0;text-align:left}
-.rsvp-form label{display:block;margin:13px 0 5px;color:#686579;font-size:9px;letter-spacing:.12em;text-transform:uppercase}
-.rsvp-form input,.rsvp-form select{width:100%;padding:12px 13px;border:1px solid #dcd9e5;background:white;color:var(--ink);font:13px Montserrat,sans-serif}
-.rsvp-form button{width:100%;margin-top:17px;padding:14px;border:0;background:var(--violet);color:white;font-size:9px;letter-spacing:.15em;text-transform:uppercase}
-.rsvp-status{min-height:18px;margin:12px 0;text-align:center;color:var(--violet);font-size:11px}
-.thanks{padding:66px 20px;text-align:center;color:white;background:var(--violet-deep)}
-.thanks .thank-title{margin:0;color:white;font:400 clamp(42px,9vw,66px) "Cormorant Garamond",serif}
-.thanks p{max-width:450px;margin:12px auto 0;color:#e4e1f1;font:italic 19px/1.5 "Cormorant Garamond",serif}
-.thanks .monogram{display:grid;place-items:center;width:58px;height:58px;margin:0 auto 18px;border:1px solid rgba(255,255,255,.5);border-radius:50%;font:18px "Cormorant Garamond",serif}
-.footer{padding:17px;background:#302a6b;color:#d8d4ed;text-align:center;font-size:8px;letter-spacing:.08em}
-.music-credit{padding:13px 20px;background:#f5f4f0;color:#858292;text-align:center;font-size:8px}
-.music-credit a{text-decoration:underline;text-underline-offset:3px}
-.music-button{
-  position:fixed;right:17px;bottom:17px;z-index:800;
-  display:none;align-items:center;gap:7px;padding:10px 14px;
-  border:1px solid rgba(80,73,156,.36);border-radius:28px;
-  background:rgba(251,250,246,.92);color:var(--violet);box-shadow:0 5px 18px rgba(47,42,98,.12);
-  font-size:9px;letter-spacing:.1em;text-transform:uppercase
-}
-body.unlocked .music-button{display:flex}
-.butterfly-layer{position:fixed;inset:0;z-index:700;overflow:hidden;pointer-events:none}
-.butterfly{position:absolute;bottom:-30px;width:25px;height:20px;color:#fffdf4;opacity:0;filter:drop-shadow(0 1px 2px rgba(45,40,89,.22));animation:fly var(--duration,28s) linear var(--delay,0s) infinite}
-.butterfly svg{width:100%;height:100%;overflow:visible}
-.butterfly .wing{fill:rgba(255,253,245,.94);stroke:rgba(255,255,255,.9);stroke-width:.6}
-.butterfly .vein{fill:none;stroke:rgba(178,168,145,.55);stroke-width:.55;stroke-linecap:round}
-.butterfly .body,.butterfly .antenna{fill:none;stroke:#e4dece;stroke-width:.8;stroke-linecap:round}
-.butterfly .wingpair{transform-box:fill-box;transform-origin:center;animation:flap .8s ease-in-out infinite alternate}
-@keyframes fly{0%{opacity:0;transform:translate(0,12vh) rotate(-8deg)}10%{opacity:.7}48%{transform:translate(var(--drift,28px),-46vh) rotate(7deg)}85%{opacity:.5}100%{opacity:0;transform:translate(calc(var(--drift,28px)*-.8),-112vh) rotate(-6deg)}}
-@keyframes flap{to{transform:scaleX(.68)}}
-@media(max-width:600px){
-  .envelope{width:100%;height:100svh;min-height:0;border:0}
-  .envelope-screen{padding:0}
-  .envelope:before{inset:12px}
-  .section{padding:65px 22px}
-  .hero{padding-top:30px}
-  .event{grid-template-columns:74px 1fr;gap:12px}
-  .event-time{font-size:21px}
-  .event h3{font-size:23px}
-  .tryon{padding:17px}
-  .count-grid{gap:5px}
-  .count-label{letter-spacing:.1em}
-  .music-button{right:12px;bottom:12px}
-}
-@media(prefers-reduced-motion:reduce){
-  *,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
-  .butterfly-layer{display:none}
-}
-/* Фотореалістичний конверт із фактурного паперу */
-.envelope-screen{background:#eeede7}
-.envelope-screen:before{
-  content:"";position:absolute;inset:-22px;z-index:0;
-  background:url("assets/envelope-reference.jpg") center/cover no-repeat;
-  filter:blur(24px);opacity:.18;transform:scale(1.04)
-}
-.envelope{
-  z-index:1;width:min(100%,570px);height:min(88svh,740px);min-height:0;
-  overflow:visible;border:0;background:transparent;box-shadow:none
-}
-.envelope:before,.envelope:after{display:none}
-.envelope-photo{
-  position:absolute;inset:0;z-index:3;width:100%;height:100%;
-  object-fit:contain;object-position:center;
-  filter:drop-shadow(0 18px 30px rgba(59,53,91,.16));
-  transition:opacity 1s ease,transform 1.35s cubic-bezier(.2,.76,.15,1)
-}
-.envelope-paper{z-index:1;left:7%;right:7%;top:7%;height:84%}
-.seal{
-  z-index:8;left:55%;top:53.5%;width:19%;height:17%;
-  border:0;border-radius:50%;background:transparent;box-shadow:none;
-  color:transparent;transform:translate(-50%,-50%)
-}
-.seal:before,.seal:after{display:none}
-.seal span{visibility:hidden}
-.envelope-screen.is-opening .envelope-photo{opacity:0;transform:translateY(-12%) scale(.96)}
-.envelope-screen.is-opening .envelope-paper{transform:translateY(-5%)}
-.envelope-screen.is-opening .seal,.envelope-screen.is-opening .cover-caption{opacity:0}
-@media(max-width:600px){
-  .envelope{width:100%;height:100svh;max-height:none}
-  .envelope-photo{object-fit:contain}
-  .cover-caption{bottom:5%}
-}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f5ef">
+  <meta name="description" content="Дар’я та Анатолій запрошують розділити з ними день весілля — 17 липня 2027 року.">
+  <title>Дар’я &amp; Анатолій · 17 липня 2027</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{--ink:#18284b;--blue:#16468d;--sapphire:#0f52ba;--dust:#8fa9c4;--silver:#c0c4ca;--sand:#e8ddcc;--paper:#fbfaf6;--muted:#747d8c;--line:#dfe3e8;--serif:"Cormorant Garamond",Georgia,serif;--sans:Manrope,Arial,sans-serif}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.7}a{color:inherit}.wrap{width:min(100% - 32px,920px);margin:auto}.topline{height:5px;background:linear-gradient(90deg,#0f3c7c,#0f52ba,#8fa9c4,#c0c4ca,#e8ddcc)}
+    .hero{min-height:92svh;display:grid;place-items:center;text-align:center;padding:72px 20px 84px;position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 12%,#fff 0,#f6f6f3 46%,#edf1f5 100%)}.hero:before,.hero:after{content:"";position:absolute;width:390px;height:390px;border:1px solid rgba(15,82,186,.12);border-radius:50%;pointer-events:none}.hero:before{top:-245px;left:-165px;box-shadow:0 0 0 24px rgba(15,82,186,.025),0 0 0 48px rgba(15,82,186,.02)}.hero:after{right:-190px;bottom:-280px;box-shadow:0 0 0 24px rgba(15,82,186,.025),0 0 0 48px rgba(15,82,186,.02)}.hero-inner{position:relative;z-index:1;max-width:680px}.eyebrow{font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--blue)}.monogram{margin:24px auto 15px;width:70px;height:70px;border:1px solid var(--silver);border-radius:50%;display:grid;place-items:center;color:var(--sapphire);font:500 25px var(--serif)}h1{font:400 clamp(56px,12vw,104px)/.92 var(--serif);margin:0;color:var(--ink);letter-spacing:-.025em}.amp{display:block;color:var(--dust);font-style:italic;font-size:.55em;line-height:1.1}.date{margin:28px 0 5px;color:var(--blue);font:500 22px var(--serif);letter-spacing:.2em}.hero p{max-width:460px;margin:18px auto 0;color:#687486;font:italic 23px/1.35 var(--serif)}.scroll{display:inline-block;margin-top:36px;padding:10px 18px;border:1px solid #a8bad0;text-decoration:none;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
+    section{padding:78px 0}.section-head{text-align:center;margin:0 auto 35px}.kicker{margin:0 0 8px;color:var(--sapphire);font-size:9px;letter-spacing:.25em;text-transform:uppercase}.section-head h2{margin:0;font:400 clamp(38px,8vw,58px)/1.05 var(--serif);color:var(--ink)}.flourish{margin:14px auto;color:#9aabc0;font:20px var(--serif)}.intro{max-width:610px;margin:auto;text-align:center;color:#687486;font:400 23px/1.55 var(--serif)}
+    .details{background:#f0f3f6}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.card{background:rgba(255,255,255,.78);border:1px solid var(--line);padding:25px 20px;text-align:center}.card .icon{color:var(--sapphire);font-size:20px}.card h3{margin:6px 0;font:500 25px var(--serif)}.card p{margin:4px 0;color:var(--muted);font-size:12px}.card strong{color:var(--ink);font-weight:500}.timeline{max-width:650px;margin:auto;border-top:1px solid var(--line)}.event{display:grid;grid-template-columns:90px 1fr;gap:20px;padding:17px 0;border-bottom:1px solid var(--line)}.event time{font:500 24px var(--serif);color:var(--sapphire)}.event h3{margin:0;font:500 25px/1.1 var(--serif)}.event p{margin:4px 0 0;color:var(--muted);font-size:12px}.notice{padding:16px 20px;margin:22px auto 0;max-width:650px;background:#f1f4f8;border-left:2px solid var(--dust);color:#58677d;font-size:12px}
+    .dress{background:#f5f4f0}.dress-copy{max-width:590px;margin:0 auto 23px;text-align:center;color:#667184;font:italic 21px/1.5 var(--serif)}.swatches{display:flex;justify-content:center;gap:18px 20px;flex-wrap:wrap;max-width:610px;margin:auto}.swatch{text-align:center;width:82px;color:#5d6878;font-size:10px}.dot{width:58px;height:58px;border-radius:50%;display:block;margin:0 auto 8px;border:3px solid white;box-shadow:0 0 0 1px #d5d9de}.swatch code{font-size:9px;color:#8a919b}
+    .location{background:#eaf0f7;text-align:center}.venue{font:400 clamp(42px,8vw,62px)/1 var(--serif);margin:5px 0 12px}.address{color:#647187;font-size:13px}.button{display:inline-block;margin-top:20px;padding:12px 19px;background:var(--blue);color:white;text-decoration:none;font-size:10px;letter-spacing:.12em;text-transform:uppercase}.travel-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:680px;margin:auto}.travel-card{padding:25px;background:var(--paper);border:1px solid var(--line)}.travel-card h3{margin:0 0 8px;font:500 27px var(--serif)}.travel-card p{margin:0;color:#697487;font-size:12px}.travel-card strong{color:var(--ink);font-weight:600}.travel-card a{overflow-wrap:anywhere}
+    .rsvp{background:linear-gradient(145deg,#123a74,#173e79);color:white;text-align:center}.rsvp .kicker{color:#c7d7ee}.rsvp .section-head h2{color:white}.rsvp-copy{max-width:550px;margin:-8px auto 25px;color:#e0e8f2;font:italic 21px/1.45 var(--serif)}.form-note{max-width:560px;margin:0 auto;padding:15px 17px;border:1px solid rgba(255,255,255,.3);color:#e2ebf5;font-size:12px}
+    .footer{padding:33px 16px;text-align:center;color:#737f90;font:italic 20px var(--serif)}.footer span{display:block;margin-top:7px;color:var(--blue);font:10px var(--sans);letter-spacing:.18em;text-transform:uppercase}
+    @media(max-width:650px){.hero{min-height:86svh}.cards{grid-template-columns:1fr}.card{padding:19px}.travel-grid{grid-template-columns:1fr}.event{grid-template-columns:66px 1fr;gap:12px}.event time{font-size:21px}.event h3{font-size:23px}section{padding:62px 0}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  </style>
 </head>
-<body class="locked">
-<div class="envelope-screen" id="envelopeScreen">
-  <div class="envelope" aria-label="Весільний конверт">
-    <div class="envelope-paper"><span>Запрошення</span></div>
-    <img class="envelope-photo" src="assets/envelope-reference.jpg" alt="" fetchpriority="high">
-    <button class="seal" id="openInvitation" type="button" aria-label="Відкрити запрошення"><span>Д&nbsp;А</span><span class="open-button-label">Відкрити запрошення</span></button>
-    <div class="cover-caption"><div class="cover-names">Дар’я &amp; Анатолій</div><div class="cover-prompt">Торкніться печатки, щоб відкрити</div></div>
-  </div>
-</div>
-<main class="page">
-  <article class="letter" id="letter">
-    <header class="section hero" id="top">
-      <div class="photo-frame"><img src="IMG_5473.jpeg" alt="Дар’я та Анатолій" fetchpriority="high"></div>
-      <p class="photo-caption">З радістю запрошуємо вас</p>
+<body>
+  <div class="topline"></div>
+  <header class="hero" id="top">
+    <div class="hero-inner">
+      <div class="eyebrow">Запрошуємо розділити наше свято</div>
+      <div class="monogram" aria-hidden="true">Д&nbsp;А</div>
       <h1>Дар’я <span class="amp">&amp;</span> Анатолій</h1>
-      <div class="hero-date">17 · 07 · 2027</div>
-      <div class="ornament">✦</div>
-      <p class="hero-subtitle">Будемо щасливі розділити з вами день, коли почнеться наша сімейна історія</p>
-    </header>
-
-    <section class="section story" id="story">
-      <p class="section-kicker">Трохи про нас</p>
-      <h2 class="section-title">Наша історія</h2>
-      <div class="ornament">❦</div>
-      <div class="story-copy">
-        <p>Колись наші дороги перетнулися — і звичайні дні наповнилися новими сенсами, спільними мріями та теплими спогадами.</p>
-        <p>Ми вчилися підтримувати одне одного, радіти маленьким моментам і будувати наше особливе «ми».</p>
-        <p>Тепер ми хочемо зробити наступний крок і сказати одне одному найважливіше. Нам буде дуже дорого, якщо ви будете поруч у цей день.</p>
-      </div>
-      <div class="signature">З любов’ю, Дар’я та Анатолій</div>
-    </section>
-
-    <section class="section schedule" id="schedule">
-      <p class="section-kicker">17 липня 2027 року</p>
-      <h2 class="section-title">План свята</h2>
-      <div class="ornament">✧</div>
-      <div class="timeline">
-        <div class="event"><time class="event-time">13:00</time><div><h3>Welcome-зона</h3><p>Зустрічаємо гостей, знайомимося й налаштовуємося на святковий день.</p></div></div>
-        <div class="event"><time class="event-time">13:30</time><div><h3>Розпис</h3><p>Найважливіше «так» і перші хвилини нашої сімейної історії.</p></div></div>
-        <div class="event"><time class="event-time">14:00</time><div><h3>Фото та привітання</h3><p>Обійми, усмішки й спільні світлини на згадку.</p></div></div>
-        <div class="event"><time class="event-time">15:00</time><div><h3>Святкова програма</h3><p>Банкет, теплі слова, музика й танці.</p></div></div>
-        <div class="event"><time class="event-time">18:00</time><div><h3>Весільний торт</h3><p>Солодкий момент, яким хочеться поділитися з вами.</p></div></div>
-        <div class="event"><time class="event-time">19:00</time><div><h3>Продовження вечора</h3><p>Ще більше музики, танців і щасливих спогадів.</p></div></div>
+      <div class="date">17 · 07 · 2027</div>
+      <p>День, коли почнеться наша сімейна історія. Будемо щасливі провести його разом із вами.</p>
+      <a class="scroll" href="#details">Деталі свята ↓</a>
+    </div>
+  </header>
+  <main>
+    <section>
+      <div class="wrap">
+        <div class="section-head"><p class="kicker">Дорогі рідні та друзі</p><h2>Будемо разом</h2><div class="flourish">✧</div></div>
+        <p class="intro">З радістю запрошуємо вас на наше весілля. Для нас цей день буде особливим, і ваша присутність зробить його ще теплішим та щасливішим.</p>
       </div>
     </section>
-
-    <section class="section dress" id="dress">
-      <p class="section-kicker">Палітра нашого свята</p>
-      <h2 class="section-title">Дрес-код</h2>
-      <p class="dress-text">Будемо раді, якщо ваш образ доповнить ніжну палітру нашого дня. Обирайте відтінок, у якому вам комфортно.</p>
-      <div class="swatches" aria-label="Кольори палітри">
-        <span class="swatch" style="background:#50499c" title="Фіолетовий"></span>
-        <span class="swatch" style="background:#eeede7" title="Світлий айворі"></span>
-        <span class="swatch" style="background:#837db9" title="Лавандовий"></span>
-        <span class="swatch" style="background:#b9c1b1" title="Шавлієвий"></span>
-        <span class="swatch" style="background:#d9c2c4" title="Пудровий"></span>
-        <span class="swatch" style="background:#b8a77d" title="Шампань"></span>
-      </div>
-      <div class="swatch-labels"><span>Насичений фіолетовий</span><span>Молочний</span><span>Лавандовий</span><span>Шавлієвий</span><span>Пудровий</span><span>Шампань</span></div>
-      <div class="tryon">
-        <h3>Приміряйте палітру</h3>
-        <p class="tryon-intro">Увімкніть камеру й подивіться, як відтінки пасуватимуть до вашого образу.</p>
-        <div class="camera-frame" id="cameraFrame">
-          <video id="cameraVideo" autoplay playsinline muted></video>
-          <div class="camera-placeholder" id="cameraPlaceholder" aria-hidden="true">
-            <svg viewBox="0 0 240 330">
-              <circle cx="120" cy="68" r="38" fill="#d8d4df"/>
-              <path d="M80 116Q120 98 160 116L184 154 167 177 157 161 168 310H72L83 161 73 177 56 154Z" fill="#c9c6d5"/>
-              <path d="M82 118L120 148 158 118 145 190 95 190Z" fill="#50499c" opacity=".72"/>
-              <path d="M120 148V190" stroke="#eeede7" stroke-width="3"/>
-              <path d="M94 190H146" stroke="#eeede7" stroke-width="2" opacity=".8"/>
-            </svg>
-          </div>
-          <svg class="garment-overlay" viewBox="0 0 200 240" preserveAspectRatio="none" aria-hidden="true">
-            <path d="M56 10 78 2H122L144 10 196 61 165 93 148 75 153 235H47L52 75 35 93 4 61Z"/>
-            <path d="m78 2 22 37 20-37M100 39v193" fill="none" stroke="#fff" stroke-width="3" opacity=".62"/>
-          </svg>
+    <section class="details" id="details">
+      <div class="wrap">
+        <div class="section-head"><p class="kicker">Збережіть дату</p><h2>День весілля</h2><div class="flourish">✧</div></div>
+        <div class="cards">
+          <article class="card"><div class="icon">◇</div><h3>Коли</h3><p><strong>17 липня 2027 року</strong></p><p>Зустрічаємо гостей о 12:30</p></article>
+          <article class="card"><div class="icon">⌖</div><h3>Де</h3><p><strong>Заміський комплекс «Джерело»</strong></p><p>Серед природи та затишку</p></article>
+          <article class="card"><div class="icon">♡</div><h3>Церемонія</h3><p><strong>Початок о 13:20</strong></p><p>Чекаємо на вас із радістю</p></article>
         </div>
-        <div class="swatches try-colors" aria-label="Оберіть колір для примірки">
-          <button class="swatch try-swatch" type="button" data-color="#50499c" aria-label="Фіолетовий" style="background:#50499c"></button>
-          <button class="swatch try-swatch" type="button" data-color="#eeede7" aria-label="Молочний" style="background:#eeede7"></button>
-          <button class="swatch try-swatch" type="button" data-color="#837db9" aria-label="Лавандовий" style="background:#837db9"></button>
-          <button class="swatch try-swatch" type="button" data-color="#b9c1b1" aria-label="Шавлієвий" style="background:#b9c1b1"></button>
-          <button class="swatch try-swatch" type="button" data-color="#d9c2c4" aria-label="Пудровий" style="background:#d9c2c4"></button>
-          <button class="swatch try-swatch" type="button" data-color="#b8a77d" aria-label="Шампань" style="background:#b8a77d"></button>
-        </div>
-        <div class="camera-controls">
-          <button class="camera-button" id="startCamera" type="button">Увімкнути камеру</button>
-          <button class="stop-camera" id="stopCamera" type="button" hidden>Зупинити камеру</button>
-        </div>
-        <p class="tryon-status" id="cameraStatus" aria-live="polite">Оберіть колір і дозвольте доступ до камери.</p>
       </div>
     </section>
-
-    <section class="section countdown" id="countdown">
-      <p class="section-kicker">Ми вже рахуємо дні</p>
-      <h2 class="section-title">До нашої зустрічі</h2>
-      <div class="count-grid">
-        <div class="count-box"><span class="count-value" id="days">—</span><span class="count-label">днів</span></div>
-        <div class="count-box"><span class="count-value" id="hours">—</span><span class="count-label">годин</span></div>
-        <div class="count-box"><span class="count-value" id="minutes">—</span><span class="count-label">хвилин</span></div>
-        <div class="count-box"><span class="count-value" id="seconds">—</span><span class="count-label">секунд</span></div>
+    <section id="schedule">
+      <div class="wrap">
+        <div class="section-head"><p class="kicker">17 липня 2027</p><h2>План дня</h2><div class="flourish">✧</div></div>
+        <div class="timeline">
+          <div class="event"><time>12:30</time><div><h3>Зустрічаємо гостей</h3><p>Прибуття до комплексу та теплі вітання.</p></div></div>
+          <div class="event"><time>13:20</time><div><h3>Весільна церемонія</h3><p>Початок нашої сімейної історії.</p></div></div>
+          <div class="event"><time>14:00</time><div><h3>Фотосесія та велкам дрінк</h3><p>Молодята вирушають на фотосесію. Для гостей — велкам дрінк; гості з поселенням у цей час заселяються в готель.</p></div></div>
+          <div class="event"><time>15:00</time><div><h3>Вітання та спільні фото</h3><p>Збираємося разом і святкуємо перші миті нашого дня.</p></div></div>
+          <div class="event"><time>15:30</time><div><h3>Святковий бенкет</h3><p>Смачні частування, теплі слова та радість у колі близьких.</p></div></div>
+          <div class="event"><time>21:00</time><div><h3>Весільний торт і танці</h3><p>Продовжуємо святкувати разом.</p></div></div>
+          <div class="event"><time>22:00</time><div><h3>Завершення в ресторані</h3><p>Ресторан працює до 22:00. Гості, які залишаються на ніч, переходять до номерів до 22:30.</p></div></div>
+        </div>
       </div>
     </section>
-
-    <section class="section location" id="location">
-      <p class="section-kicker">Зустрінемося тут</p>
-      <h2 class="section-title">Локація</h2>
-      <div class="location-name">Ресторан «Фабіус»</div>
-      <div class="location-address">Столичне шосе, 70 · Київ</div>
-      <div class="location-time">Чекаємо вас з 13:00</div>
-      <a class="primary-link" href="https://www.google.com/maps/search/?api=1&query=Fabius%2C%20Столичне%20шосе%2070%2C%20%D0%9A%D0%B8%D1%97%D0%B2" target="_blank" rel="noopener noreferrer">Відкрити Google Maps <span aria-hidden="true">↗</span></a>
+    <section class="dress" id="dress">
+      <div class="wrap">
+        <div class="section-head"><p class="kicker">Палітра нашого свята</p><h2>Дрескод</h2><div class="flourish">✧</div></div>
+        <p class="dress-copy">Будемо раді сапфіровим і срібним акцентам, а також ніжним бежевим та пильно-блакитним відтінкам. Обирайте колір, у якому вам комфортно.</p>
+        <div class="swatches">
+          <div class="swatch"><span class="dot" style="background:#0F52BA"></span>Сапфіровий<br><code>#0F52BA</code></div>
+          <div class="swatch"><span class="dot" style="background:#4169E1"></span>Королівський синій<br><code>#4169E1</code></div>
+          <div class="swatch"><span class="dot" style="background:#1F3A93"></span>Темно-синій<br><code>#1F3A93</code></div>
+          <div class="swatch"><span class="dot" style="background:#8FA9C4"></span>Пильно-блакитний<br><code>#8FA9C4</code></div>
+          <div class="swatch"><span class="dot" style="background:#C0C4CA"></span>Сріблястий<br><code>#C0C4CA</code></div>
+          <div class="swatch"><span class="dot" style="background:#E8DDCC"></span>Бежевий<br><code>#E8DDCC</code></div>
+          <div class="swatch"><span class="dot" style="background:#D2BFA5"></span>Пісочний<br><code>#D2BFA5</code></div>
+          <div class="swatch"><span class="dot" style="background:#A99B8C"></span>Тауп<br><code>#A99B8C</code></div>
+        </div>
+      </div>
     </section>
-
-    <section class="section rsvp" id="rsvp">
-      <p class="section-kicker">Будь ласка, дайте знати</p>
-      <h2 class="section-title">Чи будете з нами?</h2>
-      <p class="rsvp-copy">Будемо дуже раді розділити цей день саме з вами. Будь ласка, підтвердьте свою присутність.</p>
-      <form class="rsvp-form" id="rsvpForm">
-        <label for="guestName">Ваше ім’я</label>
-        <input id="guestName" name="name" autocomplete="name" required placeholder="Як до вас звертатися?">
-        <label for="attendance">Ваша відповідь</label>
-        <select id="attendance" name="attendance" required>
-          <option value="">Оберіть відповідь</option>
-          <option>Так, буду з радістю</option>
-          <option>На жаль, не зможу</option>
-        </select>
-        <button type="submit">Підтвердити присутність</button>
-        <p class="rsvp-status" id="rsvpStatus" aria-live="polite"></p>
-      </form>
+    <section class="location" id="location">
+      <div class="wrap">
+        <div class="section-head"><p class="kicker">Місце нашої зустрічі</p><h2>Локація</h2><div class="flourish">✧</div></div>
+        <div class="venue">Комплекс «Джерело»</div>
+        <div class="address">Київська область, село Мала Бугаївка,<br>вулиця Мальовнича, 54</div>
+        <a class="button" href="https://www.google.com/maps/search/?api=1&amp;query=%D0%97%D0%B0%D0%BC%D1%96%D1%81%D1%8C%D0%BA%D0%B8%D0%B9%20%D0%BA%D0%BE%D0%BC%D0%BF%D0%BB%D0%B5%D0%BA%D1%81%20%D0%94%D0%B6%D0%B5%D1%80%D0%B5%D0%BB%D0%BE%2C%20%D0%9C%D0%B0%D0%BB%D0%B0%20%D0%91%D1%83%D0%B3%D0%B0%D1%97%D0%B2%D0%BA%D0%B0%2C%20%D0%B2%D1%83%D0%BB%D0%B8%D1%86%D1%8F%20%D0%9C%D0%B0%D0%BB%D1%8C%D0%BE%D0%B2%D0%BD%D0%B8%D1%87%D0%B0%2C%2054" target="_blank" rel="noopener noreferrer">Відкрити Google Maps ↗</a>
+      </div>
     </section>
-
-    <section class="thanks">
-      <div class="monogram">Д&nbsp;А</div>
-      <h2 class="thank-title">Дякуємо, що ви поруч</h2>
-      <p>Ваша присутність, тепло й добрі слова зроблять цей день ще особливішим.</p>
+    <section id="travel">
+      <div class="wrap">
+        <div class="section-head"><p class="kicker">Подбаймо про дорогу</p><h2>Трансфер і проживання</h2><div class="flourish">✧</div></div>
+        <div class="travel-grid">
+          <article class="travel-card"><h3>Трансфер</h3><p>Буде організовано трансфер від станції метро «Теремки» до комплексу та назад. Збір гостей біля метро о <strong>12:00</strong>, виїзд о <strong>12:10</strong>. Будь ласка, зазначте у відповіді, чи потрібен вам трансфер.</p></article>
+          <article class="travel-card"><h3>Проживання</h3><p>Можна залишитися на ніч у готелі на території комплексу. Вартість — <strong>3 500 грн за ніч, зі сніданком</strong>. Поселення відбуватиметься з 14:00 до 15:00. Інформацію про оплату та бронювання додамо після уточнення посилання на банку.</p></article>
+        </div>
+        <div class="notice">Ресторан завершує роботу о 22:00. Гості, які залишаються на ніч, переходять до номерів до 22:30. Час зворотного трансферу ще узгоджується.</div>
+      </div>
     </section>
-    <div class="music-credit"><a href="https://commons.wikimedia.org/wiki/File:01_-_Vivaldi_Spring_mvt_1_Allegro_-_John_Harrison_violin.ogg" target="_blank" rel="noopener noreferrer">Музика: Антоніо Вівальді, «Весна», I. Allegro · виконання John Harrison · CC BY-SA 4.0</a></div>
-  </article>
-</main>
-<div class="butterfly-layer" id="butterflyLayer" aria-hidden="true"></div>
-<audio id="weddingMusic" preload="none" loop>
-  <source src="https://commons.wikimedia.org/wiki/Special:Redirect/file/01_-_Vivaldi_Spring_mvt_1_Allegro_-_John_Harrison_violin.ogg" type="audio/ogg">
-</audio>
-<button class="music-button" id="musicToggle" type="button" aria-label="Увімкнути музику"><span aria-hidden="true">♫</span><span id="musicLabel">Музика</span></button>
-<script>
-const screen=document.getElementById("envelopeScreen");
-const openButton=document.getElementById("openInvitation");
-const music=document.getElementById("weddingMusic");
-const musicToggle=document.getElementById("musicToggle");
-const musicLabel=document.getElementById("musicLabel");
-let opened=false;
-function updateMusic(){
-  const playing=!music.paused;
-  musicLabel.textContent=playing?"Пауза":"Музика";
-  musicToggle.setAttribute("aria-label",playing?"Поставити музику на паузу":"Увімкнути музику");
-}
-function playMusic(){
-  const result=music.play();
-  if(result&&typeof result.then==="function")result.then(updateMusic).catch(function(){musicLabel.textContent="Натисніть для музики";});
-}
-openButton.addEventListener("click",function(){
-  if(opened)return;
-  opened=true;
-  screen.classList.add("is-opening");
-  document.body.classList.add("unlocked");
-  playMusic();
-  setTimeout(function(){document.body.classList.remove("locked");startButterflies();},1000);
-  setTimeout(function(){openButton.blur();screen.hidden=true;window.scrollTo(0,0);},1900);
-});
-musicToggle.addEventListener("click",function(){if(music.paused)playMusic();else music.pause();});
-music.addEventListener("play",updateMusic);
-music.addEventListener("pause",updateMusic);
-
-document.querySelectorAll(".try-swatch").forEach(function(button){
-  button.addEventListener("click",function(){
-    document.querySelector(".camera-frame").style.setProperty("--try-color",button.dataset.color);
-    document.querySelectorAll(".try-swatch").forEach(function(item){item.style.outline="none";});
-    button.style.outline="2px solid #50499c";
-    button.style.outlineOffset="3px";
-  });
-});
-let cameraStream=null;
-const video=document.getElementById("cameraVideo");
-const cameraFrame=document.getElementById("cameraFrame");
-const cameraStatus=document.getElementById("cameraStatus");
-document.getElementById("startCamera").addEventListener("click",async function(){
-  if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia){
-    cameraStatus.textContent="Камера недоступна в цьому браузері. Відкрийте сайт через HTTPS.";
-    return;
-  }
-  try{
-    cameraStream=await navigator.mediaDevices.getUserMedia({video:{facingMode:"user"},audio:false});
-    video.srcObject=cameraStream;
-    cameraFrame.classList.add("active");
-    document.getElementById("startCamera").hidden=true;
-    document.getElementById("stopCamera").hidden=false;
-    cameraStatus.textContent="Оберіть відтінок вище, щоб побачити його на образі.";
-  }catch(error){
-    cameraStatus.textContent="Не вдалося відкрити камеру. Перевірте дозвіл у браузері й спробуйте ще раз.";
-  }
-});
-document.getElementById("stopCamera").addEventListener("click",function(){
-  if(cameraStream)cameraStream.getTracks().forEach(function(track){track.stop();});
-  cameraStream=null;video.srcObject=null;cameraFrame.classList.remove("active");
-  document.getElementById("startCamera").hidden=false;
-  document.getElementById("stopCamera").hidden=true;
-  cameraStatus.textContent="Камеру вимкнено.";
-});
-
-const weddingDate=new Date("2027-07-17T13:00:00+03:00").getTime();
-function updateCountdown(){
-  const left=weddingDate-Date.now();
-  if(left<=0){document.querySelector(".count-grid").innerHTML='<div class="count-box" style="grid-column:1/-1"><span class="count-value">Сьогодні!</span></div>';return;}
-  document.getElementById("days").textContent=Math.floor(left/86400000);
-  document.getElementById("hours").textContent=String(Math.floor(left%86400000/3600000)).padStart(2,"0");
-  document.getElementById("minutes").textContent=String(Math.floor(left%3600000/60000)).padStart(2,"0");
-  document.getElementById("seconds").textContent=String(Math.floor(left%60000/1000)).padStart(2,"0");
-}
-updateCountdown();setInterval(updateCountdown,1000);
-
-document.getElementById("rsvpForm").addEventListener("submit",function(event){
-  event.preventDefault();
-  const name=document.getElementById("guestName").value.trim();
-  const choice=document.getElementById("attendance").value;
-  document.getElementById("rsvpStatus").textContent="Дякуємо, "+name+"! Цю форму ще під’єднаємо для надсилання відповіді.";
-  this.reset();
-});
-function startButterflies(){
-  const layer=document.getElementById("butterflyLayer");
-  if(!layer||layer.childElementCount)return;
-  [12,78,42].forEach(function(left,index){
-    const butterfly=document.createElement("span");
-    butterfly.className="butterfly";
-    butterfly.style.left=left+"%";
-    butterfly.style.setProperty("--duration",(28+index*5)+"s");
-    butterfly.style.setProperty("--delay",(-index*7)+"s");
-    butterfly.style.setProperty("--drift",(26-index*16)+"px");
-    butterfly.innerHTML='<svg viewBox="0 0 60 48"><g class="wingpair"><path class="wing" d="M29 23C23 18 15 3 8 4 1 5 3 15 12 21 6 19 2 22 4 28 6 34 18 34 29 27ZM31 23C37 18 45 3 52 4 59 5 57 15 48 21 54 19 58 22 56 28 54 34 42 34 31 27ZM29 26C22 28 12 30 10 37 8 44 20 43 29 30ZM31 26C38 28 48 30 50 37 52 44 40 43 31 30Z"/></g><path class="vein" d="M29 24C22 18 14 8 7 6M28 25C20 23 12 22 5 24M31 24C38 18 46 8 53 6M32 25C40 23 48 22 55 24M28 27C20 31 15 36 12 40M32 27C40 31 45 36 48 40"/><path class="body" d="M30 19V37M29 20 23 13M31 20 37 13"/></svg>';
-    layer.appendChild(butterfly);
-  });
-}
-</script>
+    <section class="details" id="second-day">
+      <div class="wrap">
+        <div class="section-head"><p class="kicker">Продовжимо святкування</p><h2>Другий день</h2><div class="flourish">✧</div></div>
+        <p class="intro">Будемо раді бачити вас і на другий день весілля. Дрескод — ваші улюблені супергерої. Будь ласка, повідомте, чи плануєте приєднатися.</p>
+      </div>
+    </section>
+    <section id="gifts">
+      <div class="wrap">
+        <div class="section-head"><p class="kicker">Ваші теплі слова — безцінні</p><h2>Побажання</h2><div class="flourish">✧</div></div>
+        <p class="intro">Будемо щасливі розділити з вами наше свято! Якщо захочете привітати нас подарунком, будемо вдячні за грошовий внесок у нашу маленьку спільну мрію, на яку ми збираємо кошти. Найцінніше для нас — ваша присутність і щирі побажання.</p>
+      </div>
+    </section>
+    <section class="rsvp" id="rsvp">
+      <div class="wrap">
+        <div class="section-head"><p class="kicker">До 30 квітня 2027 року</p><h2>Підтвердіть присутність</h2><div class="flourish">✧</div></div>
+        <p class="rsvp-copy">Будь ласка, дайте знати, чи будете з нами, чи потрібні вам трансфер або проживання, та чи приєднаєтеся до святкування другого дня.</p>
+        <p class="form-note">Форму відповіді та персональні запрошення під’єднаємо наступним кроком. Поки що це перша версія сторінки — її будемо доповнювати разом.</p>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">З любов’ю та нетерпінням чекаємо на зустріч<span>Дар’я &amp; Анатолій · 17 липня 2027</span></footer>
 </body>
 </html>
+
