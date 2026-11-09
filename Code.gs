@@ -72,6 +72,16 @@ function doPost(e) {
     if (normalize_(payload.guestName) !== normalize_(invitedName)) {
       return htmlResponse_(false, "ПІБ не збігається із запрошенням. Перевірте написання.", nonce);
     }
+    const plusOneName = clean_(payload.plusOne, 160);
+    const plusOneStatus = map["Статус гостя (+1)"] === undefined ? "" : normalize_(matchingRow[map["Статус гостя (+1)"]]);
+    const plusOneAllowed = /^(так|yes|true|1|\+|є)$/.test(plusOneStatus);
+    if (plusOneName && !plusOneAllowed) {
+      return htmlResponse_(false, "Це запрошення не передбачає гостя +1.", nonce);
+    }
+    const listedPlusOne = map["Ім'я запрошеного гостя +1"] === undefined ? "" : String(matchingRow[map["Ім'я запрошеного гостя +1"]] || "").trim();
+    if (plusOneAllowed && listedPlusOne && plusOneName && normalize_(plusOneName) !== normalize_(listedPlusOne)) {
+      return htmlResponse_(false, "Будь ласка, вкажіть ім’я гостя +1, зазначене у запрошенні.", nonce);
+    }
     if (!["Так", "Ні"].includes(String(payload.attendance || ""))) {
       return htmlResponse_(false, "Оберіть відповідь щодо присутності.", nonce);
     }
@@ -83,7 +93,7 @@ function doPost(e) {
       code,
       invitedName,
       clean_(payload.attendance, 20),
-      clean_(payload.plusOne, 160),
+      plusOneName,
       clean_(payload.children, 20),
       clean_(payload.lodging, 20),
       clean_(payload.transfer, 20),
