@@ -18,6 +18,7 @@
     .dress{background:#f5f4f0}.dress-copy{max-width:590px;margin:0 auto 23px;text-align:center;color:#667184;font:italic 21px/1.5 var(--serif)}.swatches{display:flex;justify-content:center;gap:18px 20px;flex-wrap:wrap;max-width:610px;margin:auto}.swatch{text-align:center;width:82px;color:#5d6878;font-size:10px}.dot{width:58px;height:58px;border-radius:50%;display:block;margin:0 auto 8px;border:3px solid white;box-shadow:0 0 0 1px #d5d9de}.swatch code{font-size:9px;color:#8a919b}
     .location{background:#eaf0f7;text-align:center}.venue{font:400 clamp(42px,8vw,62px)/1 var(--serif);margin:5px 0 12px}.address{color:#647187;font-size:13px}.button{display:inline-block;margin-top:20px;padding:12px 19px;background:var(--blue);color:white;text-decoration:none;font-size:10px;letter-spacing:.12em;text-transform:uppercase}.travel-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:680px;margin:auto}.travel-card{padding:25px;background:var(--paper);border:1px solid var(--line)}.travel-card h3{margin:0 0 8px;font:500 27px var(--serif)}.travel-card p{margin:0;color:#697487;font-size:12px}.travel-card strong{color:var(--ink);font-weight:600}.travel-card a{overflow-wrap:anywhere}
     .rsvp{background:linear-gradient(145deg,#123a74,#173e79);color:white;text-align:center}.rsvp .kicker{color:#c7d7ee}.rsvp .section-head h2{color:white}.rsvp-copy{max-width:550px;margin:-8px auto 25px;color:#e0e8f2;font:italic 21px/1.45 var(--serif)}.form-note{max-width:560px;margin:0 auto;padding:15px 17px;border:1px solid rgba(255,255,255,.3);color:#e2ebf5;font-size:12px}
+    .rsvp-form{max-width:620px;margin:26px auto 0;padding:24px;background:rgba(255,255,255,.97);color:var(--ink);text-align:left}.rsvp-form label,.rsvp-form legend{display:block;margin:12px 0 5px;color:#5e6d83;font-size:10px;letter-spacing:.08em}.rsvp-form input,.rsvp-form select,.rsvp-form textarea{width:100%;padding:11px 12px;border:1px solid #d9e0e8;background:#fff;color:var(--ink);font:13px var(--sans)}.rsvp-form fieldset{margin:14px 0;padding:0;border:0}.check-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 12px}.check-list label{display:flex;align-items:center;gap:8px;margin:0;font-size:11px;letter-spacing:0}.check-list input{width:auto;accent-color:var(--sapphire)}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}.rsvp-form button{width:100%;margin-top:17px;padding:13px;border:0;background:var(--sapphire);color:#fff;font:500 10px var(--sans);letter-spacing:.12em;text-transform:uppercase;cursor:pointer}.form-status{min-height:22px;margin:12px 0 0;text-align:center;color:var(--blue);font-size:12px}.form-hint{max-width:560px;margin:12px auto 0;color:#d7e2f0;font-size:10px}
     .footer{padding:33px 16px;text-align:center;color:#737f90;font:italic 20px var(--serif)}.footer span{display:block;margin-top:7px;color:var(--blue);font:10px var(--sans);letter-spacing:.18em;text-transform:uppercase}
     @media(max-width:650px){.hero{min-height:86svh}.cards{grid-template-columns:1fr}.card{padding:19px}.travel-grid{grid-template-columns:1fr}.event{grid-template-columns:66px 1fr;gap:12px}.event time{font-size:21px}.event h3{font-size:23px}section{padding:62px 0}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
@@ -125,12 +126,90 @@
     <section class="rsvp" id="rsvp">
       <div class="wrap">
         <div class="section-head"><p class="kicker">До 30 квітня 2027 року</p><h2>Підтвердіть присутність</h2><div class="flourish">✧</div></div>
-        <p class="rsvp-copy">Будь ласка, дайте знати, чи будете з нами, чи потрібні вам трансфер або проживання, та чи приєднаєтеся до святкування другого дня.</p>
-        <p class="form-note">Форму відповіді та персональні запрошення під’єднаємо наступним кроком. Поки що це перша версія сторінки — її будемо доповнювати разом.</p>
+        <p class="rsvp-copy">Будь ласка, підтвердьте присутність до 30 квітня 2027 року та повідомте, які опції вам потрібні.</p>
+        <form class="rsvp-form" id="rsvpForm" method="post" target="rsvpFrame">
+          <div class="form-grid">
+            <div><label for="guestName">Прізвище, ім’я та по батькові</label><input id="guestName" name="guestName" autocomplete="name" required maxlength="160" placeholder="Як зазначено у запрошенні"></div>
+            <div><label for="inviteCode">Код запрошення</label><input id="inviteCode" name="inviteCode" required maxlength="80" placeholder="Є у вашому персональному посиланні"></div>
+          </div>
+          <label for="attendance">Чи будете з нами?</label>
+          <select id="attendance" name="attendance" required><option value="">Оберіть відповідь</option><option value="Так">Так, буду з радістю</option><option value="Ні">На жаль, не зможу</option></select>
+          <div class="form-grid">
+            <div><label for="plusOne">Ім’я другої половинки / гостя +1 (якщо передбачено)</label><input id="plusOne" name="plusOne" maxlength="160"></div>
+            <div><label for="children">Кількість дітей, які будуть із вами</label><select id="children" name="children"><option value="0">Не буде</option><option value="1">1</option><option value="2">2</option><option value="3">3 або більше</option></select></div>
+            <div><label for="lodging">Проживання в готелі на території комплексу</label><select id="lodging" name="lodging"><option value="Ні">Не потрібне</option><option value="Так">Потрібне</option></select></div>
+            <div><label for="transfer">Трансфер від / до метро «Теремки»</label><select id="transfer" name="transfer"><option value="Ні">Не потрібен</option><option value="Так">Потрібен</option></select></div>
+          </div>
+          <label for="secondDay">Чи приєднаєтеся до святкування другого дня?</label>
+          <select id="secondDay" name="secondDay"><option value="Ні">Ні</option><option value="Так">Так, із радістю</option></select>
+          <fieldset><legend>Які напої вам до вподоби?</legend><div class="check-list">
+            <label><input type="checkbox" name="alcohol" value="Шампанське">Шампанське</label><label><input type="checkbox" name="alcohol" value="Віскі">Віскі</label>
+            <label><input type="checkbox" name="alcohol" value="Горілка">Горілка</label><label><input type="checkbox" name="alcohol" value="Вино біле">Вино біле</label>
+            <label><input type="checkbox" name="alcohol" value="Вино червоне">Вино червоне</label><label><input type="checkbox" name="alcohol" value="Коньяк">Коньяк</label>
+            <label><input type="checkbox" name="alcohol" value="Бренді">Бренді</label><label><input type="checkbox" name="alcohol" value="Джин">Джин</label>
+          </div></fieldset>
+          <label for="notes">Харчові обмеження або інші побажання</label><textarea id="notes" name="notes" rows="3" maxlength="1000" placeholder="За бажанням"></textarea>
+          <input type="hidden" id="payloadInput" name="payload" value="">
+          <button type="submit">Надіслати відповідь</button>
+          <p class="form-status" id="formStatus" aria-live="polite"></p>
+        </form>
+        <iframe id="rsvpFrame" name="rsvpFrame" title="Відповідь на запрошення" hidden></iframe>
+        <p class="form-hint">Код запрошення потрібен, щоб записати відповідь у таблицю саме за вашим запрошенням.</p>
       </div>
     </section>
   </main>
   <footer class="footer">З любов’ю та нетерпінням чекаємо на зустріч<span>Дар’я &amp; Анатолій · 17 липня 2027</span></footer>
+  <script>
+    // Додати адресу розгорнутого Google Apps Script після підключення таблиці.
+    const RSVP_ENDPOINT = "";
+    const inviteCode = new URLSearchParams(location.search).get("invite");
+    if (inviteCode) {
+      document.getElementById("inviteCode").value = inviteCode;
+      document.getElementById("inviteCode").readOnly = true;
+    }
+    const rsvpForm = document.getElementById("rsvpForm");
+    const rsvpFrame = document.getElementById("rsvpFrame");
+    let pendingNonce = "";
+    let responseTimer;
+    window.addEventListener("message", function (event) {
+      if (event.source !== rsvpFrame.contentWindow || !event.data || event.data.type !== "wedding-rsvp" || event.data.nonce !== pendingNonce) return;
+      clearTimeout(responseTimer);
+      const status = document.getElementById("formStatus");
+      const button = rsvpForm.querySelector("button[type=submit]");
+      status.textContent = event.data.message || (event.data.ok ? "Дякуємо! Відповідь збережено." : "Перевірте введені дані й спробуйте ще раз.");
+      if (event.data.ok) {
+        rsvpForm.reset();
+        if (inviteCode) { document.getElementById("inviteCode").value = inviteCode; document.getElementById("inviteCode").readOnly = true; }
+      }
+      button.disabled = false;
+      pendingNonce = "";
+    });
+    rsvpForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+      const status = document.getElementById("formStatus");
+      if (!RSVP_ENDPOINT) {
+        status.textContent = "Форма готова, але ще не підключена до таблиці. Попередньо не надсилали дані.";
+        return;
+      }
+      const form = new FormData(this);
+      const payload = Object.fromEntries(form.entries());
+      payload.alcohol = form.getAll("alcohol");
+      pendingNonce = (crypto.randomUUID ? crypto.randomUUID() : Date.now().toString(36) + Math.random().toString(36).slice(2));
+      payload.nonce = pendingNonce;
+      document.getElementById("payloadInput").value = JSON.stringify(payload);
+      const button = this.querySelector("button[type=submit]");
+      button.disabled = true;
+      status.textContent = "Надсилаємо відповідь…";
+      this.action = RSVP_ENDPOINT;
+      this.submit();
+      responseTimer = setTimeout(function () {
+        if (!pendingNonce) return;
+        status.textContent = "Не отримали підтвердження від таблиці. Спробуйте ще раз або повідомте молодят.";
+        button.disabled = false;
+        pendingNonce = "";
+      }, 15000);
+    });
+  </script>
 </body>
 </html>
 
