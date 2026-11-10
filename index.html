@@ -343,24 +343,103 @@ body{margin:0;background:var(--cream);color:var(--ink);font:400 15px/1.65 var(--
 .envelope-screen.opening .envelope-letter{transform:translateY(-24%)}
 .envelope-screen.opening .envelope-seal{opacity:0}
 @media(max-width:600px){.slide{padding-left:18px;padding-right:18px}.hero{padding-top:48px}.hero .hero-collage{height:250px}.hero h1{font-size:54px}.hero h1 span{display:block;font-size:.72em}.hero-note{font-size:20px}.schedule .event{grid-template-columns:66px 1fr;gap:10px}.schedule .event time{font-size:21px}.schedule .event h3{font-size:22px}.countdown div{min-width:58px;padding:10px 7px}.countdown strong{font-size:26px}.attendance-box{padding:18px}.swatch{width:65px}.swatch i{width:48px;height:48px}}
+
+/* Exact layout direction from the supplied Green Template Maximum screenshots */
+@import url('https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@400;500;600&display=swap');
+:root{--paper:#fffdf1;--olive:#50563a;--olive-dark:#343a28;--script:"Allura","Segoe Script",cursive;--serif:"Cormorant Garamond",Georgia,serif}
+html,body{background:var(--paper);color:var(--olive);font-family:var(--serif)}
+.grain,.butterflies,.topbar,.scroll-progress,.to-top{display:none!important}
+.slide{display:block;min-height:0;padding:70px 22px;background:var(--paper);color:var(--olive);text-align:center;overflow:hidden}
+.slide:before,.slide:after{display:none}
+.slide-content{width:min(100%,680px);margin:0 auto}
+.eyebrow{font:italic 19px var(--serif);letter-spacing:.04em;text-transform:none;color:var(--olive);margin:0 0 20px}
+.title{font:italic clamp(44px,8vw,64px)/1.05 var(--script);font-weight:400;color:var(--olive);letter-spacing:0}
+.copy{font:400 22px/1.45 var(--serif);color:var(--olive);max-width:580px;margin:18px auto}
+.hero{height:100svh;min-height:650px;padding:0;display:grid;place-items:center;background:#f7f5e9;position:relative}
+.hero:before{content:"";display:block!important;position:absolute;inset:0;background:linear-gradient(rgba(30,39,20,.15),rgba(30,39,20,.25)),url('assets/envelope-reference.jpg') center/cover no-repeat;z-index:0}
+.hero:after{display:none}
+.hero .hero-collage{display:none}
+.hero-copy{position:relative;z-index:2;width:min(90%,520px);padding:28px 18px;background:rgba(255,253,241,.15)}
+.hero .eyebrow{font:italic 29px var(--script);color:#fffdf1;text-shadow:0 1px 5px #30351f}
+.hero h1{font:italic clamp(58px,11vw,86px)/.9 var(--script);color:#fffdf1;text-shadow:0 1px 8px rgba(0,0,0,.35);letter-spacing:0}
+.hero h1 span{display:block;font-size:.78em;color:inherit;padding:0}
+.hero-date{font:italic 32px var(--serif);color:#fffdf1;letter-spacing:.08em;margin-top:18px;text-shadow:0 1px 5px #30351f}
+.envelope-open{margin-top:25px;padding:13px 26px;border:1px solid rgba(255,253,241,.85);background:rgba(255,253,241,.12);color:#fffdf1;font:16px var(--serif);letter-spacing:.06em}
+.intro{padding:65px 20px}
+.intro .slide-content{padding:55px 26px 65px;outline:4px solid #686d50;outline-offset:-7px;border-radius:3% 2% 4% 3% / 1% 2% 1% 2%;position:relative}
+.intro .slide-content:before{content:"";position:absolute;inset:5px;border:1px solid rgba(104,109,80,.28);border-radius:3% 2% 4% 3% / 1% 2% 1% 2%;pointer-events:none}
+.intro .eyebrow{font:italic 40px var(--script);margin-bottom:32px}
+.intro .title{display:none}
+.intro .copy{font-size:22px;line-height:1.45}
+.intro .copy:last-child{font:italic 42px var(--script);margin-top:35px}
+.venue{padding:0 0 65px}
+.venue .photo-bg{position:relative;inset:auto;width:100%;height:clamp(230px,62vw,460px);object-fit:cover;opacity:1;transform:none}
+.venue .slide-content{padding:45px 20px 0}
+.venue .eyebrow{font:italic 56px var(--script);margin-bottom:18px}
+.venue .title{font:600 30px var(--serif);font-style:normal;text-transform:uppercase}
+.venue .copy,.venue-address{font:23px/1.4 var(--serif);color:var(--olive)}
+.venue .pill-link{display:inline-block;background:var(--olive-dark);color:white;border-radius:35px;padding:13px 35px;margin-top:16px;text-decoration:none;font:17px var(--serif);letter-spacing:0}
+.schedule{padding:55px 18px 75px}
+.schedule .eyebrow{font:italic 58px var(--script);margin-bottom:20px}
+.schedule .title{display:none}
+.schedule .timeline{position:relative;max-width:580px;margin:0 auto;border:0;padding:0}
+.schedule .timeline:before{content:"";position:absolute;top:10px;bottom:10px;left:50%;width:4px;border-radius:50%;background:var(--olive);transform:translateX(-50%);clip-path:polygon(0 0,100% 0,100% 100%,0 100%)}
+.schedule .event{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center;min-height:155px;padding:24px 0;border:0}
+.schedule .event:nth-child(odd) time{grid-column:1;text-align:right;padding-right:24px}
+.schedule .event:nth-child(odd) div{grid-column:2;text-align:left;padding-left:24px}
+.schedule .event:nth-child(even) time{grid-column:2;grid-row:1;text-align:left;padding-left:24px}
+.schedule .event:nth-child(even) div{grid-column:1;grid-row:1;text-align:right;padding-right:24px}
+.schedule .event time{font:italic 51px var(--serif);color:var(--olive)}
+.schedule .event h3{font:400 23px/1.15 var(--serif);color:var(--olive);margin:0}
+.schedule .event p{font:17px/1.3 var(--serif);color:#70745b;margin:7px 0 0}
+.schedule-photo{display:none}
+.dress{padding:65px 20px 100px}
+.dress .eyebrow{font:italic 58px var(--script);margin-bottom:18px}
+.dress .title{display:none}
+.dress .copy{font:22px/1.45 var(--serif);max-width:570px}
+.swatches{display:grid;grid-template-columns:repeat(5,70px);justify-content:center;gap:18px 16px;margin:42px auto 0}
+.swatch{width:70px;font-size:0}
+.swatch i{width:65px;height:65px;border:5px double #fffdf1;border-radius:50%;box-shadow:0 0 0 1px #d5d1bd,0 0 0 4px #fffdf1}
+.countdown-section{padding:75px 20px 90px;background:var(--paper);text-align:center}
+.countdown-section .eyebrow{font:italic 48px var(--script)}
+.countdown-section .title{display:none}
+.countdown{margin:0 auto;border:0;width:max-content;max-width:100%}
+.countdown div{min-width:65px;padding:6px;border:0!important}
+.countdown strong{font:italic 33px var(--serif);color:var(--olive)}
+.countdown span{font:14px var(--serif);color:var(--olive)}
+.rsvp{padding:0;background:linear-gradient(rgba(47,54,34,.93),rgba(47,54,34,.93)),url('IMG_5520.jpeg') center/cover;color:#fffdf1;text-align:left}
+.rsvp .slide-content{width:100%;max-width:620px;padding:58px 25px}
+.rsvp .eyebrow,.rsvp .copy{display:none}
+.rsvp .title{font:italic 58px var(--script);color:white;text-align:center;margin-bottom:25px}
+.attendance-box{max-width:560px;margin:0 auto;padding:10px 0;background:transparent;border:0;box-shadow:none}
+.attendance-box label,.attendance-box legend{font:20px var(--serif);color:white;letter-spacing:0}
+.attendance-box input:not([type=checkbox]),.attendance-box select,.attendance-box textarea{border:0;border-radius:40px;background:white;color:#34392b;padding:17px 22px;font:18px var(--serif)}
+.form-top{display:block}.form-top>div{margin-bottom:18px}
+.questionnaire-inner{padding:18px 0;background:transparent;border:0}
+.questionnaire h3{font:italic 34px var(--script);color:white}.questionnaire p{color:#f5f1df}
+.form-grid{display:block}.form-grid>div{margin-bottom:15px}
+.alcohol-grid{grid-template-columns:1fr 1fr}
+.alcohol-grid label{font:18px var(--serif);color:white}
+.submit{display:block;margin:28px 0 0 auto;padding:14px 35px;border:0;border-radius:40px;background:white;color:#454a32;font:20px var(--serif);letter-spacing:0;text-transform:none}
+.rsvp-note{color:#f5f1df;text-align:center}
+.footer{padding:65px 20px;background:linear-gradient(180deg,#7b8068,#363d2b);color:white;text-align:center;font:italic clamp(42px,8vw,62px) var(--script)}
+.footer small{display:block;margin-top:35px;font:28px var(--serif);letter-spacing:.08em;color:white}
+@media(max-width:600px){.hero{min-height:100svh}.hero h1{font-size:64px}.intro .slide-content{padding:50px 22px}.intro .eyebrow{font-size:37px}.intro .copy{font-size:20px}.schedule .eyebrow,.dress .eyebrow,.venue .eyebrow{font-size:50px}.schedule .event{min-height:145px;gap:6px;padding:20px 0}.schedule .event time{font-size:42px}.schedule .event h3{font-size:20px}.schedule .event p{font-size:15px}.swatches{grid-template-columns:repeat(5,54px);gap:14px 9px}.swatch{width:54px}.swatch i{width:52px;height:52px}.rsvp .title{font-size:49px}}
   </style>
 </head>
 <body>
   
 <div class="envelope-screen" id="envelopeScreen">
- <div class="envelope-wrap">
-  <div class="envelope-kicker">Запрошення на весілля</div>
-  <div class="envelope">
-   <div class="envelope-letter"><div class="monogram">Д&nbsp;&amp;&nbsp;А</div><small>Save the Date</small><div class="envelope-date">17 · 07 · 2027</div></div>
-   <div class="envelope-flap"></div><div class="envelope-seal">Д&nbsp;А</div>
+  <div class="envelope-wrap">
+    <div class="envelope-kicker">Save the Date</div>
+    <div class="envelope">
+      <div class="envelope-letter"><div class="monogram">Save the Date</div><div class="envelope-date">17.07.2027</div></div>
+      <div class="envelope-flap"></div><div class="envelope-seal">Д&nbsp;А</div>
+    </div>
+    <div class="envelope-caption">Натисніть, щоб відкрити</div>
+    <div class="envelope-date">ДАР’Я &amp; АНАТОЛІЙ</div>
   </div>
-  <div class="envelope-caption">Дар’я &amp; Анатолій</div>
-  <div class="envelope-date">17 ЛИПНЯ 2027 РОКУ</div>
-  <button class="envelope-open" id="openEnvelope" type="button">Натисніть, щоб відкрити</button>
- </div>
 </div>
-
-
   <div class="butterflies" aria-hidden="true"><svg class="butterfly" viewBox="0 0 32 32"><g class="wings"><path d="M16 15C9 3 1 5 5 15c3 5 7 4 11 2M16 15c7-12 15-10 11 0-3 5-7 4-11 2M16 17C8 16 5 23 11 25c3 1 5-3 5-6m0-2c8-1 11 6 5 8-3 1-5-3-5-6"/><path class="body" d="M15 12h2v12h-2z"/></g></svg><svg class="butterfly" viewBox="0 0 32 32"><g class="wings"><path d="M16 15C9 3 1 5 5 15c3 5 7 4 11 2M16 15c7-12 15-10 11 0-3 5-7 4-11 2M16 17C8 16 5 23 11 25c3 1 5-3 5-6m0-2c8-1 11 6 5 8-3 1-5-3-5-6"/><path class="body" d="M15 12h2v12h-2z"/></g></svg><svg class="butterfly" viewBox="0 0 32 32"><g class="wings"><path d="M16 15C9 3 1 5 5 15c3 5 7 4 11 2M16 15c7-12 15-10 11 0-3 5-7 4-11 2M16 17C8 16 5 23 11 25c3 1 5-3 5-6m0-2c8-1 11 6 5 8-3 1-5-3-5-6"/><path class="body" d="M15 12h2v12h-2z"/></g></svg><svg class="butterfly" viewBox="0 0 32 32"><g class="wings"><path d="M16 15C9 3 1 5 5 15c3 5 7 4 11 2M16 15c7-12 15-10 11 0-3 5-7 4-11 2M16 17C8 16 5 23 11 25c3 1 5-3 5-6m0-2c8-1 11 6 5 8-3 1-5-3-5-6"/><path class="body" d="M15 12h2v12h-2z"/></g></svg></div>
 
   <main>
