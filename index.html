@@ -255,6 +255,94 @@ body{background:var(--paper)!important;color:var(--ink)!important;font-family:va
 .envelope-open{margin-top:24px;padding:13px 28px;border:1px solid var(--sage);background:transparent;color:var(--sage-dark);font:11px var(--sans);letter-spacing:.18em;text-transform:uppercase;cursor:pointer}
 .envelope-open:hover{background:var(--sage);color:white}
 
+
+/* Green Template Maximum-inspired layout: restrained, botanical, centered */
+:root{--sage:#526b50;--sage-dark:#344b38;--cream:#f7f5ef;--ink:#344337;--line:#d9dfd4;--serif:"Cormorant Garamond",Georgia,serif;--sans:"DM Sans",Arial,sans-serif}
+html{scroll-behavior:smooth;background:var(--cream)}
+body{margin:0;background:var(--cream);color:var(--ink);font:400 15px/1.65 var(--sans);overflow-x:hidden}
+.grain,.butterflies,.topbar,.scroll-progress,.music-toggle,.to-top{display:none!important}
+.slide{min-height:0;padding:78px 22px;background:var(--cream);color:var(--ink);display:block;overflow:hidden}
+.slide:before,.slide:after{display:none}
+.slide-content{width:min(100%,900px);margin:0 auto}
+.eyebrow{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#7b8c75;margin:0 0 12px}
+.title{font:400 clamp(38px,6vw,62px)/1.05 var(--serif);color:var(--sage-dark);letter-spacing:0}
+.copy{font:400 21px/1.5 var(--serif);color:#5e6d5b;max-width:620px}
+.hero{min-height:0;padding:70px 22px 55px;text-align:center;background:var(--cream)}
+.hero .hero-collage{position:relative;inset:auto;width:min(100%,650px);height:clamp(220px,45vw,430px);margin:0 auto 35px;display:block;opacity:1;transform:none;overflow:hidden;border:9px solid #fff;box-shadow:0 12px 34px rgba(44,62,44,.12)}
+.hero .hero-collage img{width:100%;height:100%;min-height:0;object-fit:cover;mask-image:none;-webkit-mask-image:none}
+.hero-copy{max-width:700px}
+.monogram-wreath,.rose-spray,.hero .pill-link,.hero .scroll-hint{display:none}
+.hero .eyebrow{margin-bottom:12px}
+.hero h1{font:400 clamp(52px,10vw,96px)/.9 var(--serif);color:var(--sage-dark);letter-spacing:0}
+.hero h1 span{display:inline;padding:0;color:#788a70;font-size:.82em}
+.hero-date{margin-top:18px;color:var(--sage);font:500 16px var(--sans);letter-spacing:.18em}
+.hero-note{max-width:580px;margin:18px auto 0;color:#5e6d5b;font:400 23px/1.45 var(--serif)}
+.intro{padding:24px 22px 65px;text-align:center}
+.intro-grid{display:block}
+.intro-photo{display:none}
+.intro .title{display:none}
+.intro .copy{margin:0 auto;max-width:620px}
+.intro .eyebrow{font-size:18px;letter-spacing:0;text-transform:none;font-family:var(--serif)}
+.info,.stay,.gallery,.faq,.second,.gift{display:none!important}
+.schedule{padding-top:65px;padding-bottom:65px;text-align:center}
+.schedule .timeline{max-width:680px;margin:30px auto 0;border-top:1px solid var(--line);text-align:left}
+.schedule .event{grid-template-columns:85px 1fr;gap:16px;padding:15px 4px;border-bottom:1px solid var(--line)}
+.schedule .event time{font:500 24px var(--serif);color:var(--sage)}
+.schedule .event h3{font:500 25px/1.1 var(--serif);color:var(--sage-dark)}
+.schedule .event p{font:12px/1.55 var(--sans);color:#788276}
+.schedule-photo{display:none}
+.dress{padding:65px 22px;text-align:center}
+.dress .slide-content{max-width:720px}
+.dress .copy{margin:16px auto 0;font-size:19px}
+.swatches{justify-content:center;gap:15px 24px;margin-top:26px}
+.swatch{width:76px;font-size:10px;color:#65715f}
+.swatch i{width:55px;height:55px;border:3px solid white}
+.countdown-section{padding:65px 20px;text-align:center;background:#edf0e8}
+.countdown-section .title{font-size:clamp(34px,5vw,52px)}
+.countdown{margin:24px auto 0;width:max-content;max-width:100%;border-top:1px solid #aab6a4;border-bottom:1px solid #aab6a4}
+.countdown div{min-width:72px;padding:12px 14px}
+.countdown div+div{border-left:1px solid #d0d8cc}
+.countdown strong{font:500 32px/1 var(--serif);color:var(--sage-dark)}
+.countdown span{font:10px var(--sans);letter-spacing:.08em;color:#778471}
+.venue{padding:65px 22px;text-align:center;background:#eef1e9}
+.venue .photo-bg{position:relative;inset:auto;width:min(100%,680px);height:clamp(210px,40vw,350px);margin:0 auto 28px;opacity:1;transform:none;object-fit:cover;border:8px solid white;box-shadow:0 12px 30px rgba(44,62,44,.1)}
+.venue .slide-content{max-width:680px}
+.venue .title{font-size:clamp(38px,6vw,58px)}
+.venue-address{font:18px/1.5 var(--serif);color:#65715f}
+.venue .pill-link{display:inline-block;margin-top:16px;padding:10px 22px;border:1px solid var(--sage);color:var(--sage-dark);font-size:10px;letter-spacing:.12em;text-decoration:none}
+.rsvp{padding:70px 20px;background:#f7f5ef;text-align:center}
+.rsvp .title{font-size:clamp(42px,7vw,64px)}
+.rsvp .copy{margin:12px auto 0;font-size:18px}
+.attendance-box{max-width:620px;margin:28px auto 0;padding:26px;background:#fff;border:1px solid #dfe4da;box-shadow:0 12px 35px rgba(44,62,44,.07);text-align:left}
+.attendance-box label,.attendance-box legend{color:#526b50;font:11px var(--sans);letter-spacing:.04em}
+.attendance-box input,.attendance-box select,.attendance-box textarea{border:1px solid #d9dfd4;background:#fbfcf9;color:#344337;padding:12px;font:13px var(--sans);border-radius:0}
+.questionnaire-inner{background:#f4f6f1;border:1px solid #d9dfd4}
+.questionnaire h3{color:#344b38;font:500 27px var(--serif)}
+.questionnaire p{color:#758071}
+.alcohol-grid label{color:#344337}
+.submit{background:#526b50;border:1px solid #526b50;color:#fff;font:11px var(--sans);letter-spacing:.12em}
+.submit:hover{background:#344b38}
+.rsvp-note{color:#788276}
+.footer{padding:36px 18px;background:#526b50;color:#fff;font:italic 25px var(--serif)}
+.footer small{color:#e3e9df;font:10px var(--sans);letter-spacing:.14em}
+.envelope-screen{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;padding:22px;background:#f7f5ef}
+.envelope-wrap{width:min(100%,420px);text-align:center}
+.envelope-kicker{margin-bottom:24px;color:#788a70;font:11px var(--sans);letter-spacing:.2em;text-transform:uppercase}
+.envelope{position:relative;width:min(100%,360px);height:235px;margin:0 auto;background:#e4e9df;box-shadow:0 14px 38px rgba(44,62,44,.13);perspective:900px}
+.envelope:before{content:"";position:absolute;inset:0;background:linear-gradient(145deg,#edf0e8,#d5dfd1);clip-path:polygon(0 0,50% 56%,100% 0,100% 100%,0 100%)}
+.envelope-letter{position:absolute;z-index:1;left:9%;right:9%;top:10%;height:80%;padding:24px 10px;background:#fffefa;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:transform .8s ease}
+.envelope-letter .monogram{font:italic 32px var(--serif);color:#526b50}
+.envelope-letter small{margin-top:10px;color:#8a9a82;font:10px var(--sans);letter-spacing:.2em}
+.envelope-flap{position:absolute;z-index:3;inset:0;background:#d4ddcf;clip-path:polygon(0 0,100% 0,50% 57%);transform-origin:top;transition:transform .7s ease}
+.envelope-seal{position:absolute;z-index:4;left:50%;top:48%;transform:translate(-50%,-50%);width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:#526b50;color:white;font:italic 20px var(--serif);box-shadow:0 4px 14px rgba(44,62,44,.2)}
+.envelope-caption{margin-top:26px;color:#344b38;font:italic 28px var(--serif)}
+.envelope-date{margin-top:8px;color:#788a70;font:10px var(--sans);letter-spacing:.18em}
+.envelope-open{margin-top:23px;padding:12px 26px;border:1px solid #526b50;background:transparent;color:#344b38;font:10px var(--sans);letter-spacing:.16em;text-transform:uppercase}
+.envelope-open:hover{background:#526b50;color:white}
+.envelope-screen.opening .envelope-flap{transform:rotateX(180deg)}
+.envelope-screen.opening .envelope-letter{transform:translateY(-24%)}
+.envelope-screen.opening .envelope-seal{opacity:0}
+@media(max-width:600px){.slide{padding-left:18px;padding-right:18px}.hero{padding-top:48px}.hero .hero-collage{height:250px}.hero h1{font-size:54px}.hero h1 span{display:block;font-size:.72em}.hero-note{font-size:20px}.schedule .event{grid-template-columns:66px 1fr;gap:10px}.schedule .event time{font-size:21px}.schedule .event h3{font-size:22px}.countdown div{min-width:58px;padding:10px 7px}.countdown strong{font-size:26px}.attendance-box{padding:18px}.swatch{width:65px}.swatch i{width:48px;height:48px}}
   </style>
 </head>
 <body>
@@ -272,20 +360,27 @@ body{background:var(--paper)!important;color:var(--ink)!important;font-family:va
  </div>
 </div>
 
-  <div class="grain" aria-hidden="true"></div>
+
   <div class="butterflies" aria-hidden="true"><svg class="butterfly" viewBox="0 0 32 32"><g class="wings"><path d="M16 15C9 3 1 5 5 15c3 5 7 4 11 2M16 15c7-12 15-10 11 0-3 5-7 4-11 2M16 17C8 16 5 23 11 25c3 1 5-3 5-6m0-2c8-1 11 6 5 8-3 1-5-3-5-6"/><path class="body" d="M15 12h2v12h-2z"/></g></svg><svg class="butterfly" viewBox="0 0 32 32"><g class="wings"><path d="M16 15C9 3 1 5 5 15c3 5 7 4 11 2M16 15c7-12 15-10 11 0-3 5-7 4-11 2M16 17C8 16 5 23 11 25c3 1 5-3 5-6m0-2c8-1 11 6 5 8-3 1-5-3-5-6"/><path class="body" d="M15 12h2v12h-2z"/></g></svg><svg class="butterfly" viewBox="0 0 32 32"><g class="wings"><path d="M16 15C9 3 1 5 5 15c3 5 7 4 11 2M16 15c7-12 15-10 11 0-3 5-7 4-11 2M16 17C8 16 5 23 11 25c3 1 5-3 5-6m0-2c8-1 11 6 5 8-3 1-5-3-5-6"/><path class="body" d="M15 12h2v12h-2z"/></g></svg><svg class="butterfly" viewBox="0 0 32 32"><g class="wings"><path d="M16 15C9 3 1 5 5 15c3 5 7 4 11 2M16 15c7-12 15-10 11 0-3 5-7 4-11 2M16 17C8 16 5 23 11 25c3 1 5-3 5-6m0-2c8-1 11 6 5 8-3 1-5-3-5-6"/><path class="body" d="M15 12h2v12h-2z"/></g></svg></div>
-  <div class="scroll-progress" aria-hidden="true"><span id="scrollProgress"></span></div><nav class="topbar" id="topbar" aria-label="Навігація сайтом"><a class="brand" href="#top">Д&nbsp;·&nbsp;А</a><div class="nav"><a href="#details">Свято</a><a href="#schedule">Розклад</a><a href="#location">Локація</a><a href="#faq">Питання</a><a href="#rsvp">RSVP</a></div></nav>
+
   <main>
     <section class="slide hero observe" id="top">
-      <div class="hero-collage" aria-hidden="true"><img src="IMG_5506.jpeg" alt=""></div>
-      <svg class="rose-spray" viewBox="0 0 220 160" aria-hidden="true"><path class="stem" d="M16 150C58 121 67 84 110 51S171 22 202 8M71 111C51 89 34 82 19 83M127 47c-3-23 0-34 12-43m-39 66c17-11 30-13 43-9m-69 59c-4-20-13-30-28-34m101-61c17 1 28 7 37 19"/><path class="leaf" d="M19 83c-3-15 10-25 28-24-2 15-12 25-28 24m82-17c11-16 25-17 37-9-9 13-21 18-37 9m-58 69c-14-4-20-15-18-28 16 4 23 14 18 28m94-92c14-9 27-6 35 6-13 9-25 8-35-6m-38 40c5-17 16-24 30-21-5 15-15 23-30 21"/><g transform="translate(111 50)"><circle class="petal" r="12"/><circle class="petal" cx="0" cy="-8" r="7"/><circle class="petal" cx="8" cy="-2" r="7"/><circle class="petal" cx="5" cy="7" r="7"/><circle class="petal" cx="-5" cy="7" r="7"/><circle class="petal" cx="-8" cy="-2" r="7"/><circle class="center" r="3"/></g><g transform="translate(201 8) scale(.72)"><circle class="petal" r="12"/><circle class="petal" cx="0" cy="-8" r="7"/><circle class="petal" cx="8" cy="-2" r="7"/><circle class="petal" cx="5" cy="7" r="7"/><circle class="petal" cx="-5" cy="7" r="7"/><circle class="petal" cx="-8" cy="-2" r="7"/><circle class="center" r="3"/></g></svg>
-      <div class="slide-content hero-copy reveal"><div class="monogram-wreath" aria-label="Монограма Дар’ї та Анатолія">Д&nbsp;А</div><p class="eyebrow">З любов’ю запрошуємо вас</p><h1>Дар’я <span>&amp; Анатолій</span></h1><div class="hero-date">17 липня 2027 року</div><div class="countdown" aria-label="Відлік до весілля"><div><strong id="countDays">—</strong><span>днів</span></div><div><strong id="countHours">—</strong><span>годин</span></div><div><strong id="countMinutes">—</strong><span>хвилин</span></div><div><strong id="countSeconds">—</strong><span>секунд</span></div></div><p class="hero-note">День, коли почнеться наша сімейна історія. Будемо щасливі розділити його з вами.</p><a class="pill-link" href="#rsvp">Підтвердити присутність</a><a class="scroll-hint" href="#intro">Гортайте, щоб побачити більше</a></div>
+      <div class="hero-collage"><img src="IMG_5506.jpeg" alt="Дар’я та Анатолій"></div>
+      <div class="slide-content hero-copy reveal">
+        <p class="eyebrow">Запрошуємо вас на наше весілля</p>
+        <h1>Дар’я <span>&amp; Анатолій</span></h1>
+        <div class="hero-date">17.07.2027</div>
+      </div>
     </section>
     <section class="slide intro observe" id="intro">
-      <div class="slide-content intro-grid"><div class="reveal"><p class="eyebrow">Дорогі рідні та друзі</p><h2 class="title">Будьте поруч<br>у цей день</h2><p class="copy">Ми створюємо власну сім’ю й хочемо розділити цю особливу мить із тими, кого любимо. На вас чекають обійми, усмішки та спільні спогади.</p><div class="stats"><span><strong>17</strong>липня</span><span><strong>2027</strong>року</span></div></div><figure class="photo-panel intro-photo reveal"><img src="IMG_5473.jpeg" alt="Дар’я та Анатолій разом" loading="lazy"></figure></div>
+      <div class="slide-content intro-grid"><div class="reveal">
+        <p class="eyebrow">Дорогі гості!</p>
+        <p class="copy">Незабаром у нашому житті відбудеться важлива подія — наше весілля! Ми віримо та сподіваємося, що цей день стане гарним початком довгого та щасливого життя. Будемо щасливі розділити його з вами.</p>
+      </div></div>
     </section>
-    <section class="slide info observe" id="details">
-      <div class="slide-content reveal"><p class="eyebrow">Збережіть дату</p><h2 class="title">Наше свято</h2><p class="copy">Чекаємо на вас 17 липня 2027 року в заміському комплексі «Джерело».</p><div class="info-grid"><article class="info-card"><span>◇</span><h3>12:30</h3><p>Зустрічаємо гостей</p></article><article class="info-card"><span>♡</span><h3>13:20</h3><p>Початок весільної церемонії</p></article><article class="info-card"><span>✧</span><h3>17 липня</h3><p>День нашого весілля</p></article></div></div>
+    <section class="slide venue observe" id="location">
+      <img class="photo-bg" src="IMG_5520.jpeg" alt="Комплекс «Джерело»" loading="lazy">
+      <div class="slide-content reveal"><p class="eyebrow">Locations</p><h2 class="title">Ресторан</h2><p class="copy">Комплекс «Джерело»</p><p class="venue-address">Київська область, село Мала Бугаївка,<br>вулиця Мальовнича, 54</p><a class="pill-link" href="https://www.google.com/maps/search/?api=1&amp;query=%D0%97%D0%B0%D0%BC%D1%96%D1%81%D1%8C%D0%BA%D0%B8%D0%B9%20%D0%BA%D0%BE%D0%BC%D0%BF%D0%BB%D0%B5%D0%BA%D1%81%20%D0%94%D0%B6%D0%B5%D1%80%D0%B5%D0%BB%D0%BE%2C%20%D0%9C%D0%B0%D0%BB%D0%B0%20%D0%91%D1%83%D0%B3%D0%B0%D1%97%D0%B2%D0%BA%D0%B0%2C%20%D0%B2%D1%83%D0%BB%D0%B8%D1%86%D1%8F%20%D0%9C%D0%B0%D0%BB%D1%8C%D0%BE%D0%B2%D0%BD%D0%B8%D1%87%D0%B0%2C%2054" target="_blank" rel="noopener noreferrer">Переглянути на мапі</a></div>
     </section>
     <section class="slide schedule observe" id="schedule">
       <div class="slide-content"><div class="reveal"><p class="eyebrow">Як мине наш день</p><h2 class="title">Розклад</h2><div class="timeline">
@@ -298,24 +393,10 @@ body{background:var(--paper)!important;color:var(--ink)!important;font-family:va
         <div class="event"><time>22:00</time><div><h3>Завершення в ресторані</h3><p>Ресторан завершує роботу о 22:00. Гості, які залишаються на ніч, переходять до номерів до 22:30.</p></div></div>
       </div></div><figure class="photo-panel schedule-photo reveal"><img src="IMG_5536.jpeg" alt="Фото молодят" loading="lazy"></figure></div>
     </section>
-    <section class="slide stay observe" id="travel">
-      <div class="slide-content reveal"><p class="eyebrow">Подбали про дорогу й відпочинок</p><h2 class="title">Трансфер<br>і проживання</h2><div class="stay-grid"><article class="stay-card"><h3>Трансфер</h3><p>Організуємо трансфер від метро «Теремки» до комплексу та назад. Збір о <strong>12:00</strong>, виїзд о <strong>12:10</strong>. Позначте у формі, чи потрібен вам транспорт. Час зворотного виїзду повідомимо окремо.</p></article><article class="stay-card"><h3>Ночівля</h3><p>На території комплексу можна залишитися на ніч. Вартість — <strong>3 500 грн за ніч зі сніданком</strong>. Поселення з 14:00 до 15:00. Після оплати молодята забронюють проживання й узгодять деталі.</p></article></div><p class="small-note">Будемо раді дітям, якщо немає можливості залишити їх із кимось. Окремого нагляду не передбачено, тому батьки відповідатимуть за догляд, безпеку й поведінку дітей. Якщо запрошення передбачає +1, просимо запросити другу половинку або дуже близьку людину.</p></div>
-    </section>
-    <section class="slide gallery observe" id="photos">
-      <div class="slide-content"><div class="reveal"><p class="eyebrow">Трохи нашої історії</p><h2 class="title">Моменти,<br>які хочеться зберегти</h2></div><div class="gallery-row"><figure class="photo-panel reveal"><img src="IMG_5505.jpeg" alt="Спільне фото Дар’ї та Анатолія" loading="lazy"></figure><figure class="photo-panel reveal"><img src="IMG_5467.jpeg" alt="Спільний спогад молодят" loading="lazy"></figure><figure class="photo-panel reveal"><img src="IMG_5535.jpeg" alt="Дар’я та Анатолій" loading="lazy"></figure></div></div>
-    </section>
     <section class="slide dress observe" id="dress">
       <div class="slide-content reveal"><p class="eyebrow">Палітра нашого свята</p><h2 class="title">Дрескод</h2><p class="copy">Будемо вдячні, якщо для святкового образу ви оберете гармонійні відтінки слонової кістки, бежу, шампанського чи сапфірового синього. Білий колір цього дня залишимо нареченій.</p><div class="swatches"><div class="swatch"><i style="background:#f7f2e8"></i>Слонова кістка</div><div class="swatch"><i style="background:#e5d7c2"></i>Бежевий</div><div class="swatch"><i style="background:#dfc99e"></i>Шампань</div><div class="swatch"><i style="background:#173d70"></i>Сапфіровий</div></div></div>
     </section>
-    <section class="slide venue observe" id="location"><img class="photo-bg" src="IMG_5520.jpeg" alt="" loading="lazy"><div class="slide-content reveal"><p class="eyebrow">Місце нашої зустрічі</p><h2 class="title">Комплекс<br>«Джерело»</h2><p class="venue-address">Київська область, село Мала Бугаївка,<br>вулиця Мальовнича, 54</p><a class="pill-link" href="https://www.google.com/maps/search/?api=1&amp;query=%D0%97%D0%B0%D0%BC%D1%96%D1%81%D1%8C%D0%BA%D0%B8%D0%B9%20%D0%BA%D0%BE%D0%BC%D0%BF%D0%BB%D0%B5%D0%BA%D1%81%20%D0%94%D0%B6%D0%B5%D1%80%D0%B5%D0%BB%D0%BE%2C%20%D0%9C%D0%B0%D0%BB%D0%B0%20%D0%91%D1%83%D0%B3%D0%B0%D1%97%D0%B2%D0%BA%D0%B0%2C%20%D0%B2%D1%83%D0%BB%D0%B8%D1%86%D1%8F%20%D0%9C%D0%B0%D0%BB%D1%8C%D0%BE%D0%B2%D0%BD%D0%B8%D1%87%D0%B0%2C%2054" target="_blank" rel="noopener noreferrer">Відкрити Google Maps ↗</a></div></section>
-    <section class="slide faq observe" id="faq"><div class="slide-content reveal"><p class="eyebrow">Усе, що варто знати</p><h2 class="title">Кілька запитань</h2><div class="section-ornament">✧</div>
-      <details class="faq-item"><summary>Чи можна прийти з гостем?</summary><p>Якщо у вашому запрошенні передбачено +1, будемо раді бачити вашу другу половинку або близьку людину. Будь ласка, зазначте її ім’я у відповіді.</p></details>
-      <details class="faq-item"><summary>Чи можна бути з дітьми?</summary><p>Ми раді дітям, якщо немає можливості залишити їх із кимось. Окремого дитячого нагляду не буде, тож батьки відповідатимуть за догляд, безпеку й поведінку дітей.</p></details>
-      <details class="faq-item"><summary>Чи буде трансфер і де можна переночувати?</summary><p>Буде організовано трансфер від метро «Теремки»: збір о 12:00, виїзд о 12:10. На території комплексу доступне проживання зі сніданком за 3 500 грн за ніч. Деталі можна зазначити у формі RSVP.</p></details>
-      <details class="faq-item"><summary>До якого дня потрібно відповісти?</summary><p>Будь ласка, підтвердьте присутність до 30 квітня 2027 року за персональним посиланням на запрошення.</p></details>
-    </div></section>
-    <section class="slide second observe" id="second-day"><div class="slide-content reveal"><p class="eyebrow">Продовжимо святкування</p><h2 class="title">І на другий день<br>будемо раді вас бачити</h2><p class="copy">Дрескод — ваші улюблені супергерої. Позначте у формі, чи приєднаєтеся до нас.</p></div></section>
-    <section class="slide gift observe" id="gift"><div class="slide-content reveal"><p class="eyebrow">Ваші побажання — найцінніші</p><h2 class="title">Про подарунки</h2><p class="copy">Якщо захочете привітати нас подарунком, будемо вдячні за грошовий внесок у нашу маленьку спільну мрію, на яку ми збираємо кошти. Найцінніше для нас — ваша присутність і щирі слова.</p></div></section>
+    <section class="countdown-section"><p class="eyebrow">Побачимось через…</p><h2 class="title">З нетерпінням чекаємо</h2><div class="countdown" aria-label="Відлік до весілля"><div><strong id="countDays">00</strong><span>Дні</span></div><div><strong id="countHours">00</strong><span>Год</span></div><div><strong id="countMinutes">00</strong><span>Хв</span></div><div><strong id="countSeconds">00</strong><span>Сек</span></div></div></section>
     <section class="slide rsvp observe" id="rsvp">
       <div class="slide-content"><div class="reveal"><p class="eyebrow">Будь ласка, відповідайте до 30 квітня 2027 року</p><h2 class="title">Чи будете<br>з нами?</h2><p class="copy">Вкажіть ПІБ та оберіть відповідь. Якщо ви будете на весіллі, відкриється коротка анкета з деталями.</p></div>
         <form class="attendance-box reveal" id="rsvpForm" method="post" target="rsvpFrame">
@@ -333,7 +414,100 @@ body{background:var(--paper)!important;color:var(--ink)!important;font-family:va
       </div>
     </section>
   </main>
-  <footer class="footer"><div class="section-ornament">❦</div>З любов’ю та нетерпінням чекаємо на зустріч<small>Дар’я &amp; Анатолій · 17 липня 2027</small></footer>
+  <footer class="footer">Святкуйте з Нами!<small>Дар’я &amp; Анатолій · 17.07.2027</small></footer>
+  <script>
+
+    const envelopeScreen = document.getElementById("envelopeScreen");
+    document.getElementById("openEnvelope").addEventListener("click", function(){
+      envelopeScreen.classList.add("opening");
+      setTimeout(function(){ envelopeScreen.classList.add("is-open"); document.body.style.overflow=""; }, 1050);
+    });
+    document.body.style.overflow="hidden";
+    const RSVP_ENDPOINT = "https://script.google.com/macros/s/AKfycbyEGS91RODqHRaQFeCzQakTg1SiW7zNm8o-0qZNW2FQ1nUmqbXb0wBdkgG42paKs-Rt6w/exec";
+    const topbar = document.getElementById("topbar");
+    const toTop = document.getElementById("toTop");
+    const progressBar = document.getElementById("scrollProgress");
+    function updateScrollDecor() { if (!progressBar || !topbar || !toTop) return; const maxScroll = document.documentElement.scrollHeight - window.innerHeight; const progress = maxScroll > 0 ? window.scrollY / maxScroll * 100 : 0; progressBar.style.width = progress + "%"; const scrolled = window.scrollY > 160; topbar.classList.toggle("scrolled", scrolled); toTop.classList.toggle("visible", scrolled); }
+    window.addEventListener("scroll", updateScrollDecor, { passive: true });
+    window.addEventListener("resize", updateScrollDecor);
+    updateScrollDecor();
+    const weddingMoment = new Date("2027-07-17T13:20:00+03:00").getTime();
+    function updateCountdown() { let remaining = Math.max(0, weddingMoment - Date.now()); const day = 86400000, hour = 3600000, minute = 60000; const days = Math.floor(remaining / day); remaining %= day; const hours = Math.floor(remaining / hour); remaining %= hour; const minutes = Math.floor(remaining / minute); const seconds = Math.floor((remaining % minute) / 1000); document.getElementById("countDays").textContent = String(days); document.getElementById("countHours").textContent = String(hours).padStart(2,"0"); document.getElementById("countMinutes").textContent = String(minutes).padStart(2,"0"); document.getElementById("countSeconds").textContent = String(seconds).padStart(2,"0"); }
+    updateCountdown(); setInterval(updateCountdown, 1000);
+    const musicToggle = document.getElementById("musicToggle");
+    const musicLabel = document.getElementById("musicLabel");
+    let musicContext = null, musicMaster = null, musicLoop = null, musicOn = false;
+    function playMusicNote(frequency, startAt) {
+      const oscillator = musicContext.createOscillator();
+      const envelope = musicContext.createGain();
+      oscillator.type = "sine"; oscillator.frequency.value = frequency;
+      envelope.gain.setValueAtTime(0.0001, startAt);
+      envelope.gain.linearRampToValueAtTime(0.22, startAt + .18);
+      envelope.gain.exponentialRampToValueAtTime(0.0001, startAt + 1.9);
+      oscillator.connect(envelope); envelope.connect(musicMaster);
+      oscillator.start(startAt); oscillator.stop(startAt + 2);
+    }
+    function playMusicPhrase() {
+      const notes = [293.66,369.99,440,587.33,493.88,369.99];
+      const startAt = musicContext.currentTime + .08;
+      notes.forEach(function (note,index) { playMusicNote(note,startAt + index*.62); });
+    }
+    musicToggle.addEventListener("click", async function () {
+      const AudioEngine = window.AudioContext || window.webkitAudioContext;
+      if (!AudioEngine) { musicLabel.textContent = "Музика недоступна у цьому браузері"; return; }
+      if (!musicContext) { musicContext = new AudioEngine(); musicMaster = musicContext.createGain(); musicMaster.gain.value = .14; musicMaster.connect(musicContext.destination); }
+      if (musicOn) {
+        musicOn = false; clearInterval(musicLoop); musicMaster.gain.setTargetAtTime(.0001,musicContext.currentTime,.18); musicLabel.textContent = "Увімкнути музику"; musicToggle.setAttribute("aria-pressed","false");
+      } else {
+        await musicContext.resume(); musicOn = true; musicMaster.gain.setTargetAtTime(.7,musicContext.currentTime,.35); playMusicPhrase(); musicLoop = setInterval(playMusicPhrase,3800); musicLabel.textContent = "Вимкнути музику"; musicToggle.setAttribute("aria-pressed","true");
+      }
+    });
+    const observer = new IntersectionObserver(function (entries) { entries.forEach(function (entry) { const items = entry.target.querySelectorAll(".reveal"); if (entry.isIntersecting) { entry.target.classList.add("is-visible"); items.forEach(function (item, index) { setTimeout(function () { item.classList.add("is-visible"); }, Math.min(index * 90, 360)); }); } else { entry.target.classList.remove("is-visible"); items.forEach(function (item) { item.classList.remove("is-visible"); }); } }); }, { threshold: .15 });
+    document.querySelectorAll(".observe").forEach(function (section) { observer.observe(section); });
+    const inviteCodeFromUrl = new URLSearchParams(location.search).get("invite");
+    const inviteCodeField = document.getElementById("inviteCode");
+    if (inviteCodeFromUrl) { inviteCodeField.value = inviteCodeFromUrl; inviteCodeField.readOnly = true; document.getElementById("inviteCodeWrap").hidden = true; }
+    const attendance = document.getElementById("attendance");
+    const questionnaire = document.getElementById("questionnaire");
+    const questionnaireInputs = questionnaire.querySelectorAll("input,select,textarea");
+    function showQuestionnaire() {
+      const attending = attendance.value === "Так";
+      questionnaire.classList.toggle("is-open", attending);
+      questionnaire.setAttribute("aria-hidden", String(!attending));
+      questionnaireInputs.forEach(function (input) { input.disabled = !attending; });
+    }
+    attendance.addEventListener("change", showQuestionnaire);
+    showQuestionnaire();
+    const form = document.getElementById("rsvpForm");
+    const frame = document.getElementById("rsvpFrame");
+    const status = document.getElementById("formStatus");
+    let pendingNonce = "";
+    let responseTimer;
+    window.addEventListener("message", function (event) {
+      if (event.source !== frame.contentWindow || !event.data || event.data.type !== "wedding-rsvp" || event.data.nonce !== pendingNonce) return;
+      clearTimeout(responseTimer);
+      status.textContent = event.data.message || (event.data.ok ? "Дякуємо! Відповідь збережено." : "Перевірте дані та спробуйте ще раз.");
+      if (event.data.ok) { form.reset(); if (inviteCodeFromUrl) { inviteCodeField.value = inviteCodeFromUrl; inviteCodeField.readOnly = true; document.getElementById("inviteCodeWrap").hidden = true; } showQuestionnaire(); }
+      document.getElementById("submitRsvp").disabled = false;
+      pendingNonce = "";
+    });
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      if (!inviteCodeField.value.trim()) { status.textContent = "Введіть код із персонального запрошення."; return; }
+      const data = new FormData(form);
+      const payload = Object.fromEntries(data.entries());
+      payload.alcohol = data.getAll("alcohol");
+      pendingNonce = crypto.randomUUID ? crypto.randomUUID() : Date.now().toString(36) + Math.random().toString(36).slice(2);
+      payload.nonce = pendingNonce;
+      document.getElementById("payloadInput").value = JSON.stringify(payload);
+      document.getElementById("submitRsvp").disabled = true;
+      status.textContent = "Надсилаємо відповідь…";
+      form.action = RSVP_ENDPOINT;
+      form.submit();
+      responseTimer = setTimeout(function () { if (!pendingNonce) return; status.textContent = "Не отримали підтвердження від таблиці. Спробуйте ще раз або зв’яжіться з молодятами."; document.getElementById("submitRsvp").disabled = false; pendingNonce = ""; }, 15000);
+    });
+  </script>
+олій · 17 липня 2027</small></footer>
   <button class="music-toggle" id="musicToggle" type="button" aria-pressed="false"><span class="note">♫</span><span id="musicLabel">Увімкнути музику</span></button>
   <a class="to-top" id="toTop" href="#top" aria-label="Повернутися нагору">↑</a>
   <script>
