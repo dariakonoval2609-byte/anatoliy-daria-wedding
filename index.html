@@ -176,9 +176,102 @@
       /* Keep the schedule image in its own column so it never covers event text. */
     .schedule .timeline{max-width:60%}.schedule-photo{right:5%;width:26%;top:22%}
     @media(max-width:900px) and (min-width:761px){.schedule .timeline{max-width:58%}.schedule-photo{right:3%;width:29%;height:55%}}
+  
+/* === Maximum-inspired invitation presentation === */
+:root{--sage:#536d5d;--sage-dark:#344b3e;--sage-pale:#e8ece4;--paper:#f8f7f1;--ink:#35483d;--gold:#b49a6a;--serif:"Cormorant Garamond",Georgia,serif}
+html{scroll-behavior:smooth;background:var(--paper)}
+body{background:var(--paper)!important;color:var(--ink)!important;font-family:var(--serif)!important;font-size:17px;letter-spacing:.015em}
+.topbar{display:none!important}
+.slide{background:var(--paper)!important;color:var(--ink)!important;min-height:auto;padding:105px clamp(22px,8vw,120px)}
+.slide:before{background:linear-gradient(145deg,#f8f7f1,#e9eee7)!important}
+.slide:after{background:none!important}
+.slide .eyebrow{color:var(--sage)!important;font-size:11px;letter-spacing:.28em}
+.slide .title,.hero h1{color:var(--sage-dark)!important;font-family:var(--serif)!important;font-weight:400;letter-spacing:.01em}
+.slide .copy{color:#66756a!important;font-family:var(--serif)!important;font-size:clamp(20px,2.5vw,27px)}
+.hero{min-height:92svh!important;text-align:center;justify-content:center;padding-top:90px}
+.hero:after{background:linear-gradient(180deg,rgba(248,247,241,.25),rgba(248,247,241,.84))!important}
+.hero-collage{opacity:.55!important;filter:saturate(.65)!important}
+.hero-collage img{mask-image:linear-gradient(180deg,transparent 0%,#000 30%,#000 65%,transparent 100%)!important;-webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 30%,#000 65%,transparent 100%)!important}
+.hero-copy{margin:auto!important;max-width:760px;text-align:center}
+.hero h1{font-size:clamp(64px,11vw,120px)!important;line-height:.95}
+.hero h1 span{padding:0!important;color:#8a9a8c!important;font-size:.72em!important}
+.hero-date{color:var(--sage)!important;font:500 18px var(--serif)!important;letter-spacing:.2em}
+.hero-note{color:#657468!important;font-size:25px!important;margin:18px auto!important}
+.monogram-wreath{margin:0 auto 18px;border-color:var(--gold)!important;color:var(--sage)!important}
+.countdown{margin:25px auto!important;border-color:rgba(83,109,93,.35)!important}
+.countdown strong{color:var(--sage-dark)!important}.countdown span{color:#77877a!important}
+.pill-link{color:var(--sage-dark)!important;border-color:var(--sage)!important;font-size:10px;letter-spacing:.18em}
+.pill-link:hover{background:var(--sage)!important;color:white!important}
+.scroll-hint{color:var(--sage)!important}
+.intro-grid{grid-template-columns:1fr 1fr!important;gap:8vw!important}
+.photo-panel{border:8px solid rgba(255,255,255,.7)!important;box-shadow:0 18px 55px rgba(48,67,53,.13)!important}
+.info-grid{gap:18px!important}
+.info-card{background:rgba(255,255,255,.72)!important;border:1px solid rgba(83,109,93,.2)!important;box-shadow:0 12px 34px rgba(48,67,53,.06)!important;text-align:center;padding:30px 20px!important}
+.info-card h3{color:var(--sage-dark)!important;font-size:32px!important}
+.schedule .timeline{max-width:760px!important;border-color:rgba(83,109,93,.25)!important}
+.event{border-color:rgba(83,109,93,.2)!important;padding:22px 0!important}
+.event time{color:var(--sage)!important}.event h3{color:var(--sage-dark)!important;font-family:var(--serif)!important}.event p{color:#78857a!important;font-size:14px!important}
+.schedule-photo{opacity:.32!important}
+.stay-card{background:rgba(255,255,255,.66)!important;border:1px solid rgba(83,109,93,.18)!important;box-shadow:0 12px 34px rgba(48,67,53,.05)!important}
+.stay-card h3{color:var(--sage-dark)!important}.stay-card p,.small-note{color:#66756a!important}
+.small-note{background:rgba(255,255,255,.55)!important;border-color:var(--gold)!important}
+.gallery-row .photo-panel{mask-image:none!important;-webkit-mask-image:none!important;border:8px solid white!important;box-shadow:0 12px 35px rgba(48,67,53,.12)!important}
+.swatch i{border:2px solid white!important}
+.venue:after{background:linear-gradient(90deg,rgba(248,247,241,.88),rgba(248,247,241,.48))!important}
+.venue-address{color:#647469!important}
+.faq:before{background:linear-gradient(145deg,#e8ece4,#f8f7f1)!important}
+.faq-item{border-color:rgba(83,109,93,.28)!important}.faq-item summary{color:var(--sage-dark)!important;font-size:26px!important}.faq-item p{color:#66756a!important}
+.rsvp:before{background:linear-gradient(145deg,#e8ece4,#f8f7f1)!important}
+.rsvp .title{color:var(--sage-dark)!important}.rsvp .copy{color:#66756a!important}
+.attendance-box{background:rgba(255,255,255,.76)!important;border:1px solid rgba(83,109,93,.22)!important;box-shadow:0 18px 50px rgba(48,67,53,.08)!important}
+.attendance-box label,.attendance-box legend{color:var(--sage)!important}
+.attendance-box input,.attendance-box select,.attendance-box textarea{border:1px solid rgba(83,109,93,.25)!important;background:#fffefa!important;color:var(--ink)!important;font-family:var(--serif)!important;font-size:15px!important}
+.questionnaire-inner{background:#eef1eb!important;border-color:rgba(83,109,93,.2)!important}
+.questionnaire h3{color:var(--sage-dark)!important}.questionnaire p,.alcohol-grid label{color:#66756a!important}
+.form-message{color:var(--sage-dark)!important}
+.submit{background:var(--sage)!important;border-color:var(--sage)!important;color:white!important;font-family:var(--serif)!important;letter-spacing:.16em!important}
+.rsvp-note{color:#7c887d!important}
+.footer{background:#e4e9e1!important;color:var(--sage-dark)!important;font-family:var(--serif)!important}
+.footer small{color:#758477!important}
+.music-toggle,.to-top{background:rgba(248,247,241,.94)!important;border-color:rgba(83,109,93,.35)!important;color:var(--sage-dark)!important}
+@media(max-width:760px){.slide{padding:82px 22px!important}.hero{min-height:94svh!important}.intro-grid{grid-template-columns:1fr!important}.schedule .timeline{max-width:100%!important}.schedule-photo{display:none}.hero h1{font-size:clamp(55px,14vw,82px)!important}.hero-note{font-size:21px!important}.info-grid{grid-template-columns:1fr!important}}
+/* opening envelope */
+.envelope-screen{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;padding:22px;background:radial-gradient(ellipse at center,#edf0e8 0%,#dce4d9 100%);transition:opacity 1s ease,visibility 1s ease}
+.envelope-screen.is-open{opacity:0;visibility:hidden;pointer-events:none}
+.envelope-wrap{width:min(440px,92vw);text-align:center;color:var(--sage-dark)}
+.envelope-kicker{font:italic 20px var(--serif);letter-spacing:.12em;color:var(--sage);margin-bottom:24px}
+.envelope{position:relative;width:100%;aspect-ratio:1.48;background:#f8f7f1;box-shadow:0 24px 65px rgba(52,75,62,.18);border:1px solid rgba(83,109,93,.18);perspective:1000px;overflow:visible}
+.envelope:before{content:"";position:absolute;inset:0;background:linear-gradient(145deg,transparent 49.7%,#e7e9df 50%),linear-gradient(35deg,#e4e8df 49.7%,transparent 50%);z-index:2;clip-path:polygon(0 0,50% 58%,100% 0,100% 100%,0 100%)}
+.envelope-letter{position:absolute;z-index:1;left:9%;right:9%;top:8%;height:82%;background:#fffefa;border:1px solid #e1e5db;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:transform 1s ease .2s}
+.envelope-letter .monogram{font:italic 48px var(--serif);color:var(--sage)}
+.envelope-letter small{font:10px var(--sans);letter-spacing:.24em;color:#8a9a8c;text-transform:uppercase;margin-top:12px}
+.envelope-flap{position:absolute;z-index:3;inset:0 0 auto;height:60%;background:#eef0e8;clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform .8s ease;filter:drop-shadow(0 3px 3px rgba(52,75,62,.08))}
+.envelope-seal{position:absolute;z-index:4;left:50%;top:48%;transform:translate(-50%,-50%);width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:var(--sage);color:#fff;font:italic 24px var(--serif);box-shadow:0 5px 18px rgba(52,75,62,.2);transition:opacity .35s}
+.envelope-screen.opening .envelope-flap{transform:rotateX(180deg)}
+.envelope-screen.opening .envelope-letter{transform:translateY(-25%)}
+.envelope-screen.opening .envelope-seal{opacity:0}
+.envelope-caption{margin-top:30px;font:italic 24px var(--serif);color:var(--sage-dark)}
+.envelope-date{font:11px var(--sans);letter-spacing:.24em;color:#829084;margin-top:8px}
+.envelope-open{margin-top:24px;padding:13px 28px;border:1px solid var(--sage);background:transparent;color:var(--sage-dark);font:11px var(--sans);letter-spacing:.18em;text-transform:uppercase;cursor:pointer}
+.envelope-open:hover{background:var(--sage);color:white}
+
   </style>
 </head>
 <body>
+  
+<div class="envelope-screen" id="envelopeScreen">
+ <div class="envelope-wrap">
+  <div class="envelope-kicker">Запрошення на весілля</div>
+  <div class="envelope">
+   <div class="envelope-letter"><div class="monogram">Д&nbsp;&amp;&nbsp;А</div><small>Save the Date</small><div class="envelope-date">17 · 07 · 2027</div></div>
+   <div class="envelope-flap"></div><div class="envelope-seal">Д&nbsp;А</div>
+  </div>
+  <div class="envelope-caption">Дар’я &amp; Анатолій</div>
+  <div class="envelope-date">17 ЛИПНЯ 2027 РОКУ</div>
+  <button class="envelope-open" id="openEnvelope" type="button">Натисніть, щоб відкрити</button>
+ </div>
+</div>
+
   <div class="grain" aria-hidden="true"></div>
   <div class="butterflies" aria-hidden="true"><svg class="butterfly" viewBox="0 0 32 32"><g class="wings"><path d="M16 15C9 3 1 5 5 15c3 5 7 4 11 2M16 15c7-12 15-10 11 0-3 5-7 4-11 2M16 17C8 16 5 23 11 25c3 1 5-3 5-6m0-2c8-1 11 6 5 8-3 1-5-3-5-6"/><path class="body" d="M15 12h2v12h-2z"/></g></svg><svg class="butterfly" viewBox="0 0 32 32"><g class="wings"><path d="M16 15C9 3 1 5 5 15c3 5 7 4 11 2M16 15c7-12 15-10 11 0-3 5-7 4-11 2M16 17C8 16 5 23 11 25c3 1 5-3 5-6m0-2c8-1 11 6 5 8-3 1-5-3-5-6"/><path class="body" d="M15 12h2v12h-2z"/></g></svg><svg class="butterfly" viewBox="0 0 32 32"><g class="wings"><path d="M16 15C9 3 1 5 5 15c3 5 7 4 11 2M16 15c7-12 15-10 11 0-3 5-7 4-11 2M16 17C8 16 5 23 11 25c3 1 5-3 5-6m0-2c8-1 11 6 5 8-3 1-5-3-5-6"/><path class="body" d="M15 12h2v12h-2z"/></g></svg><svg class="butterfly" viewBox="0 0 32 32"><g class="wings"><path d="M16 15C9 3 1 5 5 15c3 5 7 4 11 2M16 15c7-12 15-10 11 0-3 5-7 4-11 2M16 17C8 16 5 23 11 25c3 1 5-3 5-6m0-2c8-1 11 6 5 8-3 1-5-3-5-6"/><path class="body" d="M15 12h2v12h-2z"/></g></svg></div>
   <div class="scroll-progress" aria-hidden="true"><span id="scrollProgress"></span></div><nav class="topbar" id="topbar" aria-label="Навігація сайтом"><a class="brand" href="#top">Д&nbsp;·&nbsp;А</a><div class="nav"><a href="#details">Свято</a><a href="#schedule">Розклад</a><a href="#location">Локація</a><a href="#faq">Питання</a><a href="#rsvp">RSVP</a></div></nav>
@@ -244,6 +337,13 @@
   <button class="music-toggle" id="musicToggle" type="button" aria-pressed="false"><span class="note">♫</span><span id="musicLabel">Увімкнути музику</span></button>
   <a class="to-top" id="toTop" href="#top" aria-label="Повернутися нагору">↑</a>
   <script>
+
+    const envelopeScreen = document.getElementById("envelopeScreen");
+    document.getElementById("openEnvelope").addEventListener("click", function(){
+      envelopeScreen.classList.add("opening");
+      setTimeout(function(){ envelopeScreen.classList.add("is-open"); document.body.style.overflow=""; }, 1050);
+    });
+    document.body.style.overflow="hidden";
     const RSVP_ENDPOINT = "https://script.google.com/macros/s/AKfycbyEGS91RODqHRaQFeCzQakTg1SiW7zNm8o-0qZNW2FQ1nUmqbXb0wBdkgG42paKs-Rt6w/exec";
     const topbar = document.getElementById("topbar");
     const toTop = document.getElementById("toTop");
