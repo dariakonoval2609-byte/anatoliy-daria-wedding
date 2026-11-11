@@ -10,6 +10,55 @@ const RESPONSE_HEADERS = [
   "Проживання", "Трансфер", "Другий день", "Алкоголь", "Харчові обмеження / побажання", "Оновлено"
 ];
 
+const WEDDING_SITE_ORIGIN = "https://dariakonoval2609-byte.github.io";
+
+/** Return only the guest data needed to render their personal invitation. */
+function doGet(e) {
+  const action = String(e && e.parameter && e.parameter.action || "");
+  const code = String(e && e.parameter && e.parameter.invite || "").trim();
+  if (action !== "guest" || !code) return guestMessageHtml_({ type: "wedding-guest", invite: code, guest: null });
+  try {
+    const ss = getWeddingSpreadsheet_();
+    const sheet = ss.getSheets()[0];
+    const headers = getHeaderMap_(sheet);
+    const required = ["Прізвище", "Ім'я", "По-батькові", INVITE_CODE_HEADER];
+    required.forEach(name => { if (headers[name] === undefined) throw new Error("Не знайдено колонку: " + name); });
+    const rows = sheet.getDataRange().getDisplayValues();
+    const matchingRow = rows.slice(1).find(row => constantTimeEqual_(row[headers[INVITE_CODE_HEADER]], code));
+    if (!matchingRow) return guestMessageHtml_({ type: "wedding-guest", invite: code, guest: null });
+
+    const lastName = cellByHeader_(matchingRow, headers, ["Прізвище"]);
+    const firstName = cellByHeader_(matchingRow, headers, ["Ім'я"]);
+    const patronymic = cellByHeader_(matchingRow, headers, ["По-батькові"]);
+    const relationship = cellByHeader_(matchingRow, headers, ["Зв'язки з подружжям", "Зв’язки з подружжям", "Зв'язок із подружжям"]);
+    const statusPlusOne = normalize_(cellByHeader_(matchingRow, headers, ["Статус гостя (+1)"]));
+    const plusOneName = cellByHeader_(matchingRow, headers, ["Ім'я запрошеного гостя +1", "Ім’я запрошеного гостя +1"]);
+    const lodging = normalize_(cellByHeader_(matchingRow, headers, ["Заселення", "Проживання"]));
+    const transfer = normalize_(cellByHeader_(matchingRow, headers, ["Потреба у Трансфері", "Трансфер"]));
+    const staying = /^(так|yes|true|1|потрібне|потрібен|буду|потрібно)$/.test(lodging);
+    const needsTransfer = /^(так|yes|true|1|потрібне|потрібен|буду|потрібно)$/.test(transfer);
+    let scheduleHeader = "Розклад весілля";
+    if (staying && needsTransfer) scheduleHeader = "Розклад весілля з трансфером і поселенням";
+    else if (staying) scheduleHeader = "Розклад весілля з поселенням";
+    else if (needsTransfer) scheduleHeader = "Розклад весілля з трансфером";
+    const scheduleText = cellByHeader_(matchingRow, headers, [scheduleHeader]) || cellByHeader_(matchingRow, headers, ["Розклад весілля"]);
+    const invitationText = cellByHeader_(matchingRow, headers, ["Теплі слова запрошення", "Теплі слова запрошення для гостя"]);
+    const guest = {
+      fullName: [lastName, firstName, patronymic].filter(Boolean).join(" "),
+      firstName: firstName,
+      relationship: relationship,
+      plusOneAllowed: /^(так|yes|true|1|\+|є)$/.test(statusPlusOne),
+      plusOneName: plusOneName,
+      invitationText: invitationText,
+      scheduleText: scheduleText
+    };
+    return guestMessageHtml_({ type: "wedding-guest", invite: code, guest: guest });
+  } catch (error) {
+    console.error(error);
+    return guestMessageHtml_({ type: "wedding-guest", invite: code, guest: null });
+  }
+}
+
 function setupWeddingRsvp() {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   if (!ss) throw new Error("Спочатку відкрийте Apps Script з потрібної Google-таблиці.");
@@ -126,6 +175,24 @@ function getHeaderMap_(sheet) {
   const map = {};
   headers.forEach((value, index) => { map[String(value || "").trim()] = index; });
   return map;
+}
+
+function cellByHeader_(row, headerMap, candidates) {
+  const keys = Object.keys(headerMap);
+  for (const candidate of candidates) {
+    if (headerMap[candidate] !== undefined) return String(row[headerMap[candidate]] || "").trim();
+    const normalizedCandidate = normalize_(candidate).replace(/[’‘`]/g, "'");
+    const matchedKey = keys.find(key => normalize_(key).replace(/[’‘`]/g, "'") === normalizedCandidate);
+    if (matchedKey !== undefined) return String(row[headerMap[matchedKey]] || "").trim();
+  }
+  return "";
+}
+
+function guestMessageHtml_(data) {
+  const safeData = JSON.stringify(data)
+    .replace(/</g, "\\u003c").replace(/>/g, "\\u003e").replace(/&/g, "\\u0026");
+  const html = "<!doctype html><meta charset=\"utf-8\"><script>window.parent.postMessage(" + safeData + ", \"" + WEDDING_SITE_ORIGIN + "\");</script>";
+  return HtmlService.createHtmlOutput(html).setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
 }
 
 function getWeddingSpreadsheet_() {
